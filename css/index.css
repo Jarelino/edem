@@ -7,9 +7,6 @@
 * {
     margin: 0;
     padding: 0;
-
-
-    margin: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -162,6 +159,101 @@ span {
     background: #E8CDC8;
 }
 
+
+span .icon {
+    cursor: pointer;
+}
+
+span:hover .icon::before {
+    color: #6D86CF;
+}
+
+span:hover .icon:active {
+    color: #6179BE;
+}
+
+.icon {
+    font-size: 30px;
+}
+
+.customInputWrap {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.customInputWrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border: 1px solid #70768A;
+    border-radius: 2px;
+}
+
+.radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border: 1px solid #70768A;
+    border-radius: 50%;
+}
+
+.customInputWrap input:checked ~ .checkmark {
+    background: url(../icons/checkbox.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.customInputWrap input:checked ~ .radio:after {
+    display: block;
+    height: 10px;
+    width: 10px;
+    background: #869BD8;
+    z-index: 100;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.customInputWrap input:checked ~ .radio {
+    background-color: #fff;
+}
+   
+
 @media (max-width: 1440px) {
     .c-p4 {
         font-weight: 500;
@@ -175,9 +267,6 @@ span {
         line-height: 150%;
     }
 }
-
-
-
 
 
 @font-face {
