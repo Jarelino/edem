@@ -3,6 +3,11 @@
     z-index: 4;
 }
 
+.stop-scroll {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .header__container {
     display: flex;
     justify-content: space-between;
@@ -156,6 +161,8 @@
 
 .navMenu-activeInput .navMenu__inputBlock {
     display: block;
+    position: relative;
+    z-index: 5;
 }
 
 .navMenu__inputWrap {
@@ -197,6 +204,11 @@
     left: 0;
     background: rgba(251, 249, 247, 0.6);
     display: none;
+    overflow: hidden;
+}
+
+.searchActive {
+    top: 149px;
 }
 
 .modalContent {
@@ -457,6 +469,71 @@
     margin-bottom: 5px;
 }
 
+.modal-search {
+    width: 1200px;
+    top: 164px;
+    transform: translate(-50%, 0);
+    z-index: 3;
+}
+
+.searchCard__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 30px;
+}
+
+.searchCard {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 370px;
+    position: relative;
+}
+
+.searchCard img {
+    width: 100px;
+    height: 100px;
+}
+
+.searchCard__textBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.modal-search .btn {
+    display: flex;
+    margin: auto;
+    margin-top: 75px;
+}
+
+.searchCard-newPrice {
+    font-size: 16px;
+    line-height: 150%;
+    color: #869BD8;
+}
+
+.searchCard-oldPrice {
+    opacity: 0.68;
+    font-size: 10px;
+    line-height: 150%;
+    text-decoration-line: line-through;
+    color: #70768A;
+}
+
+.searchCard-discount {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-family: 'Comfortaa';
+    font-size: 10px;
+    color: #FBF9F7;
+    background: #869BD8;
+    border-radius: 7px;
+    padding: 9px 3px 8px 4px;
+}
+
 @media (max-width: 1439px) {
     .copyright > .container p:first-child {
         width: fit-content;
@@ -490,6 +567,15 @@
     .navMenu__list .icon {
         font-size: 20px;
     }
+
+    .modal-search {
+        width: 1080px;
+    }
+
+    .searchCard {
+        width: 350px;
+    }
+
 }
 
 @media (max-width: 1279px) {

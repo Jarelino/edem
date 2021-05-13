@@ -6,6 +6,7 @@ window.onload = () => {
     const bottomMenuWrapper = document.querySelector('.bottomMenuWrapper');
     const modalWrap = document.querySelector('.modal');
 
+    const searchInput = document.querySelector('.pageInput')
     const requisites = document.querySelector('#requisites')
 
     const clearMenu = () => {
@@ -69,15 +70,34 @@ window.onload = () => {
     openModal = (modalClass) => () => {
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
+        const body = document.getElementsByTagName('body')[0];
+
         if (targetItem.classList.contains('modal-active')) {
             targetItem.classList.remove('modal-active');
-            modalWrap.classList.remove('modalWrap-active')
+            modalWrap.classList.remove('modalWrap-active');
+            body.classList.remove('stop-scroll');
         } else if(activeTab) {
             activeTab.classList.remove('modal-active');
             targetItem.classList.add('modal-active');
         } else {
+            body.classList.add('stop-scroll');
             targetItem.classList.add('modal-active');
             modalWrap.classList.add('modalWrap-active')
+        }
+    }
+
+    searchHandler = (e) => {
+        console.log(e)
+        if (
+            searchInput.value.length === 1 && e.inputType == 'insertText'
+            ||
+            searchInput.value.length > 1 && !document.querySelector('.modal-search').classList.contains('modal-active')
+            ) {
+            openModal('modal-search')();
+        }
+
+        if (searchInput.value.length === 0) {
+            modalWrap.click();
         }
     }
 
@@ -114,11 +134,17 @@ window.onload = () => {
 
     modalWrap.addEventListener('click', (e) => {
         if (e.target == modalWrap) {
+
             modalWrap.classList.remove('modalWrap-active')
             document.querySelector('.modal-active').classList.remove('modal-active')
+            document.querySelector('.stop-scroll').classList.remove('stop-scroll')
         }
     })
 
+
+    searchInput.addEventListener('focus', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 20)
+    searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 5)
+    searchInput.addEventListener('input', searchHandler);
     requisites.addEventListener('click', openModal('modal-requisites'))
     menuWrapper.addEventListener('click', (e) => e.target == menuWrapper && closeMenu());
     search.addEventListener('click', searchClickHandler)
