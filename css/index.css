@@ -43,6 +43,16 @@ span:hover {
     color: var(--main-hover-color);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 input {
     border: none;
     outline: none;
@@ -63,7 +73,7 @@ input {
 }
 
 .c-h2 {
-    font-size: 30px;
+    font-size: 35px;
     line-height: 130%;
 }
 
@@ -93,7 +103,7 @@ input {
 
 .c-p3 {
     font-weight: normal;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 150%;
 }
 
@@ -213,8 +223,7 @@ span:hover .icon:active {
 .customInputWrap {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 17px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -237,7 +246,7 @@ span:hover .icon:active {
     left: 0;
     height: 15px;
     width: 15px;
-    background-color: #fff;
+    background: #F6EEEC;
     border: 1px solid #70768A;
     border-radius: 2px;
 }
@@ -293,6 +302,19 @@ span:hover .icon:active {
         width: 1200px;
     }
 
+        
+    .c-h2 {
+        font-size: 30px;
+        line-height: 130%;
+    }
+
+        
+    .c-p3 {
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 150%;
+    }
+
     .c-p4 {
         font-weight: 500;
         font-size: 16px;
@@ -310,6 +332,24 @@ span:hover .icon:active {
 @media (max-width: 1279px) {
     .container {
         width: 700px;
+    }
+
+    .c-h2 {
+        font-size: 18px;
+        line-height: 130%;
+    }
+
+    .c-p5 {
+        font-size: 12px;
+        line-height: 150%;
+    }
+
+
+    .c-tags {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: 0.1em;
     }
 }
 
@@ -361,14 +401,13 @@ span:hover .icon:active {
     src: url('../fonts/Montserrat-Medium.ttf');
     font-weight: 500;
 }
-
 @font-face {
-    font-family: 'edem';
-    src:  url('../fonts/icons.eot?8j134c');
-    src:  url('fonts/icons.eot?8j134c#iefix') format('embedded-opentype'),
-      url('../fonts/icons.ttf?8j134c') format('truetype'),
-      url('../fonts/icons.woff?8j134c') format('woff'),
-      url('../fonts/icons.svg?8j134c#edem') format('svg');
+    font-family: 'icons';
+    src:  url('../fonts/icons.eot?cgj9eq');
+    src:  url('../fonts/icons.eot?cgj9eq#iefix') format('embedded-opentype'),
+      url('../fonts/icons.ttf?cgj9eq') format('truetype'),
+      url('../fonts/icons.woff?cgj9eq') format('woff'),
+      url('../fonts/icons.svg?cgj9eq#icons') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -376,7 +415,7 @@ span:hover .icon:active {
   
   .icon {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'edem' !important;
+    font-family: 'icons' !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -389,6 +428,14 @@ span:hover .icon:active {
     -moz-osx-font-smoothing: grayscale;
   }
   
+  .icon-db-arrow:before {
+    content: "\6b";
+    color: #70768a;
+  }
+  .icon-filter:before {
+    content: "\e901";
+    color: #70768a;
+  }
   .icon-catalog:before {
     content: "\71";
     color: #70768a;
