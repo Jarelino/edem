@@ -5,7 +5,7 @@ window.onload = () => {
     const menu = document.querySelector('.menu');
     const bottomMenuWrapper = document.querySelector('.bottomMenuWrapper');
     const modalWrap = document.querySelector('.modal');
-
+    const clearPageInput = document.querySelector('#clearPageInput')
     const searchInput = document.querySelector('.pageInput')
     const requisites = document.querySelector('#requisites')
 
@@ -14,6 +14,12 @@ window.onload = () => {
         if (activeList) {
             document.querySelector('.menu__list-active').classList.remove('menu__list-active');
         }
+    }
+
+    const clearInput = () => {
+        searchInput.value = '';
+        document.querySelector('#clearPageInput').style.display = 'none';
+        openModal('modal-search')();
     }
 
 
@@ -52,7 +58,7 @@ window.onload = () => {
         navContainer.classList.add('navMenu-activeInput');
     }
 
-    openBottomTab = (tabClass) => () => {
+    const openBottomTab = (tabClass) => () => {
         const activeTab = document.querySelector('.bottomMenu-activeTab')
         const targetItem = document.querySelector(`.${tabClass}`);
         if (targetItem.classList.contains('bottomMenu-activeTab')) {
@@ -67,7 +73,7 @@ window.onload = () => {
         }
     }
 
-    openModal = (modalClass) => () => {
+    const openModal = (modalClass) => () => {
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
         const body = document.getElementsByTagName('body')[0];
@@ -86,8 +92,13 @@ window.onload = () => {
         }
     }
 
-    searchHandler = (e) => {
-        console.log(e)
+    const searchHandler = (e) => {
+        if (searchInput.value.length > 0) {
+            document.querySelector('#clearPageInput').style.display = 'block'
+        } else {
+            document.querySelector('#clearPageInput').style.display = 'none';
+        }
+
         if (
             searchInput.value.length === 1 && e.inputType == 'insertText'
             ||
@@ -142,8 +153,9 @@ window.onload = () => {
     })
 
 
+    clearPageInput.addEventListener('click', clearInput)
     searchInput.addEventListener('focus', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 20)
-    searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 5)
+    searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 6)
     searchInput.addEventListener('input', searchHandler);
     requisites.addEventListener('click', openModal('modal-requisites'))
     menuWrapper.addEventListener('click', (e) => e.target == menuWrapper && closeMenu());
