@@ -140,12 +140,22 @@ window.onload = () => {
         menuInput.addEventListener('focusout', () => {
             if(menuInput.value.length === 0) document.querySelector('.menu__searchBlock-loop').style.display = 'block';
         })
+
+        menuInput.addEventListener('input', (e) => {
+            if (e.target.value.length > 0) {
+                console.log( e.currentTarget.parentNode.parentNode);
+                e.currentTarget.parentNode.parentNode.querySelectorAll('.menu__list').forEach((list) => list.style.display = "none")
+                e.currentTarget.parentNode.parentNode.querySelector('.searchResult__container').style.display = 'flex';
+            } else {
+                e.currentTarget.parentNode.parentNode.querySelectorAll('.menu__list').forEach((list) => list.style.display = "flex")
+                e.currentTarget.parentNode.parentNode.querySelector('.searchResult__container').style.display = 'none';
+            }
+        })
     }
 
 
     modalWrap.addEventListener('click', (e) => {
         if (e.target == modalWrap) {
-
             modalWrap.classList.remove('modalWrap-active')
             document.querySelector('.modal-active').classList.remove('modal-active')
             document.querySelector('.stop-scroll').classList.remove('stop-scroll')
