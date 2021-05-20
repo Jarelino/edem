@@ -364,7 +364,7 @@ body {
     margin-top: 20px;
 }
 
-.catalog__card:hover:not(.catalog__bigCard) .catalog__card-modBlock {
+.catalog__cardWrapper:hover:not(.catalog__bigCard) .catalog__card-modBlock {
     margin-top: 15px;
 }
 

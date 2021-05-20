@@ -543,6 +543,10 @@
     padding: 9px 3px 8px 4px;
 }
 
+.searchResult__container {
+    display: none;
+}
+
 @media (max-width: 1439px) {
     .copyright > .container p:first-child {
         width: fit-content;

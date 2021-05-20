@@ -36,10 +36,7 @@ span {
     font-family: "Montserrat"
 }
 
-a:hover,
-li:hover,
-p:hover,
-span:hover {
+a:hover {
     color: var(--main-hover-color);
 }
 
