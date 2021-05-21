@@ -92,7 +92,7 @@ body {
 }
 
 .catalog__cardWrapper > .catalog__card {
-    position: absolute;
+    position: inherit;
     top: 0;
     left: 0;
 }
@@ -696,10 +696,13 @@ body {
         margin-top: 10px;
     }
 
-    .catalog__card img {
+
+    .catalog__card img,
+    .catalog__card:not(.catalog__bigCard) img {
         width: 330px;
         height: 330px;
     }
+    
 }
 
 @media (max-width: 767px) {
@@ -793,7 +796,8 @@ body {
     }
 
     
-    .catalog__card img {
+    .catalog__card img,
+    .catalog__card:not(.catalog__bigCard) img {
         width: 155px;
         height: 155px;
     }

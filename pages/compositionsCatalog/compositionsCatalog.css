@@ -1,13 +1,15 @@
+
+
 .composition__bigCard {
     width: calc(65% - 15px);
     border-radius: 15px;
-    min-height: 937px;
 }
 
 .composition__bigCard .catalog__card {
     background-image: url(../flowersCatalog/img/bigCardBg.png)!important;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    min-height: 917px;
 }
 
 .composition__bigCard .catalog__card:hover {
@@ -37,9 +39,11 @@
 .compositions__container .catalog__cardWrapper:nth-child(2) {
     margin: 0 calc(5% - 17px);
 }
+.compositions__container .catalog__cardWrapper:nth-child(6) {
+    margin-top: 20px;
+}
 
 .compositions__container .catalog__cardWrapper:nth-child(5),
-.compositions__container .catalog__cardWrapper:nth-child(6),
 .compositions__container .catalog__cardWrapper:nth-child(4) {
     margin-top: 50px;
 }
@@ -59,7 +63,8 @@
 }
 
 .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard) img {
-    width: 342px
+    width: 342px;
+    height: 342px;
 }
 
 .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard) {
@@ -67,10 +72,20 @@
     height: initial;
 }
 
+.composition__bigCard img {
+    width: 773px!important;
+    height: 773px!important;
+}
+
 
 @media (max-width: 1439px) {
     .composition__bigCard img {
-        width: 658px;
+        width: 658px!important;
+        height: 658px!important;
+    }
+
+    .compositions__container .catalog__cardWrapper:nth-child(6) {
+        margin-top: 50px;
     }
 
     .compositions__container .catalog__cardWrapper:not(.composition__bigCard) .catalog__card-title {
@@ -85,7 +100,8 @@
 
     
     .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard) img {
-        width: 287px
+        width: 287px;
+        height: 287px;
     }
     
     .compositions__container .catalog__cardWrapper {
@@ -110,7 +126,8 @@
     }
 
     .composition__bigCard img {
-        width: 378px;
+        width: 378px!important;
+        height: 378px!important;
     }
 
     .composition__bigCard {
@@ -123,6 +140,7 @@
 
     .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard) img {
         width: 164px;
+        height: 164px;
     }
 
     .catalog__gridContainer > div:nth-child(2n) {
@@ -169,6 +187,7 @@
 
     .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard) img {
         width: 155px;
+        height: 155px;
     }
 
     .compositions__container .catalog__cardWrapper:nth-child(5), .compositions__container .catalog__cardWrapper:nth-child(6) {
@@ -189,6 +208,7 @@
     .compositions__container .catalog__cardWrapper:nth-child(6) img,
     .composition__bigCard img {
         width: 261px!important;
+        height: 261px!important;
     }
     
     
