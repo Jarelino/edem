@@ -431,6 +431,10 @@ body {
     display: none;
 }
 
+.catalog__card-price {
+    font-weight: 500;
+}
+
 @media (max-width: 1439px) {
     .catalog__container {
         width: 1200px;
@@ -443,6 +447,14 @@ body {
 
     .catalog__cardWrapper {
         height: 468px;
+    }
+
+    .catalog__card img {
+        width: 342px;
+    }
+
+    .promotionContainer > img {
+        width: 783px;
     }
 }
 
@@ -601,7 +613,6 @@ body {
 
     .catalog__card-price {
         font-size: 20px!important;
-        font-weight: bold;
     }
 
     .promotion__contentBlock {
