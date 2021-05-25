@@ -42,8 +42,9 @@ body {
 
 .filterMenu {
     display: flex;
-    width: 979px;
+    width: 1027px;
     margin: auto;
+    column-gap: 16px;
     justify-content: space-between;
 }
 
@@ -56,6 +57,11 @@ body {
     align-items: center;
     position: relative;
     z-index: 20;
+}
+.filterItem .filterItem-menuBlock p {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
 }
 
 .filterItem-active p {
@@ -414,14 +420,20 @@ body {
 }
 
 .selectedFiltersCount {
-    margin-left: 5px;
-    padding: 2px 7px 3px 8px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
     background: #869BD8;
     font-size: 12px;
     line-height: 15px;
     border-radius: 50%;
-    display: none;
+    display: inline-block;
+    opacity: 0;
     color: #F6EEEC;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .noItemsBlock {
@@ -678,6 +690,11 @@ body {
     .filterBlock {
         display: flex;
         column-gap: 55px;
+    }
+
+    .selectedFiltersCount {
+        opacity: 1;
+        display: none;
     }
 
     .catalog__navBlock {

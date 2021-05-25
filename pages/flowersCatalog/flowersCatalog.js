@@ -6,9 +6,9 @@ window.onload = () => {
         const count = container.querySelectorAll('input:checked').length;
         if (count > 0) {
             container.querySelector('.selectedFiltersCount').innerHTML = count;
-            container.querySelector('.selectedFiltersCount').style.display = 'initial'   
+            container.querySelector('.selectedFiltersCount').style.opacity = 1;   
         } else {
-            container.querySelector('.selectedFiltersCount').style.display = 'none'   
+            container.querySelector('.selectedFiltersCount').style.display = 0;   
         }
     }
 
@@ -64,20 +64,29 @@ window.onload = () => {
         const mobileFilterBtn = document.querySelector('#mobileFilterBtn');
         const submitFiltersBtn = document.querySelector('#submitFiltersBtn');
         const filterTitles = document.querySelectorAll('.sideMenu__filterItem-title');
-
+        
+        const sideMenuFilterClick = (e) => {
+            if (e.target.tagName == 'INPUT') {
+                const filterCount = e.currentTarget.parentNode.parentNode.querySelector('.selectedFiltersCount');
+                filterCount.innerHTML = e.target.checked ? Number(filterCount.innerHTML) + 1 :  Number(filterCount.innerHTML) - 1;
+                filterCount.style.display = filterCount.innerHTML > 0 ? 'flex' : 'none';
+            }
+        }
 
         const toggleFilters = (e) => {
             e.currentTarget.parentNode.querySelector('.sideMenu__filterList').classList.toggle('sideMenu__filterList-open')
         }
 
         filterTitles.forEach((item) => item.addEventListener('click', toggleFilters))
-
+        
         mobileFilterBtn.addEventListener('click', () => {
             document.querySelector('.sideMenuWrapper').style.display = 'initial';
         })
-
+        
         submitFiltersBtn.addEventListener('click', () => {
             document.querySelector('.sideMenuWrapper').style.display = 'none';
         })
+
+        const filterItems = document.querySelectorAll('.sideMenu__filter').forEach(item => item.addEventListener('click', sideMenuFilterClick));
     }
 }
