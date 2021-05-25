@@ -48,7 +48,14 @@ window.onload = () => {
             filterModalOutside.classList.remove('filterMenu__modalOutside-activeModal');
         }
     }
+
+    const itemModClick = (e) => {
+        console.log(e.currentTarget);
+        e.currentTarget.querySelector('.catalog__card-modBlockItem-active').classList.remove('catalog__card-modBlockItem-active')
+        e.target.classList.add('catalog__card-modBlockItem-active')
+    }
     
+    document.querySelectorAll('.catalog__card-modBlock').forEach((item) => item.addEventListener('click', itemModClick))
     filterModalOutside.addEventListener('click', closeActiveFilterModal)
     filterItems.forEach((item) => item.addEventListener('click', filterToggleDesktop))
 

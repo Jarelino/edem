@@ -385,6 +385,7 @@ body {
     border-radius: 10px;
 }
 
+.catalog__card-modBlockItem-active,
 .catalog__card-modBlockItem:hover {
     background: #C7D2F1;
 }

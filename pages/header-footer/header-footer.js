@@ -59,6 +59,11 @@ window.onload = () => {
     }
 
     const openBottomTab = (tabClass) => () => {
+        
+        if (menuWrapper.style.display == 'block') {
+            closeMenu();
+        }
+
         const activeTab = document.querySelector('.bottomMenu-activeTab')
         const targetItem = document.querySelector(`.${tabClass}`);
         if (targetItem.classList.contains('bottomMenu-activeTab')) {
@@ -73,15 +78,34 @@ window.onload = () => {
         }
     }
 
+    const closeBottomTab = () => {
+        console.log('hi mark')
+        const activeTab = document.querySelector('.bottomMenu-activeTab')
+        activeTab.classList.remove('bottomMenu-activeTab');
+        bottomMenuWrapper.classList.remove('bottomMenuWrapper-active')
+    }
+
+    const closeModal = () => {
+        const activeTab = document.querySelector('.modal-active')
+        const body = document.getElementsByTagName('body')[0];
+        if (activeTab) {
+            activeTab.classList.remove('modal-active');
+            body.classList.remove('stop-scroll');
+            modalWrap.classList.remove('modalWrap-active');
+        }
+    }
+    
     const openModal = (modalClass) => () => {
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
         const body = document.getElementsByTagName('body')[0];
 
+        if (menuWrapper.style.display == 'block') {
+            closeMenu();
+        }
         if (targetItem.classList.contains('modal-active')) {
             targetItem.classList.remove('modal-active');
             modalWrap.classList.remove('modalWrap-active');
-            body.classList.remove('stop-scroll');
         } else if(activeTab) {
             activeTab.classList.remove('modal-active');
             targetItem.classList.add('modal-active');
@@ -124,7 +148,10 @@ window.onload = () => {
         const bottomCatalog = document.querySelector('#bottomCatalog');
         const bottomPlace = document.querySelector('#bottomPlace')
         const requisitesMobile = document.querySelector('#requisitesMobile');
-
+        
+        document.querySelectorAll('.closeModal').forEach((item) => item.addEventListener('click', closeBottomTab))
+        document.querySelectorAll('.btn-submitReqCall').forEach((item) => item.addEventListener('click', openBottomTab('bottomMenu__requestCall-success')))
+        document.querySelectorAll('.btn-requestCall').forEach((btn) => btn.addEventListener('click', openBottomTab('bottomMenu__requestCall')))
         requisitesMobile.addEventListener('click', openBottomTab('bottomMenu__requisites'))
         bottomCatalog.addEventListener('click', openBottomTab('bottomMenu__catalog'))
         bottomPlace.addEventListener('click', openBottomTab('bottomMenu__place'))
@@ -162,7 +189,11 @@ window.onload = () => {
         }
     })
 
-
+    if (window.screen.width >= 1280) {
+        document.querySelectorAll('.closeModal').forEach((item) => item.addEventListener('click', closeModal))
+        document.querySelectorAll('.btn-submitReqCall').forEach((item) => item.addEventListener('click', openModal('modal-requestCall-success')))
+        document.querySelectorAll('.btn-requestCall').forEach((item) => item.addEventListener('click', openModal('modal-requestCall')))
+    }
     clearPageInput.addEventListener('click', clearInput)
     searchInput.addEventListener('focus', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 20)
     searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 6)
