@@ -491,6 +491,7 @@
 
 .modal-search {
     width: 1200px;
+    max-width: 1200px;
     top: 164px;
     transform: translate(-50%, 0);
     z-index: 3;

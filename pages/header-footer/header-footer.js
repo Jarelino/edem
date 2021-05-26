@@ -19,7 +19,7 @@ window.onload = () => {
     const clearInput = () => {
         searchInput.value = '';
         document.querySelector('#clearPageInput').style.display = 'none';
-        openModal('modal-search')();
+        closeModal();
     }
 
 
