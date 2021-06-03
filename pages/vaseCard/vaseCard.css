@@ -124,6 +124,10 @@
         margin-bottom: 40px;
     }
 
+    .characteristic__block:first-child {
+        flex-direction: column-reverse;
+    }
+
     .characteristic__bigImg {
         width: 330px;
     }
