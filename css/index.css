@@ -150,6 +150,7 @@ input {
 
 .c-link {
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .c-link:hover {
@@ -170,6 +171,7 @@ input {
     letter-spacing: 0.05em;
     padding: 15px 30px;
     border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .btn-blue {
@@ -361,6 +363,11 @@ span:hover .icon:active {
         line-height: 130%;
     }
 
+    .c-p4 {
+        font-size: 12px;
+        line-height: 150%;
+    }
+
     .c-p5 {
         font-size: 12px;
         line-height: 150%;
@@ -373,6 +380,8 @@ span:hover .icon:active {
         line-height: 120%;
         letter-spacing: 0.1em;
     }
+
+    
 }
 
 @media (max-width: 767px) {

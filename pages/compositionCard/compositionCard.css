@@ -118,6 +118,7 @@
         font-size: 14px;
         line-height: 21px;
     }
+
 }
 
 @media (max-width: 767px) {
@@ -143,5 +144,23 @@
     .examples__block,
     .examples__block:last-child .c-p3 {
         width: 100%;
+    }
+
+    
+    .card__mainInfoBlock-descriptionBlock, .leaveReq, .card__mainInfoBlock-priceInfo {
+        margin-left: 0;
+    }
+
+    .leaveReq {
+        display: none;
+    }
+
+    .card__mainContent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card__mainInfoBlock-breadBlock {
+        order: -1;
     }
 }
