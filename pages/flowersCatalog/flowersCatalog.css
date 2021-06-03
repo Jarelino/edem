@@ -467,7 +467,7 @@ body {
     position: relative;
 }
 
-.filterModal__list {
+.modal-filter {
     background: #F6EEEC;
     border-radius: 15px;
     z-index: 20;
@@ -747,6 +747,12 @@ body {
         width: 330px;
         height: 330px;
     }
+
+    
+    .factoid {
+        width: 47%;
+        padding: 0;
+    }
     
 }
 
@@ -845,11 +851,6 @@ body {
     .catalog__card:not(.catalog__bigCard) img {
         width: 155px;
         height: 155px;
-    }
-
-    .factoid {
-        width: 47%;
-        padding: 0;
     }
 
     .factoid .c-h2 {
