@@ -3,6 +3,12 @@
     z-index: 4;
 }
 
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 .stop-scroll {
     height: 100vh;
     overflow: hidden;
@@ -55,12 +61,13 @@
     align-items: flex-end;
     column-gap: 10px;
     cursor: pointer;
+    position: relative;
 }
 
 .header__phoneBlock:hover .icon::before,
 .header__placeBlock:hover .icon::before,
-.header__phoneBlock:hover *,
-.header__placeBlock:hover * {
+.header__phoneBlock:hover > *,
+.header__placeBlock:hover > * {
     color: var(--main-hover-color);
 } 
 
@@ -73,6 +80,43 @@
 .header__phoneBlock .icon,
 .header__placeBlock .icon {
     font-size: 24px;
+}
+
+.modal-placement__wrap {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: none;
+}
+
+.modal-placement__wrap .container {
+    position: relative;
+}
+
+.modal-placement {
+    position: absolute;
+    top: 75px;
+    right: 75px;
+    background: #F6EEEC;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px 20px;
+    width: 415px;
+}
+
+.modal-placement__wrap,
+.modal-placement > * {
+    cursor: initial;
+}
+
+.modal-placement__btn-wrap {
+    margin: 20px 0;
+}
+
+.modal-placement__title {
+    margin-bottom: 10px;
 }
 
 .header__menuBlock {
@@ -227,7 +271,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #FBF9F7;
+    background: #fbf9f7;
     padding: 40px 60px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -238,6 +282,7 @@
 }
 
 
+.modalWrap-active-nolock,
 .modalWrap-active,
 .modal-active {
     display: block;
@@ -352,7 +397,7 @@
 }
 
 .footer {
-    margin-top: 400px;
+    margin-top: 600px;
     background: #F6EEEC;
     padding: 50px 0;
 }
@@ -495,6 +540,7 @@
     top: 164px;
     transform: translate(-50%, 0);
     z-index: 3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 .searchCard__container {

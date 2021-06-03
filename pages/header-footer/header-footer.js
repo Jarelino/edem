@@ -8,7 +8,8 @@ window.onload = () => {
     const clearPageInput = document.querySelector('#clearPageInput')
     const searchInput = document.querySelector('.pageInput')
     const requisites = document.querySelector('#requisites')
-
+    const placeButton = document.querySelector('.header__placeBlock');
+    const placeModal = document.querySelector('.modal-placement__wrap');
     const clearMenu = () => {
         const activeList = document.querySelector('.menu__list-active')
         if (activeList) {
@@ -95,7 +96,8 @@ window.onload = () => {
         }
     }
     
-    const openModal = (modalClass) => () => {
+    const openModal = (modalClass) => (e) => {
+        console.log(e.currentTarget);
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
         const body = document.getElementsByTagName('body')[0];
@@ -106,13 +108,14 @@ window.onload = () => {
         if (targetItem.classList.contains('modal-active')) {
             targetItem.classList.remove('modal-active');
             modalWrap.classList.remove('modalWrap-active');
+            modalWrap.style.opacity = 0;
         } else if(activeTab) {
             activeTab.classList.remove('modal-active');
             targetItem.classList.add('modal-active');
         } else {
             body.classList.add('stop-scroll');
             targetItem.classList.add('modal-active');
-            modalWrap.classList.add('modalWrap-active')
+            modalWrap.classList.add('modalWrap-active');
         }
     }
 
@@ -194,6 +197,18 @@ window.onload = () => {
         document.querySelectorAll('.btn-submitReqCall').forEach((item) => item.addEventListener('click', openModal('modal-requestCall-success')))
         document.querySelectorAll('.btn-requestCall').forEach((item) => item.addEventListener('click', openModal('modal-requestCall')))
     }
+
+
+    placeModal.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-placement__wrap')) {
+            e.target.style.display = 'none';
+        }
+    })
+    placeButton.addEventListener('click', (e) => {
+        console.log(document.querySelector('.modal-placement__wrap'));
+        let modal = document.querySelector('.modal-placement__wrap');
+        modal.style.display = modal.style.display == 'block' ? 'none' : 'block';
+    })
     clearPageInput.addEventListener('click', clearInput)
     searchInput.addEventListener('focus', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 20)
     searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 6)
