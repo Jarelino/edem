@@ -1,6 +1,8 @@
 window.onload = () => {
     const filterItems = document.querySelectorAll('.filterItem');
     const filterModalOutside = document.querySelector('.filterMenu__modalOutside')
+    const filterButton = document.querySelector('.filterButton');
+    const filterModalMobile = document.querySelector('.modal-filter__wrap');
 
     const updateFilterCount = (container) => {
         const count = container.querySelectorAll('input:checked').length;
@@ -86,7 +88,15 @@ window.onload = () => {
         submitFiltersBtn.addEventListener('click', () => {
             document.querySelector('.sideMenuWrapper').style.display = 'none';
         })
-
+        filterModalMobile.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-filter__wrap')) {
+                e.target.style.display = 'none';
+            }
+        })
+        filterButton.addEventListener('click', (e) => {
+            let modal = document.querySelector('.modal-filter__wrap');
+            modal.style.display = modal.style.display == 'block' ? 'none' : 'block';
+        })
         const filterItems = document.querySelectorAll('.sideMenu__filter').forEach(item => item.addEventListener('click', sideMenuFilterClick));
     }
 }

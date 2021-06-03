@@ -454,6 +454,29 @@ body {
     height: 413px;
 }
 
+.modal-filter__wrap {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-filter__wrap .container {
+    position: relative;
+}
+
+.filterModal__list {
+    background: #F6EEEC;
+    border-radius: 15px;
+    z-index: 20;
+    padding: 22px 16px 21px 15px;
+    position: absolute;
+    right: 0;
+    top: 115px; 
+}
+
 @media (max-width: 1439px) {
     .catalog__container {
         width: 1200px;
