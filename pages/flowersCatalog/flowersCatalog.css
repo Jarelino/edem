@@ -846,4 +846,19 @@ body {
         width: 155px;
         height: 155px;
     }
+
+    .factoid {
+        width: 47%;
+        padding: 0;
+    }
+
+    .factoid .c-h2 {
+        font-size: 14px;
+        line-height: 130%;
+    }
+
+    .factoid__description {
+        font-size: 10px;
+        line-height: 150%;
+    }
 }
