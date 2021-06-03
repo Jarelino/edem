@@ -150,6 +150,7 @@ input {
 
 .c-link {
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .c-link:hover {
@@ -170,6 +171,7 @@ input {
     letter-spacing: 0.05em;
     padding: 15px 30px;
     border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .btn-blue {
