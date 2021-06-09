@@ -71,7 +71,7 @@ input {
 }
 
 .c-h1 {
-    font-size: 40px;
+    font-size: 50px;
     line-height: 130%;
 }
 
@@ -87,7 +87,7 @@ input {
 }
 
 .c-h4 {
-    font-size: 20px;
+    font-size: 25px;
     line-height: 130%;
 }
 
@@ -313,10 +313,18 @@ span:hover .icon:active {
         width: 1200px;
     }
 
+    .c-h1 {
+        font-size: 40px;
+        line-height: 130%;
+    }
         
     .c-h2 {
         font-size: 30px;
         line-height: 130%;
+    }
+
+    .c-h4 {
+        font-size: 20px;
     }
 
         
@@ -328,13 +336,6 @@ span:hover .icon:active {
     
     .c-p3,
     .c-p2 {
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 150%;
-    }
-        
-    .c-p3 {
-        font-weight: normal;
         font-size: 20px;
         line-height: 150%;
     }
@@ -358,9 +359,17 @@ span:hover .icon:active {
         width: 700px;
     }
 
+    .c-h1 {
+        font-size: 20px;
+    }
+
     .c-h2 {
         font-size: 18px;
         line-height: 130%;
+    }
+
+    .c-h4 {
+        font-size: 14px;
     }
 
     .c-p4 {
@@ -373,6 +382,10 @@ span:hover .icon:active {
         line-height: 150%;
     }
 
+    .c-p3,
+    .c-p2 {
+        font-size: 14px;
+    }
 
     .c-tags {
         font-weight: 500;
