@@ -284,6 +284,7 @@ body {
   .news-tags {
     margin-bottom: 10px;
   }
+  .news-snippets-item:hover,
   .news-snippets-item {
     margin-bottom: 20px;
   }
