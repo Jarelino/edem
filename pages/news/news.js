@@ -4,27 +4,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoryButtons = categories.querySelectorAll('.news-tags__item:not(#all_categories)')
 
   const allChecked = (categoryButtonClicked) => {
-    if(categoryButtonClicked) {
-      for(let elem of categoryButtons) {
-        if(!elem.classList.contains('active')) {
+    if (categoryButtonClicked) {
+      for (let elem of categoryButtons) {
+        if (!elem.classList.contains('active')) {
           return
         }
       }
     }
-    
-    for(let elem of categoryButtons) {
+
+    for (let elem of categoryButtons) {
       elem.classList.remove('active')
     }
 
     allCategoriesButton.classList.add('active')
   }
 
-  for(let elem of categoryButtons) {
-    elem.addEventListener('click', () => {
-      elem.classList.add('active')
-      allCategoriesButton.classList.remove('active')
+  const noneChecked = () => {
+    for (let elem of categoryButtons) {
+      if (elem.classList.contains('active')) {
+        return
+      }
+    }
 
-      allChecked(true)
+    allCategoriesButton.classList.add('active')
+  }
+
+  for (let elem of categoryButtons) {
+    elem.addEventListener('click', () => {
+      if (elem.classList.contains('active')) {
+        elem.classList.remove('active')
+        noneChecked()
+      }
+      else {
+        elem.classList.add('active')
+        allCategoriesButton.classList.remove('active')
+
+        allChecked(true)
+      }
     })
   }
 
