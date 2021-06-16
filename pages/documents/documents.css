@@ -2,6 +2,12 @@ body {
   background: #FBF9F7;
 }
 
+.container-sm {
+  width: 1158px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .documents {
   display: flex;
   justify-content: space-between;
@@ -108,6 +114,10 @@ body {
 }
 
 @media (max-width: 1439.98px) {
+  .container-sm {
+    width: 992px;
+  }
+
   .documents {
     margin-top: 50px;
     margin-bottom: 150px;
@@ -148,6 +158,10 @@ body {
 }
 
 @media screen and (max-width: 1279.98px) {
+  .container-sm {
+    width: 700px;
+  }
+
   .documents {
     margin-top: 40px;
     margin-bottom: 0;
@@ -217,6 +231,10 @@ body {
 }
 
 @media screen and (max-width: 767.98px) {
+  .container-sm {
+    width: 330px;
+  }
+  
   .documents {
     margin-top: 20px;
   }
