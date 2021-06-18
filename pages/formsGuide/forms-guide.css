@@ -4,6 +4,13 @@ form {
   margin-top: 100px;
 }
 
+label {
+  margin-bottom: 50px;
+}
+
+
+
+
 .form-input {
   width: 200px;
   border-bottom: 1px solid #70768A;
