@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const categories = document.querySelector('.news-tags')
-  const allCategoriesButton = categories.querySelector('.news-tags__item#all_categories')
-  const categoryButtons = categories.querySelectorAll('.news-tags__item:not(#all_categories)')
+  const categories = document.querySelector('.blog-tags')
+  const allCategoriesButton = categories.querySelector('.blog-tags__item#all_categories')
+  const categoryButtons = categories.querySelectorAll('.blog-tags__item:not(#all_categories)')
 
   const allChecked = (categoryButtonClicked) => {
     if (categoryButtonClicked) {

@@ -30,8 +30,11 @@ body {
 }
 
 .news-tags__item.active {
-  pointer-events: none;
   color: #869BD8;
+}
+
+.news-tags__item#all_categories.active {
+  pointer-events: none;
 }
 
 .news-pagination {
@@ -284,6 +287,7 @@ body {
   .news-tags {
     margin-bottom: 10px;
   }
+  .news-snippets-item:hover,
   .news-snippets-item {
     margin-bottom: 20px;
   }
