@@ -1,3 +1,7 @@
+body::before {
+  display: none;
+}
+
 .page_404 {
   margin-top: 100px;
   margin-bottom: 150px;
