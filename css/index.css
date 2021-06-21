@@ -58,7 +58,7 @@ span {
     font-family: "Montserrat"
 }
 
-a:hover {
+a:not(.btn):hover {
     color: var(--main-hover-color);
 }
 
