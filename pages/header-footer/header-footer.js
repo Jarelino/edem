@@ -80,7 +80,7 @@ window.onload = () => {
     }
 
     const closeBottomTab = () => {
-        console.log('hi mark')
+         ('hi mark')
         const activeTab = document.querySelector('.bottomMenu-activeTab')
         activeTab.classList.remove('bottomMenu-activeTab');
         bottomMenuWrapper.classList.remove('bottomMenuWrapper-active')
@@ -97,7 +97,7 @@ window.onload = () => {
     }
     
     const openModal = (modalClass) => (e) => {
-        console.log(e.currentTarget);
+         (e.currentTarget);
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
         const body = document.getElementsByTagName('body')[0];
@@ -173,7 +173,7 @@ window.onload = () => {
 
         menuInput.addEventListener('input', (e) => {
             if (e.target.value.length > 0) {
-                console.log( e.currentTarget.parentNode.parentNode);
+                 ( e.currentTarget.parentNode.parentNode);
                 e.currentTarget.parentNode.parentNode.querySelectorAll('.menu__list').forEach((list) => list.style.display = "none")
                 e.currentTarget.parentNode.parentNode.querySelector('.searchResult__container').style.display = 'flex';
             } else {
@@ -205,7 +205,7 @@ window.onload = () => {
         }
     })
     placeButton.addEventListener('click', (e) => {
-        console.log(document.querySelector('.modal-placement__wrap'));
+         (document.querySelector('.modal-placement__wrap'));
         let modal = document.querySelector('.modal-placement__wrap');
         modal.style.display = modal.style.display == 'block' ? 'none' : 'block';
     })
