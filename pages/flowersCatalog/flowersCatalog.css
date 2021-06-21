@@ -1,7 +1,3 @@
-.breadContainer {
-    padding-top: 60px;
-    padding-bottom: 50px;
-}
 
 .catalog__navBlock {
     margin: auto;
@@ -14,30 +10,6 @@
 
 body {
     background: #FBF9F7;
-}
-
-.breadContainer > .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.breadContainer > .container img {
-    margin: 0 10px;
-}
-
-.breadContainer > .container .breadItem {
-    font-size: 12px;
-    line-height: 120%;
-
-    font-family: 'Comfortaa';
-    color: #70768A;
-}
-
-.breadContainer > .container .breadItem:last-child {
-    font-size: 40px;
-    line-height: 130%;
-    font-weight: bold;
 }
 
 .filterMenu {
@@ -81,7 +53,6 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 50px;
-    background: #FBF9F7;
     margin: auto;
     width: 1400px;
     margin-top: 85px;
@@ -692,20 +663,6 @@ body {
         display: none;
     }
 
-    .breadContainer > .container {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
-    
-    .breadContainer {
-        padding-bottom: 0;
-        padding-top: 0;
-    }
-
-    .breadItem:last-child {
-        font-size: 20px;
-    }
 
     .catalog__navBlock {
         padding-top: 60px;
@@ -731,10 +688,6 @@ body {
 
     .filterBlock .icon {
         font-size: 21px;
-    }
-
-    .breadContainer > .container {
-        width: fit-content;
     }
 
     .catalog__card-price {
@@ -789,14 +742,6 @@ body {
         width: 50%;
         column-gap: 27px;
         justify-content: flex-end;
-    }
-
-    .breadContainer > .container .breadItem:last-child {
-        font-size: 20px;
-    }
-
-    .breadContainer > .container {
-        flex-wrap: wrap;
     }
 
     .promotionContainer > img {

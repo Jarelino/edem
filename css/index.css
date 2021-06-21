@@ -10,7 +10,6 @@
 * {
     margin: 0;
     padding: 0;
-    z-index: 2;
 }
 
 
@@ -21,13 +20,15 @@ body::before {
     left: 0;
     background: linear-gradient(#F6EEEC 50% , #FBF9F7 100% );
     height: 500px;
-    z-index: 1;
+    z-index: -1;
     width: 100%;
 }
 
 body {
+    z-index: 2;
     width: 100%;
     height: 100%;
+    background: #FBF9F7;
     position: relative;
 }
 
@@ -333,6 +334,36 @@ span:hover .icon:active {
 .customInputWrap input:checked ~ .radio {
     background-color: #fff;
 }
+
+.breadContainer > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.breadContainer > .container img {
+    margin: 0 10px;
+}
+
+.breadContainer > .container .breadItem {
+    font-size: 12px;
+    line-height: 120%;
+
+    font-family: 'Comfortaa';
+    color: #70768A;
+}
+
+.breadContainer > .container .breadItem:last-child {
+    font-size: 40px;
+    line-height: 130%;
+    font-weight: bold;
+}
+
+.breadContainer {
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
    
 
 @media (max-width: 1439px) {
@@ -403,6 +434,27 @@ span:hover .icon:active {
 
 @media (max-width: 1279px) {
     
+    
+    .breadContainer > .container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .breadContainer {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    .breadItem:last-child {
+        font-size: 20px;
+    }
+
+    
+    .breadContainer > .container {
+        width: fit-content;
+    }
+
     body::before {
         height: 190px;
     }
@@ -470,6 +522,15 @@ span:hover .icon:active {
 @media (max-width: 767px) {
     body::before {
         height: 179px;
+    }
+
+    
+    .breadContainer > .container .breadItem:last-child {
+        font-size: 20px;
+    }
+
+    .breadContainer > .container {
+        flex-wrap: wrap;
     }
 
     .container {
