@@ -407,7 +407,7 @@ body {
     background: #869BD8;
     font-size: 12px;
     line-height: 15px;
-    border-radius: 50%;
+    border-radius: 4px;
     display: inline-block;
     opacity: 0;
     color: #F6EEEC;
