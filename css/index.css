@@ -32,8 +32,7 @@ body {
     position: relative;
 }
 
-.c-h1, .c-h2, .c-h3, .c-h4, .c-h5, .c-h6, 
-h1, h2, h3, h4, h5, h6 {
+.c-h1, .c-h2, .c-h3, .c-h4, .c-h5, .c-h6 {
     color: var(--main-text-color);
     font-family: "Comfortaa";
     font-weight: bold;
@@ -187,8 +186,16 @@ input {
     color: var(--main-pressed-color);
 }
 
+.c-factoid {
+    font-size: 64px;
+    line-height: 110%;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+}
+
 
 .btn {
+    display: inline-block;
     cursor: pointer;
     outline: none;
     border: none;
