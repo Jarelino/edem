@@ -32,11 +32,7 @@ body {
     position: relative;
 }
 
-<<<<<<< HEAD
 .c-h1, .c-h2, .c-h3, .c-h4, .c-h5, .c-h6 {
-=======
-.c-h1, .c-h2, .c-h3, .c-h4, .c-h5, .c-h6, h1, h2, h3, h4, h5, h6 {
->>>>>>> b1757133b0aea61530d721b8a19d398c14fb3846
     color: var(--main-text-color);
     font-family: "Comfortaa";
     font-weight: bold;
@@ -182,7 +178,6 @@ input {
     color: var(--main-pressed-color);
 }
 
-<<<<<<< HEAD
 .c-factoid {
     font-size: 64px;
     line-height: 110%;
@@ -193,10 +188,6 @@ input {
 
 .btn {
     display: inline-block;
-=======
-.btn {
-    width: fit-content;
->>>>>>> b1757133b0aea61530d721b8a19d398c14fb3846
     cursor: pointer;
     outline: none;
     border: none;
@@ -340,7 +331,6 @@ span:hover .icon:active {
     background-color: #fff;
 }
 
-<<<<<<< HEAD
 .breadContainer > .container {
     display: flex;
     justify-content: center;
@@ -371,87 +361,6 @@ span:hover .icon:active {
 }
 
    
-=======
-
-/** form validation */
-
-.form-input {
-    width: 200px;
-    border-bottom: 1px solid #70768A;
-    padding-bottom: 5px;
-    margin-top: 10px;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    line-height: 150%;
-    color: #70768A;
-}
-
-.form-input::placeholder {
-    opacity: 0.68;
-}
-
-.form-input:focus::placeholder {
-    color: transparent;
-}
-
-.form-submit__wrap {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-}
-
-.form-submit {
-    position: relative;
-    z-index: 1;
-}
-
-.form-submit:disabled {
-    background: #869BD8;
-    opacity: 0.5;
-    border-radius: 10px;
-}
-
-.form-submit-cover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    z-index: 0;
-}
-
-.form-submit:disabled+.form-submit-cover {
-    z-index: 2;
-}
-
-.form-hint {
-    opacity: 0;
-    font-size: 12px;
-    font-family: 'Montserrat';
-    line-height: 120%;
-    color: #EB5757;
-}
-
-.form-label {
-    width: fit-content;
-}
-
-.form-label.js-invalid .form-hint {
-    opacity: 1;
-}
-
-.form-label.js-invalid .form-input {
-    border-color: #EB5757;
-}
-
-.form-label.js-valid .form-input {
-    border-color: #219653;
-}
-
-/** form validation - end */
-
->>>>>>> b1757133b0aea61530d721b8a19d398c14fb3846
 
 @media (max-width: 1439px) {
     .container {
