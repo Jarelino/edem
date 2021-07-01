@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const timeDateData = {};
+
   (postcardAction = () => {
     const postcard = document.querySelector('.cart-main-postcard')
     const tabs = postcard.querySelectorAll('.cart-main-postcard__tab')
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       postcard.style.maxHeight = postcard.scrollHeight + 'px'
       postcard.classList.add('active')
-      
+
       const int = setInterval(() => {
         postcard.scrollIntoView({
           block: 'end',
@@ -72,14 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const switchTabs = () => {
       tabs.forEach(tab => {
-        if(tab.classList.contains('active')) {
+        if (tab.classList.contains('active')) {
           tab.classList.remove('fade')
           setTimeout(() => {
             tab.classList.remove('active')
           }, 150)
           return
         }
-        
+
         setTimeout(() => {
           tab.classList.add('active')
           setTimeout(() => {
@@ -146,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openPopupLinks.forEach(elem => {
       const link = elem.querySelector(':scope > span')
       link.addEventListener('click', (e) => {
-        if(elem.classList.contains('active')) {
+        if (elem.classList.contains('active')) {
           closePopup(elem)
           return
         }
@@ -156,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     pickupPopup.addEventListener('click', (e) => {
-      if(e.target.classList.contains('c-link')) {
+      if (e.target.classList.contains('c-link')) {
         pickupPopup.parentElement.querySelector(':scope > span').innerHTML = e.target.innerHTML
         const temp = pickupPopup.querySelector('p').innerHTML
         pickupPopup.querySelector('p').innerHTML = e.target.innerHTML
@@ -188,4 +190,61 @@ document.addEventListener('DOMContentLoaded', () => {
     tableClose.addEventListener('click', closeTablePopup)
     tableOuter.addEventListener('click', closeTablePopup)
   })();
+
+  (stageControl = () => {
+    const nextStageButton = document.querySelector('.cart-side-result__order') // temp
+
+    const steps = document.querySelectorAll('.cart-main-steps-item')
+    const tabs = document.querySelectorAll('.cart-main__tab')
+
+    let lastStep = 0
+
+    const switchTab = (i) => {
+      tabs.forEach(tab => {
+        tab.classList.remove('fade')
+        setTimeout(() => {
+          tab.classList.remove('active')
+        }, 300)
+      })
+      setTimeout(() => {
+        tabs[i].classList.add('active')
+      }, 300)
+      setTimeout(() => {
+        tabs[i].classList.add('fade')
+      }, 300)
+    }
+
+    const jumpToStep = (stepNum) => {
+      for (let i = 0; i < steps.length; i++) {
+        steps[i].classList.remove('current')
+        steps[i].classList.remove('back')
+        steps[i].classList.remove('forth')
+        if (steps[i].classList.contains('visited')) {
+          if (i < stepNum) {
+            steps[i].classList.add('back')
+          }
+          if (i > stepNum) {
+            steps[i].classList.add('forth')
+          }
+        }
+      }
+      switchTab(stepNum)
+    }
+
+    for (let i = 0; i < steps.length; i++) {
+      steps[i].addEventListener('click', () => {
+        jumpToStep(i)
+      })
+    }
+
+    nextStageButton.addEventListener('click', () => {
+      lastStep += 1
+      steps[lastStep].classList.add('visited')
+      jumpToStep(lastStep)
+      switchTab(lastStep)
+      steps[lastStep].classList.add('current')
+    })
+  })();
+
+  createDatePicker({ datePickerSelector: 'selector', openButtonSelector: 'selector', data: timeDateData });
 })

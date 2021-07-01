@@ -40,6 +40,7 @@ body {
   opacity: 0.5;
   transition: 0.3s;
   cursor: default;
+  pointer-events: none;
 }
 
 .cart-main-steps-item__back,
@@ -63,6 +64,7 @@ body {
 .cart-main-steps-item.visited {
   opacity: 1;
   cursor: pointer;
+  pointer-events: all;
 }
 
 .cart-main-steps-item__num {
@@ -95,7 +97,7 @@ body {
   transition-delay: 0s;
 }
 
-.cart-main-steps-item.done .cart-main-steps-item__done, /*вынести на два условия назад если будет работать некорректно*/
+.cart-main-steps-item.done .cart-main-steps-item__done,
 .cart-main-steps-item.forth:hover .cart-main-steps-item__forth,
 .cart-main-steps-item.back:hover .cart-main-steps-item__back {
   opacity: 1;
@@ -538,10 +540,16 @@ body {
 
 .cart-main__tab {
   display: none;
+  opacity: 0;
+  transition: 0.3s;
 }
 
 .cart-main__tab.active {
   display: block;
+}
+
+.cart-main__tab.fade {
+  opacity: 1;
 }
 
 .cart-main__tab.checkout {

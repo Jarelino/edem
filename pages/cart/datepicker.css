@@ -1,0 +1,45 @@
+.datepicker {
+  padding: 50px 40px 40px;
+  background: #F6EEEC;
+  box-shadow: 0px 4px 32px rgba(170, 170, 170, 0.03);
+  border-radius: 15px;
+}
+
+.datepicker__month {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 150%;
+  color: #70768A;
+}
+
+.datepicker__weekday {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+  color: #70768A;
+}
+
+.datepicker__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+  color: #70768A;
+}
+
+span.datepicker__day {
+  opacity: 0.5;
+}
+
+.datepicker__day.chosen {
+  color: #F6EEEC;
+  background: #869BD8;
+}
