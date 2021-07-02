@@ -91,7 +91,7 @@ body {
     opacity: 0;
 }
 
-.catalog__card:hover:not(.catalog__bigCard) > img {
+.catalog__card:hover:not(.catalog__bigCard):not(.composition__bigCard-hover) > img {
     height: 433px!important;
     width: 433px!important;
     margin-top: -10px;

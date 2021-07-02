@@ -198,12 +198,19 @@
         font-size: 14px!important;
         line-height: 21px;
     }
+    .factoid {
+        transform: translate(0, -10%);
+    }
 }
 
 
 /* 4,6 - big */
 @media screen and (max-width: 767px) {
-    
+    .factoid {
+        width: 50%;
+        transform: translate(0, 0%);
+        order: 2;
+    }
     .catalog__cardWrapper,
     .catalog__card:hover {
         padding: 10px 0;
