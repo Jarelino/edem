@@ -231,3 +231,138 @@
 .delivery__minsk_descriptionBlock:last-child > *:not(:first-child) {
     margin-top: 20px;
 }
+
+
+@media (max-width: 1439px) {
+    .delivery__courierInfo_infoBlock:first-child {
+        width: 622px;
+    }
+    .delivery__shopCard img {
+        height: 277px;
+        width: 367px;
+    }
+
+    .delivery__shopCard {
+        width: 366px;
+    }
+
+    .delivery__shopCard:hover {
+        width: 386px;
+    }
+
+    .delivery__shopCard:hover img {
+        height: 297px;
+        width: 387px;
+        margin-bottom: -10px;
+    }
+
+}
+
+@media (max-width: 1279px) {
+    .delivery__courierInfo_infoBlock:last-child,
+    .delivery__courierInfo_infoBlock:first-child {
+        width: 100%;
+    }
+    .delivery__shopCard img {
+        width: 330px;
+        height: 249px;
+    }
+
+    .delivery__shopCard {
+        width: 325px;
+    }
+
+    .delivery__shopCard:hover {
+        width: 345px;
+    }
+
+    .delivery__shopCard:hover img {
+        height: 269px;
+        width: 345px;
+        margin-bottom: -10px;
+    }
+
+    .delivery__courierInfo_infoConatiner {
+        flex-direction: column;
+    }
+
+    .delivery__courierInfo_infoBlock:last-child {
+        margin-top: 15px;
+    }
+
+    .map__description-phone {
+        font-size: 18px;
+        line-height: 150%;
+    }
+
+    .map__description-info {
+        width: 484px;
+    }
+
+    .delivery__minsk_descriptionContainer {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .delivery__minsk_descriptionContainer {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .delivery__tab-container {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    #minskMap,
+    #minskMap *,
+    #shopsLocations,
+    #shopsLocations *,
+    #borisov__zoneLocations,
+    #borisov__zoneLocations * {
+        max-height: 330px!important;
+    }
+
+    .delivery__tab {
+        width: 360px;
+    }
+
+    .map__description {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 20px;
+    }
+    
+    .map__description-info {
+        width: 330px;
+    }
+
+    .delivery__minsk_descriptionBlock * {
+        max-width: 330px;
+    }
+
+    .table-minskTable__row > *:first-child {
+        width: 187px;
+    }
+
+    .table-minskTable__row > *:nth-child(2) {
+        width: 56px;
+    }
+    
+    .table-minskTable__row > *:nth-child(3) {
+        width: 56px;
+    }
+    
+    .page-borisov .delivery__tab-container {
+        flex-direction: row;
+        column-gap: 30px;
+    }
+    
+    .page-borisov .delivery__tab-container .delivery__tab {
+        width: max-content;
+    }
+    .page-borisov .delivery__tab-container .delivery__tab:not(:last-child)::after {
+        right: -20px;
+    }
+}

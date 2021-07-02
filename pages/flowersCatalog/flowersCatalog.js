@@ -17,7 +17,7 @@ window.onload = () => {
     const filterToggleDesktop = (e) => {
         const filterModal = e.currentTarget.children[e.currentTarget.children.length - 1];
         const activeModal = document.querySelector('.filterModal-active');
-        console.log(e.currentTarget);
+         (e.currentTarget);
         
         if (!(e.target.parentNode.classList.contains('filterItem-menuBlock') || e.target.classList.contains('filterItem-menuBlock'))) {
             updateFilterCount(e.currentTarget);
@@ -42,7 +42,7 @@ window.onload = () => {
     }
     
     const closeActiveFilterModal = (e) => {
-        console.log(e.target);
+         (e.target);
         if (e.target == filterModalOutside) {
             const activeModal = document.querySelector('.filterModal-active');
             document.querySelector('.filterItem-active').classList.remove('filterItem-active')
@@ -52,7 +52,7 @@ window.onload = () => {
     }
 
     const itemModClick = (e) => {
-        console.log(e.currentTarget);
+         (e.currentTarget);
         e.currentTarget.querySelector('.catalog__card-modBlockItem-active').classList.remove('catalog__card-modBlockItem-active')
         e.target.classList.add('catalog__card-modBlockItem-active')
     }
