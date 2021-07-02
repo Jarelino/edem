@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const timeDateData = {};
-
   (postcardAction = () => {
     const postcard = document.querySelector('.cart-main-postcard')
     const tabs = postcard.querySelectorAll('.cart-main-postcard__tab')
@@ -137,8 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   (pointSmallPopupAction = () => {
-    const openPopupLinks = document.querySelectorAll('.cart-main-point__popup_link')
-    const pickupPopup = document.querySelector('.cart-main-point__popup.pickup')
+    const openPopupLinks = document.querySelectorAll('.open_popup_link')
+    const pickupPopup = document.querySelector('.point__small_popup.pickup')
+    const datepickerPopup = document.querySelector('.point__small_popup.datepicker_popup')
 
     const closePopup = (link) => {
       link.classList.remove('fade')
@@ -164,6 +163,13 @@ document.addEventListener('DOMContentLoaded', () => {
         pickupPopup.querySelector('p').innerHTML = e.target.innerHTML
         e.target.innerHTML = temp
         pickupPopup.parentElement.querySelector(':scope > span').click()
+      }
+    })
+
+    datepickerPopup.addEventListener('click', (e) => {
+      if(e.target.classList.contains('datepicker__day--active')) {
+        datepickerPopup.parentElement.querySelector(':scope > span').click()
+        document.querySelector('.cart-main-point-accordion__wrap.time').classList.remove('disabled')
       }
     })
   })();
@@ -246,5 +252,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })();
 
-  createDatePicker({ datePickerSelector: 'selector', openButtonSelector: 'selector', data: timeDateData });
+  createDatePicker({resultContainerSelector: '.datepicker__result'});
 })

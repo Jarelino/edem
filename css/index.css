@@ -372,7 +372,6 @@ span:hover .icon:active {
         font-size: 20px;
     }
     .c-p1 {
-        font-weight: normal;
         font-size: 30px;
         line-height: 150%;
     }
@@ -451,6 +450,9 @@ span:hover .icon:active {
     }
     .c-h4 {
         font-size: 14px;
+    }
+    .c-p1 {
+        font-size: 18px;
     }
     .c-p4 {
         font-size: 12px;
@@ -565,6 +567,10 @@ span:hover .icon:active {
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.icon::before {
+    transition: 0.3s;
 }
 
 .icon-db-arrow:before {

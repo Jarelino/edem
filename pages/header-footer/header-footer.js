@@ -9,7 +9,36 @@ window.onload = () => {
     const searchInput = document.querySelector('.pageInput')
     const requisites = document.querySelector('#requisites')
     const placeButton = document.querySelector('.header__placeBlock');
+
     const placeModal = document.querySelector('.modal-placement__wrap');
+    const fullCartPopup = document.querySelector('.header__cart.full')
+    const cartPopupItemWrap = fullCartPopup.querySelector('.header__cart-popup-goods')
+    const removeItemButtons = fullCartPopup.querySelectorAll('.header__cart-popup-goods-item-desc__remove')
+
+    if(fullCartPopup) {
+        removeItemButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const cartItem = button.parentElement.parentElement
+                if(cartItem.classList.contains('disabled')) {
+                    button.innerHTML = 'убрать'
+                    cartItem.classList.remove('disabled')
+                    return
+                }
+                button.innerHTML = 'вернуть'
+                cartItem.classList.add('disabled')
+            })
+        })
+        
+        if(cartPopupItemWrap.children.length > 3) {
+            let maxHeight = 0
+            for(let i = 0; i < 3; i++) {
+                maxHeight += cartPopupItemWrap.children[i].scrollHeight
+            }
+            cartPopupItemWrap.style.maxHeight = maxHeight + 'px'
+        }
+        
+    }
+
     const clearMenu = () => {
         const activeList = document.querySelector('.menu__list-active')
         if (activeList) {
