@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./flowersCatalog.css">
     <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/multirange.css">
 </head>
 <body>
     <div class="catalog__navBlock conainer">
@@ -259,6 +260,11 @@
                     <input type="number">
                     <span class="c-p5">до</span>
                     <input type="number">
+                </div>
+                <div class="filterItem__priceRange">
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
+                    <input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
                 </div>
                 <div class="filterItem__listsWrapper">
                     <ul class="filterModal__list">
@@ -587,8 +593,7 @@
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
                     <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
-                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
+                    <p class="c-h3 catalog__card-price">4,50 руб.</p>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-blue">В корзину</button>
                         <button class="btn btn-gray">Заказ в 1 клик</button>
@@ -601,7 +606,7 @@
                 <img src="./img/card-img.png" alt="">
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
-                    <p class="c-p5 catalog__card-existance">в наличии</p>
+                    <p class="c-p5 catalog__card-existance">под заказ до 5 дней</p>
                     <div class="catalog__card-modBlock">
                         <p class="c-p5 catalog__card-modBlockTitle catalog__card-hover">Длина, см</p>
                         <span class="c-p5 catalog__card-modBlockItem catalog__card-hover catalog__card-modBlockItem-active">
@@ -639,12 +644,30 @@
                 <img src="./img/card-img.png" alt="">
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
-                    <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
-                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
+                    <p class="c-p5 catalog__card-existance">нет в наличии</p>
+                    <div class="catalog__card-modBlock">
+                        <p class="c-p5 catalog__card-modBlockTitle catalog__card-hover">Длина, см</p>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover catalog__card-modBlockItem-active">
+                            40
+                        </span>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
+                            40
+                        </span>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
+                            40
+                        </span>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
+                            40
+                        </span>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
+                            40
+                        </span>
+                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
+                            40
+                        </span>
+                    </div>
                     <div class="btnWrap catalog__card-hover">
-                        <button class="btn btn-blue">В корзину</button>
-                        <button class="btn btn-gray">Заказ в 1 клик</button>
+                        <button class="btn btn-gray">Подробнее</button>
                     </div>
                 </div>
             </div>
@@ -655,8 +678,29 @@
                 <p class="c-p1 catalog__card-title">Роза Кахала</p>
                 <p class="c-p3 catalog__card-existance">в наличии</p>
                 <p class="c-p3 catalog__card-composition">Состав: роза, гвоздика, эустома, эвкалипт</p>
+                <div class="catalog__card-modBlock">
+                    <p class="c-p5 catalog__card-modBlockTitle">Длина, см</p>
+                    <span class="c-p5 catalog__card-modBlockItem catalog__card-modBlockItem-active">
+                        40
+                    </span>
+                    <span class="c-p5 catalog__card-modBlockItem">
+                        40
+                    </span>
+                    <span class="c-p5 catalog__card-modBlockItem">
+                        40
+                    </span>
+                    <span class="c-p5 catalog__card-modBlockItem">
+                        40
+                    </span>
+                    <span class="c-p5 catalog__card-modBlockItem">
+                        40
+                    </span>
+                    <span class="c-p5 catalog__card-modBlockItem">
+                        40
+                    </span>
+                </div>
                 <p class="c-h2 catalog__card-price">от 4,50 руб.</p>
-                <div class="btnWrap">
+                <div class="btnWrap catalog__card-hover">
                     <button class="btn btn-blue">В корзину</button>
                     <button class="btn btn-gray">Заказ в 1 клик</button>
                 </div>
@@ -734,8 +778,8 @@
                 <p class="c-p1 catalog__card-title">Роза Кахала</p>
                 <p class="c-p3 catalog__card-existance">в наличии</p>
                 <p class="c-p3 catalog__card-composition">Состав: роза, гвоздика, эустома, эвкалипт</p>
-                <p class="c-h2 catalog__card-price">от 4,50 руб.</p>
-                <div class="btnWrap">
+                <p class="c-h2 catalog__card-price">4,50 руб.</p>
+                <div class="btnWrap catalog__card-hover">
                     <button class="btn btn-blue">В корзину</button>
                     <button class="btn btn-gray">Заказ в 1 клик</button>
                 </div>
@@ -915,7 +959,7 @@
         </div>
     </div>
 
-
+    <script src="../../js/multirange.js"></script>
     <script src="../header-footer/header-footer.js"></script>
     <script src="./flowersCatalog.js"></script>
 </body>

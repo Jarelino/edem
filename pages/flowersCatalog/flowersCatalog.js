@@ -10,7 +10,7 @@ window.onload = () => {
             container.querySelector('.selectedFiltersCount').innerHTML = count;
             container.querySelector('.selectedFiltersCount').style.opacity = 1;   
         } else {
-            container.querySelector('.selectedFiltersCount').style.display = 0;   
+            container.querySelector('.selectedFiltersCount').style.opacity = 0;   
         }
     }
 
@@ -52,9 +52,10 @@ window.onload = () => {
     }
 
     const itemModClick = (e) => {
-         (e.currentTarget);
-        e.currentTarget.querySelector('.catalog__card-modBlockItem-active').classList.remove('catalog__card-modBlockItem-active')
-        e.target.classList.add('catalog__card-modBlockItem-active')
+        if (e.target.classList.contains('catalog__card-modBlockItem')) {
+            e.currentTarget.querySelector('.catalog__card-modBlockItem-active').classList.remove('catalog__card-modBlockItem-active')
+            e.target.classList.add('catalog__card-modBlockItem-active')
+        }
     }
     
     document.querySelectorAll('.catalog__card-modBlock').forEach((item) => item.addEventListener('click', itemModClick))
