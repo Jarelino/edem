@@ -67,7 +67,8 @@ window.onload = () => {
         const mobileFilterBtn = document.querySelector('#mobileFilterBtn');
         const submitFiltersBtn = document.querySelector('#submitFiltersBtn');
         const filterTitles = document.querySelectorAll('.sideMenu__filterItem-title');
-        
+        const sideMenuCross = document.querySelector('.sideMenu__cross');
+
         const sideMenuFilterClick = (e) => {
             if (e.target.tagName == 'INPUT') {
                 const filterCount = e.currentTarget.parentNode.parentNode.querySelector('.selectedFiltersCount');
@@ -80,6 +81,7 @@ window.onload = () => {
             e.currentTarget.parentNode.querySelector('.sideMenu__filterList').classList.toggle('sideMenu__filterList-open')
         }
 
+        sideMenuCross.addEventListener('click', () => document.querySelector('.sideMenuWrapper').style.display = 'none');
         filterTitles.forEach((item) => item.addEventListener('click', toggleFilters))
         
         mobileFilterBtn.addEventListener('click', () => {

@@ -5,7 +5,6 @@
 
 .filterBlock {
     display: none;
-    background: #FBF9F7;
 }
 
 body {
@@ -568,6 +567,15 @@ body {
         display: flex;
         align-items: center;
         column-gap: 11px;
+    }
+
+    .sideMenu__titleBlock span:last-child {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    
+    .sideMenu__titleBlock span:last-child .icon-cross {
+        font-size: 20px;
     }
 
     .sideMenu__filter .customInputWrap,
