@@ -1,5 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const data = {  //temporary, days count from 1, months count from 0
+    'years': [
+      {
+        'value': 2020,
+        'months': [
+          {
+            'value': 11,
+            'days': [8, 9, 10, 11, 12, 13, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+          }
+        ]
+      },
+      {
+        'value': 2021,
+        'months': [
+          {
+            'value': 0,
+            'days': [1, 2, 3, 4, 5, 7, 8, 9, 10]
+          }
+        ]
+      }
+    ]
+  };
+
   (postcardAction = () => {
     const postcard = document.querySelector('.cart-main-postcard')
     const tabs = postcard.querySelectorAll('.cart-main-postcard__tab')
@@ -252,5 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })();
 
-  createDatePicker({resultContainerSelector: '.datepicker__result'});
+  const getDatepickerResult = (receivedData) => {
+    console.log(receivedData) //change to send data
+  }
+
+  const datepicker = new DatePicker(data, '.datepicker__result', getDatepickerResult)
 })
