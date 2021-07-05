@@ -6,6 +6,7 @@
   background: #F6EEEC;
   box-shadow: 0px 4px 32px rgba(170, 170, 170, 0.03);
   border-radius: 15px;
+  z-index: 10;
 }
 
 .datepicker__month {
@@ -55,7 +56,7 @@ a.datepicker__day:hover {
   background: #C7D2F1
 }
 
-.datepicker__day.chosen {
+.datepicker__day.active {
   color: #F6EEEC;
   background: #869BD8;
 }

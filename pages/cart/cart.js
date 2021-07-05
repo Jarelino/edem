@@ -159,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   (pointSmallPopupAction = () => {
     const openPopupLinks = document.querySelectorAll('.open_popup_link')
+    const popups = document.querySelectorAll('.point__small_popup')
     const pickupPopup = document.querySelector('.point__small_popup.pickup')
     const datepickerPopup = document.querySelector('.point__small_popup.datepicker_popup')
 
@@ -185,15 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const temp = pickupPopup.querySelector('p').innerHTML
         pickupPopup.querySelector('p').innerHTML = e.target.innerHTML
         e.target.innerHTML = temp
-        pickupPopup.parentElement.querySelector(':scope > span').click()
       }
     })
 
-    datepickerPopup.addEventListener('click', (e) => {
-      if(e.target.classList.contains('datepicker__day--active')) {
-        datepickerPopup.parentElement.querySelector(':scope > span').click()
-        document.querySelector('.cart-main-point-accordion__wrap.time').classList.remove('disabled')
-      }
+    popups.forEach(popup => {
+      popup.addEventListener('click', (e) => {
+        if(e.target.tagName === 'A') {
+          popup.parentElement.querySelector(':scope > span').click()
+        }
+      })
     })
   })();
 
@@ -257,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       }
+      steps[stepNum].classList.add('current')
       switchTab(stepNum)
     }
 
@@ -267,17 +269,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextStageButton.addEventListener('click', () => {
-      lastStep += 1
-      steps[lastStep].classList.add('visited')
-      jumpToStep(lastStep)
-      switchTab(lastStep)
-      steps[lastStep].classList.add('current')
+      if(lastStep < steps.length - 1) {
+        steps[lastStep].classList.add('done')
+        lastStep += 1
+        steps[lastStep].classList.add('visited')
+        jumpToStep(lastStep)
+        switchTab(lastStep)
+        steps[lastStep].classList.add('current')
+      }
     })
   })();
 
-  const getDatepickerResult = (receivedData) => {
-    console.log(receivedData) //change to send data
+  const displayChosenTime = (chosenInterval) => {
+    const resultContainer = document.querySelector('.timepicker__result')
+    resultContainer.innerHTML = chosenInterval
+    console.log('time: ' + chosenInterval) //change to send data
   }
 
-  const datepicker = new DatePicker(data, '.datepicker__result', getDatepickerResult)
+  const putIntervals = (intervals) => {
+    const intervalsWrap = document.querySelector('.point__small_popup.intervals')
+    const intervalNode = document.createElement('a')
+    intervalNode.classList.add('c-link')
+    intervalNode.classList.add('c-p3')
+    intervalNode.classList.add('time_interval')
+    const intervalElems = []
+    intervals.forEach(interval => {
+      const clonedElem = intervalNode.cloneNode(true)
+      clonedElem.innerHTML = interval
+      clonedElem.addEventListener('click', () => {
+        intervalElems.forEach(elem => elem.classList.remove('active'))
+        clonedElem.classList.add('active')
+        displayChosenTime(interval)
+      })
+      intervalElems.push(clonedElem)
+    })
+    intervalsWrap.innerHTML = ''
+    intervalElems.forEach(elem => intervalsWrap.appendChild(elem))
+  }
+
+  const getDatepickerResult = (receivedData) => {
+    document.querySelector('.cart-main-point-accordion__wrap.time').classList.remove('disabled')
+    console.log(receivedData) //change to send data and receive intervals
+    const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] //temp
+    putIntervals(timeData)
+  }
+
+  const datepicker = new DatePicker({
+    'data': data,
+    'resultContainerSelector': '.datepicker__result',
+    'getResultCallback': getDatepickerResult
+  })
 })
