@@ -607,6 +607,7 @@ body.cart--empty::before {
 }
 
 .cart-main-point {
+  width: 796px;
   display: flex;
   align-items: flex-start;
   padding-bottom: 75px;
@@ -615,8 +616,8 @@ body.cart--empty::before {
 }
 
 .cart-main-point:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
   border-bottom: none;
 }
 
@@ -629,6 +630,7 @@ body.cart--empty::before {
 }
 
 .cart-main-point-input {
+  position: relative;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -843,6 +845,7 @@ body.cart--empty::before {
   display: none;
   opacity: 0;
   transition: 0.3s;
+  z-index: 10;
 }
 
 .open_popup_link.active .point__small_popup {
@@ -1039,7 +1042,7 @@ textarea {
   justify-content: space-between;
 }
 
-.cart-main-point__wrap.address .cart-main-point-input__text {
+.cart-main-point__wrap.address > .cart-main-point-input .cart-main-point-input__text {
   width: 554px;
 }
 
@@ -1049,6 +1052,80 @@ textarea {
 
 .cart-main-point-input__multiple .cart-main-point-input__text {
   width: 100px !important;
+}
+
+.used_address {
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+a.used_address:last-of-type::after {
+  content: '';
+  margin-top: 20px;
+  display: block;
+  width: 554px;
+  height: 2px;
+  background: #EFE5E3;
+}
+
+.options__list {
+  width: 554px;
+  overflow: auto;
+  max-height: 207px;
+}
+
+.options__list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.options__list::-webkit-scrollbar-track {
+  background: #EFE5E3;
+}
+
+.options__list::-webkit-scrollbar-thumb {
+  background: #E8CDC8;
+}
+
+.point-accordion {
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.point-accordion.active {
+  overflow: visible;
+  padding-bottom: 75px;
+  margin-bottom: 75px;
+}
+
+.cart-main-point__not_me {
+  margin-top: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.cart-main-point__not_me.active {
+  margin-top: 40px;
+}
+
+.cart-main-point-input-options {
+  position: absolute;
+  top: 94px;
+  left: -40px;
+  padding: 50px 40px 40px;
+  background: #F6EEEC;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  z-index: 10;
+  display: none;
+}
+
+.cart-main-point-input-options.active {
+  display: block;
 }
 
 @media (max-width: 1439px) {

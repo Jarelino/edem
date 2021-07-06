@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Корзина</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../css/swiper-bundle.css" />
+  <link rel="stylesheet" href="../../css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../../css/index.css">
   <link rel="stylesheet" href="./cart.css">
   <link rel="stylesheet" href="./datepicker.css">
@@ -263,24 +263,24 @@
           <div class="cart-main-point__wrap">
             <p class="c-h2">Выберите регион</p>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible" type="radio" name="region" id="borisov" checked>
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region" id="borisov" checked>
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Борисов, Борисовский район и&nbsp;Жодино</p>
             </label>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible" type="radio" name="region" id="minsk">
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region" id="minsk">
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Минск и&nbsp;Минский район в&nbsp;пределах 20&nbsp;км от&nbsp;МКАД</p>
             </label>
           </div>
         </div>
 
-        <div class="cart-main-point">
+        <div class="cart-main-point point-accordion region_slave borisov_active active">
           <img src="./img/delivery.svg" alt="">
           <div class="cart-main-point__wrap">
             <p class="c-h2">Выберите способ доставки</p>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible" type="radio" name="delivery_way" id="delivery" checked>
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way" id="delivery" checked>
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Курьером по&nbsp;адресу</p>
             </label>
@@ -326,7 +326,7 @@
               <div class="cart-main-point__table_popup__outer"></div>
             </div>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible" type="radio" name="delivery_way" id="pickup">
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way" id="pickup">
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">В&nbsp;пункт самовывоза</p>
             </label>
@@ -413,25 +413,30 @@
           </div>
         </div>
 
-        <div class="cart-main-point">
+        <div class="cart-main-point point-accordion delivery_way_slave delivery_active active">
           <img src="./img/address.svg" alt="">
           <div class="cart-main-point__wrap address">
             <p class="c-h2">Укажите адрес доставки</p>
-            <label class="cart-main-point-input text">
+            <label class="cart-main-point-input text with_options">
               <div class="c-p4 cart-main-point-input__title">Населённый пункт</div>
               <input class="cart-main-point-input__text c-p5" placeholder="город, посёлок, деревня" type="text" id="city">
               <span></span>
+              <div class="cart-main-point-input-options options__wrap options_city">
+                <div class="options_city options__list"></div>
+              </div>
             </label>
-            <label class="cart-main-point-input text">
+            <label class="cart-main-point-input text with_options">
               <div class="c-p4 cart-main-point-input__title">Улица</div>
               <input class="cart-main-point-input__text c-p5" type="text" id="street">
               <span></span>
+              <div class="cart-main-point-input-options options_street options__list options__wrap"></div>
             </label>
             <div class="cart-main-point-input__multiple">
-              <label class="cart-main-point-input text">
+              <label class="cart-main-point-input text with_options">
                 <div class="c-p4 cart-main-point-input__title">Дом</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="house">
                 <span></span>
+                <div class="cart-main-point-input-options options_house options__list options__wrap"></div>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Квартира</div>
@@ -454,6 +459,23 @@
               <span class="cart-main-point-input__mock_checkbox"></span>
               <p class="c-p5">Получатель &mdash; другой человек</p>
             </label>
+            <div class="cart-main-point__not_me">
+              <label class="cart-main-point-input text">
+                <div class="c-p4 cart-main-point-input__title">Имя получателя</div>
+                <input class="cart-main-point-input__text c-p5" type="text" id="rec_name">
+                <span></span>
+              </label>
+              <label class="cart-main-point-input text">
+                <div class="c-p4 cart-main-point-input__title">Телефон</div>
+                <input class="cart-main-point-input__text c-p5" type="text" id="rec_phone">
+                <span></span>
+              </label>
+              <label class="cart-main-point-input checkbox">
+                <input class="cart-main-point-input__invisible" type="checkbox" id="incognito">
+                <span class="cart-main-point-input__mock_checkbox"></span>
+                <p class="c-p5">Хочу остаться инкогнито для получателя</p>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -584,8 +606,8 @@
     </div>
   </section>
 
-  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="../../js/swiper-bundle.js"></script>
+  <script src="../../js/swiper-bundle.min.js"></script>
   <script src="./datepicker.js"></script>
   <script src="./cart.js"></script>
 </body>

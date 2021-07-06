@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     popups.forEach(popup => {
       popup.addEventListener('click', (e) => {
-        if(e.target.tagName === 'A') {
+        if (e.target.tagName === 'A') {
           popup.parentElement.querySelector(':scope > span').click()
         }
       })
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextStageButton.addEventListener('click', () => {
-      if(lastStep < steps.length - 1) {
+      if (lastStep < steps.length - 1) {
         steps[lastStep].classList.add('done')
         lastStep += 1
         steps[lastStep].classList.add('visited')
@@ -280,43 +280,189 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })();
 
-  const displayChosenTime = (chosenInterval) => {
-    const resultContainer = document.querySelector('.timepicker__result')
-    resultContainer.innerHTML = chosenInterval
-    console.log('time: ' + chosenInterval) //change to send data
-  }
+  (radioAccordionsAction = () => {
+    const triggers = document.querySelectorAll('.point-accordion_trigger')
+    const accordions = document.querySelectorAll('.point-accordion')
 
-  const putIntervals = (intervals) => {
-    const intervalsWrap = document.querySelector('.point__small_popup.intervals')
-    const intervalNode = document.createElement('a')
-    intervalNode.classList.add('c-link')
-    intervalNode.classList.add('c-p3')
-    intervalNode.classList.add('time_interval')
-    const intervalElems = []
-    intervals.forEach(interval => {
-      const clonedElem = intervalNode.cloneNode(true)
-      clonedElem.innerHTML = interval
-      clonedElem.addEventListener('click', () => {
-        intervalElems.forEach(elem => elem.classList.remove('active'))
-        clonedElem.classList.add('active')
-        displayChosenTime(interval)
+    const setDefaults = (accordion) => {
+      const inputs = accordion.querySelectorAll('input')
+      inputs.forEach(input => {
+        /** open default accordions and clear checkboxes */
+        if (
+          (input.type === 'radio' && input.getAttribute('checked') !== null) ||
+          (input.type === 'checkbox' && input.checked === true)
+        ) {
+          input.click()
+          return
+        }
+        /** clear text fields */
+        if (input.type === 'text') {
+          input.value = ''
+          return
+        }
       })
-      intervalElems.push(clonedElem)
+    }
+
+    const switchAccordion = (name, id) => {
+      accordions.forEach(accordion => {
+        if (accordion.classList.contains(`${name}_slave`)) {
+          if (accordion.classList.contains(`${id}_active`)) {
+            accordion.classList.add('active')
+            accordion.style.maxHeight = accordion.scrollHeight + 'px'
+            return
+          }
+          setDefaults(accordion)
+          accordion.classList.remove('active')
+          accordion.style.maxHeight = 0
+        }
+      })
+    }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('change', () => {
+        switchAccordion(trigger.name, trigger.id)
+      })
     })
-    intervalsWrap.innerHTML = ''
-    intervalElems.forEach(elem => intervalsWrap.appendChild(elem))
-  }
+  })();
 
-  const getDatepickerResult = (receivedData) => {
-    document.querySelector('.cart-main-point-accordion__wrap.time').classList.remove('disabled')
-    console.log(receivedData) //change to send data and receive intervals
-    const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] //temp
-    putIntervals(timeData)
-  }
+  (checkboxAccordionAction = () => {
+    const checkbox = document.querySelector('#not_me')
+    const checkboxAccordion = checkbox.parentElement.nextElementSibling
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked === true) {
+        checkboxAccordion.classList.add('active')
+        checkboxAccordion.style.maxHeight = checkboxAccordion.scrollHeight + 'px'
+        return
+      }
+      checkboxAccordion.querySelectorAll('input').forEach(input => input.value = '')
+      checkboxAccordion.classList.remove('active')
+      checkboxAccordion.style.maxHeight = null
+    })
+  })();
 
-  const datepicker = new DatePicker({
-    'data': data,
-    'resultContainerSelector': '.datepicker__result',
-    'getResultCallback': getDatepickerResult
-  })
+  (datepickerAction = () => {
+    const displayChosenTime = (chosenInterval) => {
+      const resultContainer = document.querySelector('.timepicker__result')
+      resultContainer.innerHTML = chosenInterval
+      console.log('time: ' + chosenInterval) //change to send data
+    }
+
+    const putIntervals = (intervals) => {
+      const intervalsWrap = document.querySelector('.point__small_popup.intervals')
+      const intervalNode = document.createElement('a')
+      intervalNode.classList.add('c-link')
+      intervalNode.classList.add('c-p3')
+      intervalNode.classList.add('time_interval')
+      const intervalElems = []
+      intervals.forEach(interval => {
+        const clonedElem = intervalNode.cloneNode(true)
+        clonedElem.innerHTML = interval
+        clonedElem.addEventListener('click', () => {
+          intervalElems.forEach(elem => elem.classList.remove('active'))
+          clonedElem.classList.add('active')
+          displayChosenTime(interval)
+        })
+        intervalElems.push(clonedElem)
+      })
+      intervalsWrap.innerHTML = ''
+      intervalElems.forEach(elem => intervalsWrap.appendChild(elem))
+    }
+
+    const getDatepickerResult = (receivedData) => {
+      const timepicker = document.querySelector('.cart-main-point-accordion__wrap.time')
+      timepicker.classList.remove('disabled')
+      timepicker.querySelector(':scope > p').innerHTML = ''
+
+      console.log(receivedData) //change to send data and receive intervals
+      const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] //temp, received intervals
+
+      putIntervals(timeData)
+    }
+
+    const datepicker = new DatePicker({
+      'data': data,
+      'resultContainerSelector': '.datepicker__result',
+      'getResultCallback': getDatepickerResult
+    })
+  })();
+
+  (inputOptionsListAction = () => {
+    const inputs = document.querySelectorAll('.with_options')
+    const optionsWraps = Array.from(document.querySelectorAll('.options__wrap'))
+    const cityWrap = optionsWraps.find(wrap => wrap.classList.contains('options_city'))
+    const streetOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_street'))
+    const houseOptionsWrap = optionsWraps.find(wrap =>  wrap.classList.contains('options_house'))
+    const cityOptionsWrap = cityWrap.querySelector('.options_city')
+
+    const cityData = ['Большая тростяница, Веселовский сельсовет', 'Белое Болото, Пригородный сельсовет', 'Большая Ухолода, Метченский сельсовет', 'Борисов'] //temp
+    const usedAdresses = [ //temp
+      {
+        'city_type': 'г.',
+        'city': 'Жодино',
+        'street_type': 'ул.',
+        'street': 'Центральная',
+        'house': '3',
+        'house_building': '1',
+        'flat': '110'
+      },
+      {
+        'city_type': 'д.',
+        'city': 'Большая тростяница',
+        'street_type': 'пер.',
+        'street': 'Школьный',
+        'house': '3'
+      }
+    ]
+
+    const addressElem = document.createElement('a')
+    addressElem.classList.add('c-link', 'c-p4', 'used_address')
+    const addressElemsArr = []
+
+    const buildUsedAddressElem = (address) =>
+      (address.city_type ? address.city_type + ' ' : '') + 
+      (address.city ? address.city + ', ' : '') + 
+      (address.street_type ? address.street_type + ' ' : '') + 
+      (address.street ? address.street + ', ' : '') + 
+      (address.house ? 'д.' + address.house + ', ' : '') + 
+      (address.house_building ? 'к.' + address.house_building + ', ' : '') + 
+      (address.flat ? 'кв.' + address.flat + ', ' : '')
+    
+    const writeUsedAddress = (address) => {
+      hideOptions()
+      console.log(address)
+    }
+
+    usedAdresses.forEach(address => {
+      const clonedAddress = addressElem.cloneNode()
+      clonedAddress.innerHTML = buildUsedAddressElem(address)
+      clonedAddress.addEventListener('click', () => writeUsedAddress(address))
+      cityWrap.prepend(clonedAddress)
+    })
+
+    const displayOptions = (e) => {
+      const popup = e.target.parentElement.querySelector('.cart-main-point-input-options')
+      if (e.target.value.length !== 0) {
+        popup.classList.add('active')
+        return
+      }
+      hideOptions()
+    }
+
+    const hideOptions = () => {
+      optionsWraps.forEach(wrap => wrap.classList.remove('active'))
+    }
+
+    const fetchStreetData = (city) => {
+
+    }
+
+    const fetchHouseData = (city, street) => {
+
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('keydown', displayOptions)
+      input.addEventListener('keyup', displayOptions)
+    })
+  })();
 })
