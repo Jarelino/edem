@@ -13,6 +13,21 @@ body {
     float: left;
 }
 
+.promotionContainer {
+    background: #EFE5E3!important;
+    flex-direction: row-reverse;
+}
+
+.promotionContainer .dot {
+    background: #70768A!important;
+}
+
+.promotionContainer * {
+    color: #70768A!important;
+}
+
+
+
 .breadContainer {
     display: flex;
     row-gap: 20px;
@@ -65,6 +80,10 @@ body {
 
 }
 
+.card__mainInfoBlock-info {
+    margin-top: 40px;
+}
+
 .card__mainInfoBlock-modBlockImgItem-active .card__mainInfoBlock-modBlockImgItem-dot,
 .card__mainInfoBlock-modBlockImgItem:hover .card__mainInfoBlock-modBlockImgItem-dot {
     display: block;
@@ -77,6 +96,7 @@ body {
 .card__mainInfoBlock-modBlockItem {
     border-radius: 10px;
     cursor: pointer;
+    text-align: center;
     padding: 8px 9px 8px 10px
 }
 
@@ -103,6 +123,11 @@ body {
 .card__mainInfoBlock-description,
 .card__mainInfoBlock-submitBlock {
     margin-top: 40px;
+}
+
+.card__mainInfoBlock-description {
+    margin-left: auto;
+    width: 675px;
 }
 
 .cardFactoid {
@@ -233,7 +258,7 @@ body {
 }
 
 .careTips__wrapper {
-    height: 1503px;
+    height: 1520px;
     display: flex;
     flex-direction: column;
     align-content: space-between;
@@ -259,6 +284,8 @@ body {
     flex-direction: column;
     row-gap: 30px;
 }
+
+
 
 .careTips__tipsWrap:nth-child(2),
 .careTips__tipsWrap:nth-child(6) {
@@ -364,6 +391,9 @@ body {
 
 
 @media (max-width: 1439px) {
+    .card__mainInfoBlock-description {
+        width: 521px;
+    }
 
     .card__mainContent-image {
         width: 575px;
@@ -383,6 +413,7 @@ body {
         padding-top: 0!important;
     }
 
+    .card__mainInfoBlock-info,
     .card__mainInfoBlock-price,
     .card__mainInfoBlock-countBlock,
     .card__mainInfoBlock-description, .card__mainInfoBlock-submitBlock {
@@ -503,9 +534,17 @@ body {
 
 
 @media (max-width: 1279px) {
+
+    .card__mainInfoBlock-description {
+        width: 330px;
+    }
     .card__mainContent-image {
         width: 330px;
         height: 330px;
+    }
+
+    .card__mainInfoBlock-info {
+        margin-top: 20px;
     }
 
     .cardFactoid {

@@ -5,7 +5,6 @@
 
 .filterBlock {
     display: none;
-    background: #FBF9F7;
 }
 
 body {
@@ -89,9 +88,10 @@ body {
 
 .catalog__card-hover {
     display: none;
+    opacity: 0;
 }
 
-.catalog__card:hover:not(.catalog__bigCard) > img {
+.catalog__card:hover:not(.catalog__bigCard):not(.composition__bigCard-hover) > img {
     height: 433px!important;
     width: 433px!important;
     margin-top: -10px;
@@ -100,9 +100,19 @@ body {
     margin-right: -10px;
     transition: all 0.3s ease;
   }
+.catalog__bigCard:hover > img {
+    width: 471px!important;
+    height: 550px!important;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    transition: all 0.3s ease;
+}
 
 .catalog__card:hover .catalog__card-hover {
     display: block;
+    opacity: 1;
 }
 
 .catalog__card:hover:not(.catalog__bigCard) {
@@ -127,7 +137,8 @@ body {
 }
 
 .catalog__bigCard img {
-    padding: 10px;
+    width: 451px;
+    height: 530px;
 }
 
 .catalog__bigCard .catalog__card-content {
@@ -203,6 +214,7 @@ body {
 
 .promotion__contentBlock .c-h2 {
     margin: 30px 0 20px 0;
+    color: #F6EEEC;
 }
 
 .dot {
@@ -257,7 +269,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     column-gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.filterItem__priceRange {
+    margin-bottom: 20px;
+    position: relative;
+    height: 20px;
+    width: 100%;
 }
 
 .filterItem__priceBlock input {
@@ -323,7 +342,7 @@ body {
     font-weight: bold;
     font-size: 25px;
     line-height: 130%;
-    color: #869BD8;
+    color: #869BD8!important;
     font-family: 'Comfortaa';
 }
 
@@ -354,6 +373,10 @@ body {
 
 .catalog__cardWrapper:hover:not(.catalog__bigCard) .catalog__card-modBlock {
     margin-top: 15px;
+}
+
+.catalog__bigCard .catalog__card-modBlock {
+    margin-bottom: 15px;
 }
 
 .catalog__card-modBlock {
@@ -423,7 +446,7 @@ body {
     align-items: center;
     row-gap: 30px;
     margin-top: 75px;
-    display: none;
+    /* display: none; */
 }
 
 .catalog__card-price {
@@ -469,8 +492,15 @@ body {
 
     .catalog__bigCard img {
         width: 401px;
+        height: 468px;
         padding-right: 0;
     }
+
+    .catalog__bigCard:hover > img {
+        width: 421px!important;
+        height: 488px!important;
+    }
+
     .catalog__card:hover:not(.catalog__bigCard) > img {
         height: 367px!important;
         width: 367px!important;
@@ -537,6 +567,15 @@ body {
         display: flex;
         align-items: center;
         column-gap: 11px;
+    }
+
+    .sideMenu__titleBlock span:last-child {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    
+    .sideMenu__titleBlock span:last-child .icon-cross {
+        font-size: 20px;
     }
 
     .sideMenu__filter .customInputWrap,
