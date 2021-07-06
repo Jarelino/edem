@@ -1,0 +1,45 @@
+body {
+    padding: 100px 0;
+}
+
+.filterMenu {
+    margin-bottom: 60px!important;
+}
+
+.catalog__container {
+    visibility: hidden;
+    max-height: 0;
+    margin-top: 0!important;
+}
+
+.catalog__container-active {
+    visibility: visible;
+    max-height: initial;
+}
+
+.filterItem {
+    display: flex;
+    align-items: center;
+}
+
+.filter-disabled p {
+    color: #70768A;
+    opacity: 0.5;
+}
+
+.filter-disabled p:hover {
+    color: #70768A;
+    opacity: 0.5;
+}
+
+.selectedFiltersCount {
+    opacity: 1!important;
+}
+
+.filterMenu {
+    width: fit-content!important;
+}
+
+.filter-active p {
+    color: #869BD8;
+}
