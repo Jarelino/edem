@@ -475,7 +475,7 @@ span:hover .icon:active {
     }
     .c-tags {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 120%;
         letter-spacing: 0.1em;
     }
@@ -487,6 +487,11 @@ span:hover .icon:active {
         padding: 17px 20px;
         font-size: 12px;
         line-height: 14px;
+    }
+
+    .c-factoid {
+        font-size: 38px;
+        line-height: 105%;
     }
 }
 
