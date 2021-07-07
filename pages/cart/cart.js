@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const data = {  //temporary, days count from 1, months count from 0
+  const data = {  // must be fetched; days count from 1, months count from 0
     'years': [
       {
         'value': 2020,
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
       timepicker.querySelector(':scope > p').innerHTML = ''
 
       console.log(receivedData) //change to send data and receive intervals
-      const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] //temp, received intervals
+      const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] // must be fetched
 
       putIntervals(timeData)
     }
@@ -386,62 +386,141 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })();
 
-  (inputOptionsListAction = () => {
-    const inputs = document.querySelectorAll('.with_options')
-    const optionsWraps = Array.from(document.querySelectorAll('.options__wrap'))
+  (addressInputsAction = () => {
+    const mainWrap = document.querySelector('.cart-main-point__wrap.address')
+    const fields = Array.from(mainWrap.querySelectorAll('.cart-main-point-input.text'))
+    const fieldsWithOptions = fields.filter(field => field.classList.contains('with_options'))
+    const optionsWraps = Array.from(mainWrap.querySelectorAll('.options__wrap'))
     const cityWrap = optionsWraps.find(wrap => wrap.classList.contains('options_city'))
-    const streetOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_street'))
-    const houseOptionsWrap = optionsWraps.find(wrap =>  wrap.classList.contains('options_house'))
-    const cityOptionsWrap = cityWrap.querySelector('.options_city')
 
-    const cityData = ['Большая тростяница, Веселовский сельсовет', 'Белое Болото, Пригородный сельсовет', 'Большая Ухолода, Метченский сельсовет', 'Борисов'] //temp
-    const usedAdresses = [ //temp
+    /*
+    const streetOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_street'))
+    const houseOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_house'))
+    const cityOptionsWrap = cityWrap.querySelector('.options_city')
+    */
+
+    const mainData = {
+      'city': [
+        {
+          'short': 'д. Большая тростяница',
+          'full': 'Большая тростяница, Веселовский сельсовет'
+        },
+        {
+          'short': 'д. Белое Болото',
+          'full': 'Белое Болото, Пригородный сельсовет'
+        },
+        {
+          'short': 'д. Большая Ухолода',
+          'full': 'Большая Ухолода, Метченский сельсовет'
+        },
+        {
+          'short': 'д. Большая тростяница',
+          'full': 'Большая тростяница, Веселовский сельсовет'
+        },
+        {
+          'short': 'г. Борисов',
+          'full': 'Борисов'
+        },
+      ]
+    }
+
+    const mappedData = new Map(Object.entries(mainData))
+
+    const usedAdresses = [ // must be fetched
       {
-        'city_type': 'г.',
-        'city': 'Жодино',
-        'street_type': 'ул.',
-        'street': 'Центральная',
+        'city': {
+          'short': 'г. Жодино',
+          'full': 'Жодино'
+        },
+        'street': {
+          'short': 'ул. Центральная',
+          'full': 'Центральная, улица',
+        },
         'house': '3',
         'house_building': '1',
         'flat': '110'
       },
       {
-        'city_type': 'д.',
-        'city': 'Большая тростяница',
-        'street_type': 'пер.',
-        'street': 'Школьный',
+        'city': {
+          'short': 'д. Большая тростяница',
+          'full': 'Большая тростяница, Веселовский сельсовет'
+        },
+        'street': {
+          'short': 'пер. Школьный',
+          'full': 'Школьный, переулок',
+        },
         'house': '3'
       }
     ]
 
     const addressElem = document.createElement('a')
-    addressElem.classList.add('c-link', 'c-p4', 'used_address')
-    const addressElemsArr = []
+    addressElem.classList.add('c-link', 'c-p5')
+    const usedAddressElem = document.createElement('a')
+    usedAddressElem.classList.add('c-link', 'c-p4', 'used_address')
 
     const buildUsedAddressElem = (address) =>
-      (address.city_type ? address.city_type + ' ' : '') + 
-      (address.city ? address.city + ', ' : '') + 
-      (address.street_type ? address.street_type + ' ' : '') + 
-      (address.street ? address.street + ', ' : '') + 
-      (address.house ? 'д.' + address.house + ', ' : '') + 
-      (address.house_building ? 'к.' + address.house_building + ', ' : '') + 
-      (address.flat ? 'кв.' + address.flat + ', ' : '')
-    
+      (address.city.short ? address.city.short : '') +
+      (address.street.short ? ', ' + address.street.short : '') +
+      (address.house ? ', д.' + address.house : '') +
+      (address.house_building ? ', к.' + address.house_building : '') +
+      (address.flat ? ', кв.' + address.flat : '')
+
     const writeUsedAddress = (address) => {
+      fetchStreetData(address.city.full)
+      fetchHouseData(address.city.full, address.street.full)
       hideOptions()
-      console.log(address)
+      fields.forEach(field => {
+        const input = field.querySelector('input')
+        if (input.id === 'city') {
+          input.value = address.city.full
+          return
+        }
+        if (input.id === 'street') {
+          input.value = address.street.full
+          return
+        }
+        if (input.id === 'house') {
+          input.value = address.house + (address.house_building ? '/' + address.house_building : '')
+        }
+        if (input.id === 'flat') {
+          input.value = address.flat || ''
+        }
+      })
     }
 
     usedAdresses.forEach(address => {
-      const clonedAddress = addressElem.cloneNode()
+      const clonedAddress = usedAddressElem.cloneNode()
       clonedAddress.innerHTML = buildUsedAddressElem(address)
       clonedAddress.addEventListener('click', () => writeUsedAddress(address))
       cityWrap.prepend(clonedAddress)
     })
 
-    const displayOptions = (e) => {
+    const updateList = (e) => {
       const popup = e.target.parentElement.querySelector('.cart-main-point-input-options')
-      if (e.target.value.length !== 0) {
+      const list = e.target.parentElement.querySelector('.options__list')
+      const input = e.target
+      const dataArr = mappedData.get(input.id)
+      let popupVisible = false
+
+      list.innerHTML = ''
+
+      if (input.value.length !== 0 && dataArr) {
+        dataArr.forEach((elem) => {
+          if (elem.full.toLowerCase().includes(input.value)) {
+            const clonedAddress = addressElem.cloneNode()
+            clonedAddress.innerHTML = elem.full
+            clonedAddress.addEventListener('click', () => {
+              input.value = elem.full
+              if (input.id === 'city') fetchStreetData(elem.full)
+              if (input.id === 'street') fetchHouseData(elem.full)
+              hideOptions()
+            })
+            list.appendChild(clonedAddress)
+            popupVisible = true
+          }
+        })
+      }
+      if (popupVisible) {
         popup.classList.add('active')
         return
       }
@@ -453,16 +532,143 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const fetchStreetData = (city) => {
-
+      const streetData = [ // must be fetched
+        {
+          'short': 'ул. Старая',
+          'full': 'Старая, улица',
+        },
+        {
+          'short': 'ул. Столетова',
+          'full': 'Столетова, улица',
+        },
+        {
+          'short': 'пр. Столетова',
+          'full': 'Столетова, проезд'
+        },
+        {
+          'short': 'ул. Строителей',
+          'full': 'Строителей, улица'
+        },
+        {
+          'short': 'пер. Строителей',
+          'full': 'Строителей, переулок'
+        }
+      ]
+      mappedData.set('street', streetData)
     }
 
     const fetchHouseData = (city, street) => {
+      const houseData = [ // must be fetched
+        {
+          'house': '1'
+        },
+        {
+          'house': '11'
+        },
+        {
+          'house': '12'
+        },
+        {
+          'house': '15'
+        },
+        {
+          'house': '15',
+          'house_building': '1'
+        }
+      ]
+      const refactoredArr = []
 
+      houseData.forEach(elem => refactoredArr.push({
+        'full': elem.house + (elem.house_building ? '/' + elem.house_building : '')
+      }))
+
+      mappedData.set('house', refactoredArr)
     }
 
-    inputs.forEach(input => {
-      input.addEventListener('keydown', displayOptions)
-      input.addEventListener('keyup', displayOptions)
+    fieldsWithOptions.forEach(field => {
+      field.addEventListener('keydown', updateList)
+      field.addEventListener('keyup', updateList)
     })
+
+    document.addEventListener('click', (e) => {
+      e.stopPropagation()
+      let close = true
+      fieldsWithOptions.forEach(field => {
+        if (field.contains(e.target) || field === e.target) {
+          close = false
+        }
+      })
+      if (close) {
+        hideOptions()
+      }
+    })
+  })();
+
+  (enhanceCommentTextarea = () => {
+    const textarea = document.querySelector('.cart-main-point-input__text.textarea')
+
+    const changeHeight = () => {
+      textarea.style.height = textarea.scrollHeight + 1 + 'px'
+    }
+
+    textarea.addEventListener('keydown', changeHeight)
+    textarea.addEventListener('keyup', changeHeight)
+  })();
+
+  (fastOrderAction = () => {
+    const openPopupButton = document.querySelector('.cart-side-result__fast_order')
+    const wrap = document.querySelector('.fast_order__wrap')
+    const form = wrap.querySelector('.fast_order')
+    const closeButtons = wrap.querySelectorAll('.fast_order__close')
+    const success = wrap.querySelector('.fast_order__success')
+    const dismissButton = success.querySelector('.fast_order__dismiss')
+    const outer = wrap.querySelector('.fast_order__outer')
+    const sendButton = form.querySelector('.fast_order__send')
+    const inputs = form.querySelectorAll('input')
+
+    const openPopup = (popup) => {
+      popup.classList.add('active')
+      setTimeout(() => popup.classList.add('fade'), 0)
+    }
+
+    const closePopup = (popup) => {
+      popup.classList.remove('fade')
+      setTimeout(() => popup.classList.remove('active'), 300)
+    }
+
+    const setDefault = (e) => {
+      closePopup(wrap)
+      setTimeout(() => {
+        closePopup(success)
+        openPopup(form)
+      }, 300)
+    }
+
+    const sendData = () => {
+      const mapData = new Map()
+      inputs.forEach(input => {
+        mapData.set(input.name, input.value)
+      })
+      const data = Object.fromEntries(mapData)
+      
+      console.log(data) // change to send
+    }
+
+    sendButton.addEventListener('click', () => {
+      sendData()
+      closePopup(form)
+      setTimeout(() => openPopup(success), 300)
+    })
+
+    outer.addEventListener('click', setDefault)
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', setDefault)
+    })
+
+    dismissButton.addEventListener('click', setDefault)
+
+    openPopupButton.addEventListener('click', () => openPopup(wrap))
+
   })();
 })
