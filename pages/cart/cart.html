@@ -263,24 +263,27 @@
           <div class="cart-main-point__wrap">
             <p class="c-h2">Выберите регион</p>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region" id="borisov" checked>
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region"
+                id="borisov" checked>
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Борисов, Борисовский район и&nbsp;Жодино</p>
             </label>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region" id="minsk">
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="region"
+                id="minsk">
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Минск и&nbsp;Минский район в&nbsp;пределах 20&nbsp;км от&nbsp;МКАД</p>
             </label>
           </div>
         </div>
 
-        <div class="cart-main-point point-accordion region_slave borisov_active active">
+        <div class="cart-main-point point-accordion region_slave borisov_active point-accordion--active">
           <img src="./img/delivery.svg" alt="">
           <div class="cart-main-point__wrap">
             <p class="c-h2">Выберите способ доставки</p>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way" id="delivery" checked>
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way"
+                id="delivery" checked>
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Курьером по&nbsp;адресу</p>
             </label>
@@ -326,12 +329,13 @@
               <div class="cart-main-point__table_popup__outer"></div>
             </div>
             <label class="cart-main-point-input">
-              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way" id="pickup">
+              <input class="cart-main-point-input__invisible point-accordion_trigger" type="radio" name="delivery_way"
+                id="pickup">
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">В&nbsp;пункт самовывоза</p>
             </label>
             <p class="cart-main-point__undertext">Бесплатно доставим заказ в&nbsp;любой магазин &laquo;Эдем&raquo;</p>
-            <div class="cart-main-point__popup_link open_popup_link">
+            <div class="cart-main-point__popup_link open_popup_link delivery_way_slave point-accordion pickup_active">
               <span class="c-p4">ул. Строителей, 45а</span>
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none" stroke="#70768A"
                 xmlns="http://www.w3.org/2000/svg">
@@ -393,7 +397,7 @@
                   </div>
                 </div>
 
-                <p class="c-p4 datepicker__result"></p>
+                <p class="c-p4 datepicker__result js-important"></p>
 
               </div>
               <div class="cart-main-point-accordion__wrap time disabled">
@@ -407,20 +411,22 @@
 
                   </div>
                 </div>
-                <p class="c-p4 timepicker__result"></p>
+                <p class="c-p4 timepicker__result js-important"></p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="cart-main-point point-accordion delivery_way_slave delivery_active active">
+        <div class="cart-main-point point-accordion delivery_way_slave delivery_active point-accordion--active">
           <img src="./img/address.svg" alt="">
           <div class="cart-main-point__wrap address">
             <p class="c-h2">Укажите адрес доставки</p>
             <label class="cart-main-point-input text with_options">
               <div class="c-p4 cart-main-point-input__title">Населённый пункт</div>
-              <input class="cart-main-point-input__text c-p5" placeholder="город, посёлок, деревня" type="text" id="city">
-              <span class="cart-main-point-input__error">Сюда доставки нет. Выберите населённый пункт из выпадающего списка</span>
+              <input class="cart-main-point-input__text c-p5" placeholder="город, посёлок, деревня" type="text"
+                id="city">
+              <span class="cart-main-point-input__error">Сюда доставки нет. Выберите населённый пункт из выпадающего
+                списка</span>
               <div class="cart-main-point-input-options options__wrap options_city">
                 <div class="options_city options__list"></div>
               </div>
@@ -437,7 +443,9 @@
                 <div class="c-p4 cart-main-point-input__title">Дом</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="house">
                 <span class="cart-main-point-input__error"></span>
-                <div class="cart-main-point-input-options cart-main-point-input-options--thin options_house options__list options__wrap"></div>
+                <div
+                  class="cart-main-point-input-options cart-main-point-input-options--thin options_house options__list options__wrap">
+                </div>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Квартира</div>
@@ -463,12 +471,12 @@
             <div class="cart-main-point__not_me">
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Имя получателя</div>
-                <input class="cart-main-point-input__text c-p5" type="text" id="rec_name">
+                <input class="cart-main-point-input__text c-p5" type="text" id="rec_name" name="name">
                 <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Телефон</div>
-                <input class="cart-main-point-input__text c-p5" type="text" id="rec_phone">
+                <input class="cart-main-point-input__text c-p5" type="text" id="rec_phone" name="phone">
                 <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input checkbox">
@@ -509,7 +517,7 @@
               <span class="cart-main-point-input__mock_radio"></span>
               <p class="c-p4">Банковской картой онлайн</p>
             </label>
-            <p class="cart-main-point__undertext">через систему Assist</p>
+            <a href="#" class="c-link cart-main-point__undertext">через систему Assist</a>
             <label class="cart-main-point-input">
               <input class="cart-main-point-input__invisible" type="radio" name="payment" id="card_halva">
               <span class="cart-main-point-input__mock_radio"></span>
@@ -526,7 +534,7 @@
 
             <label class="cart-main-point-input text">
               <div class="c-p4 cart-main-point-input__title">Имя</div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="" id="name">
+              <input class="cart-main-point-input__text c-p5" type="text" name="name" id="name">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -544,7 +552,7 @@
                   Можем позвонить, чтобы уточнить детали заказа
                 </p>
               </div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="" id="phone">
+              <input class="cart-main-point-input__text c-p5" type="text" name="phone" id="phone">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -562,7 +570,7 @@
                   Пришлём письмо с&nbsp;подтверждением заказа
                 </p>
               </div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="" id="email">
+              <input class="cart-main-point-input__text c-p5" type="text" name="email" id="email">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -572,7 +580,7 @@
             </label>
 
             <label class="cart-main-point-input checkbox">
-              <input class="cart-main-point-input__invisible" type="checkbox" id="terms_of_use" checked>
+              <input class="cart-main-point-input__invisible" type="checkbox" name="terms_of_use" id="terms_of_use" checked>
               <span class="cart-main-point-input__mock_checkbox"></span>
               <p class="c-p5">Принимаю условия <a class="c-p4 c-link" href="#">пользовательского соглашения</a></p>
             </label>
@@ -594,10 +602,13 @@
         <p class="c-p5 cart-side-result__discounted">Вы экономите <span class="c-p4">10,50 руб.</span></p>
         <p class="c-p5">Номер карты клиента или промокод:</p>
         <input class="c-p3 cart-side-result__input_promo" type="text">
+        <p class="cart-side-result__promo_res"></p>
         <p class="cart-side-result__undertext">Скидка по&nbsp;карте клиента или промокоду не&nbsp;действует
           на&nbsp;акционные товары</p>
-        <button class="btn btn-blue cart-side-result__order">Оформить заказ</button>
-        <button class="btn btn-gray cart-side-result__fast_order">Заказать в один клик</button>
+        <div class="cart-side-result__footer">
+          <button class="btn btn-blue cart-side-result__order">Оформить заказ</button>
+          <button class="btn btn-gray cart-side-result__fast_order">Заказать в один клик</button>
+        </div>
       </div>
       <a href="#" class="cart-side-client_card">
         <img class="cart-side-client_card__img" src="./img/client-card.png" alt="">
@@ -609,8 +620,10 @@
 
   <div class="fast_order__wrap">
     <div class="fast_order fast_order__main active fade">
-      <svg class="fast_order__close" width="24" height="24" viewBox="0 0 24 24" fill="#70768A" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.1988 12.0002L23.5439 2.65458C24.152 2.04669 24.152 1.06381 23.5439 0.455919C22.936 -0.151973 21.9531 -0.151973 21.3453 0.455919L11.9999 9.80152L2.65474 0.455919C2.04658 -0.151973 1.064 -0.151973 0.456123 0.455919C-0.152041 1.06381 -0.152041 2.04669 0.456123 2.65458L9.80124 12.0002L0.456123 21.3458C-0.152041 21.9537 -0.152041 22.9365 0.456123 23.5444C0.759067 23.8477 1.15739 24 1.55543 24C1.95347 24 2.35151 23.8477 2.65474 23.5444L11.9999 14.1988L21.3453 23.5444C21.6485 23.8477 22.0465 24 22.4446 24C22.8426 24 23.2406 23.8477 23.5439 23.5444C24.152 22.9365 24.152 21.9537 23.5439 21.3458L14.1988 12.0002Z"/>
+      <svg class="fast_order__close" width="24" height="24" viewBox="0 0 24 24" fill="#70768A"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.1988 12.0002L23.5439 2.65458C24.152 2.04669 24.152 1.06381 23.5439 0.455919C22.936 -0.151973 21.9531 -0.151973 21.3453 0.455919L11.9999 9.80152L2.65474 0.455919C2.04658 -0.151973 1.064 -0.151973 0.456123 0.455919C-0.152041 1.06381 -0.152041 2.04669 0.456123 2.65458L9.80124 12.0002L0.456123 21.3458C-0.152041 21.9537 -0.152041 22.9365 0.456123 23.5444C0.759067 23.8477 1.15739 24 1.55543 24C1.95347 24 2.35151 23.8477 2.65474 23.5444L11.9999 14.1988L21.3453 23.5444C21.6485 23.8477 22.0465 24 22.4446 24C22.8426 24 23.2406 23.8477 23.5439 23.5444C24.152 22.9365 24.152 21.9537 23.5439 21.3458L14.1988 12.0002Z" />
       </svg>
       <p class="fast_order__title">Заказать в 1 клик</p>
       <p class="c-p5">Менеджер уточнит детали и&nbsp;оформит заказ, сэкономит ваши силы и&nbsp;время.</p>
@@ -622,18 +635,22 @@
         </label>
         <label class="fast_order__label">
           <p class="c-p4">Телефон</p>
-          <input placeholder="+375 (__) ___-__-__" class="fast_order__input c-p5" type="text" name="phone" id="fast_phone">
+          <input placeholder="+375 (__) ___-__-__" class="fast_order__input c-p5" type="text" name="phone"
+            id="fast_phone">
           <span class="fast_order__error">*обязательное поле</span>
         </label>
         <button class="btn btn-blue fast_order__send">Отправить</button>
       </div>
     </div>
     <div class="fast_order__success fast_order__main">
-      <svg class="fast_order__close" width="24" height="24" viewBox="0 0 24 24" fill="#70768A" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.1988 12.0002L23.5439 2.65458C24.152 2.04669 24.152 1.06381 23.5439 0.455919C22.936 -0.151973 21.9531 -0.151973 21.3453 0.455919L11.9999 9.80152L2.65474 0.455919C2.04658 -0.151973 1.064 -0.151973 0.456123 0.455919C-0.152041 1.06381 -0.152041 2.04669 0.456123 2.65458L9.80124 12.0002L0.456123 21.3458C-0.152041 21.9537 -0.152041 22.9365 0.456123 23.5444C0.759067 23.8477 1.15739 24 1.55543 24C1.95347 24 2.35151 23.8477 2.65474 23.5444L11.9999 14.1988L21.3453 23.5444C21.6485 23.8477 22.0465 24 22.4446 24C22.8426 24 23.2406 23.8477 23.5439 23.5444C24.152 22.9365 24.152 21.9537 23.5439 21.3458L14.1988 12.0002Z"/>
+      <svg class="fast_order__close" width="24" height="24" viewBox="0 0 24 24" fill="#70768A"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.1988 12.0002L23.5439 2.65458C24.152 2.04669 24.152 1.06381 23.5439 0.455919C22.936 -0.151973 21.9531 -0.151973 21.3453 0.455919L11.9999 9.80152L2.65474 0.455919C2.04658 -0.151973 1.064 -0.151973 0.456123 0.455919C-0.152041 1.06381 -0.152041 2.04669 0.456123 2.65458L9.80124 12.0002L0.456123 21.3458C-0.152041 21.9537 -0.152041 22.9365 0.456123 23.5444C0.759067 23.8477 1.15739 24 1.55543 24C1.95347 24 2.35151 23.8477 2.65474 23.5444L11.9999 14.1988L21.3453 23.5444C21.6485 23.8477 22.0465 24 22.4446 24C22.8426 24 23.2406 23.8477 23.5439 23.5444C24.152 22.9365 24.152 21.9537 23.5439 21.3458L14.1988 12.0002Z" />
       </svg>
       <p class="fast_order__title">Заявка отправлена</p>
-      <p class="c-p5">Ждите звонка в&nbsp;течение 1&nbsp;часа. Работаем ежедневно с&nbsp;8&nbsp;до&nbsp;20, если уже поздно&nbsp;&mdash; перезвоним завтра утром.</p>
+      <p class="c-p5">Ждите звонка в&nbsp;течение 1&nbsp;часа. Работаем ежедневно с&nbsp;8&nbsp;до&nbsp;20, если уже
+        поздно&nbsp;&mdash; перезвоним завтра утром.</p>
       <button class="btn btn-blue fast_order__dismiss">Продолжить покупки</button>
     </div>
     <div class="fast_order__outer"></div>

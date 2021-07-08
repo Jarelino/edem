@@ -222,7 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   (stageControl = () => {
-    const nextStageButton = document.querySelector('.cart-side-result__order') // temp
+    const buttonWrap = document.querySelector('.cart-side-result__footer')
+    const nextStageButton = buttonWrap.querySelector('.cart-side-result__order')
+    const fastOrderButton = document.querySelector('.cart-side-result__fast_order')
+    const clientCardButton = document.querySelector('.cart-side-client_card')
 
     const steps = document.querySelectorAll('.cart-main-steps-item')
     const tabs = document.querySelectorAll('.cart-main__tab')
@@ -268,6 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }
 
+    const controlNextStageButton = () => {
+      if (lastStep < 2) {
+        // buttonWrap.removeChild(nextStageButton)
+        return
+      }
+    }
+
     nextStageButton.addEventListener('click', () => {
       if (lastStep < steps.length - 1) {
         steps[lastStep].classList.add('done')
@@ -277,6 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
         switchTab(lastStep)
         steps[lastStep].classList.add('current')
       }
+      controlNextStageButton()
+      fastOrderButton.style.display = 'none'
+      clientCardButton.style.display = 'none'
     })
   })();
 
@@ -307,12 +320,12 @@ document.addEventListener('DOMContentLoaded', () => {
       accordions.forEach(accordion => {
         if (accordion.classList.contains(`${name}_slave`)) {
           if (accordion.classList.contains(`${id}_active`)) {
-            accordion.classList.add('active')
+            accordion.classList.add('point-accordion--active')
             accordion.style.maxHeight = accordion.scrollHeight + 'px'
             return
           }
           setDefaults(accordion)
-          accordion.classList.remove('active')
+          accordion.classList.remove('point-accordion--active')
           accordion.style.maxHeight = 0
         }
       })
@@ -650,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mapData.set(input.name, input.value)
       })
       const data = Object.fromEntries(mapData)
-      
+
       console.log(data) // change to send
     }
 
@@ -659,16 +672,199 @@ document.addEventListener('DOMContentLoaded', () => {
       closePopup(form)
       setTimeout(() => openPopup(success), 300)
     })
-
     outer.addEventListener('click', setDefault)
-
     closeButtons.forEach(button => {
       button.addEventListener('click', setDefault)
     })
-
     dismissButton.addEventListener('click', setDefault)
-
     openPopupButton.addEventListener('click', () => openPopup(wrap))
+  })();
 
+  (promoValidation = () => {
+    const input = document.querySelector('.cart-side-result__input_promo')
+    const result = document.querySelector('.cart-side-result__promo_res')
+
+    const clear = (e) => {
+      if (input.value.length === 0) {
+        input.classList.remove('promo-valid', 'promo-invalid')
+        result.innerHTML = ''
+      }
+    }
+
+    input.addEventListener('keydown', clear)
+    input.addEventListener('keyup', clear)
+
+    input.addEventListener('focusout', () => {
+      if (input.value.length === 0) {
+        return
+      }
+      console.log(input.value) // change to fetch
+      let responseDiscount = 5 // must be fetched
+      if (responseDiscount) {
+        input.classList.add('promo-valid')
+        result.innerHTML = `Ваша скидка &mdash; ${responseDiscount}%`
+        return
+      }
+      input.classList.add('promo-invalid')
+      result.innerHTML = 'Такого номера карты клиента или промокода нет.<br>Проверьте данные и попробуйте ещё раз'
+    })
+  })();
+
+  (inputValidation = () => {
+    const emailInputs = document.querySelectorAll('input[name="email"]')
+    const nameInputs = document.querySelectorAll('input[name="name"]')
+    const phoneInputs = document.querySelectorAll('input[name="phone"]')
+    const termsInputs = document.querySelectorAll('input[name="terms_of_use"]')
+
+    const setValid = (input) => input.classList.add('js-valid')
+
+    const setInvalid = (input) => input.classList.add('js-invalid')
+
+    const clearInput = (input) => input.classList.remove('js-valid', 'js-invalid')
+
+    const setCursorPosition = (position, element) => {
+      element.focus();
+      if (element.setSelectionRange) {
+        element.setSelectionRange(position, position);
+      }
+      else if (element.createTextRange) {
+        const range = element.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', position);
+        range.moveStart('character', position);
+        range.select()
+      }
+    }
+
+    const phoneMasking = (event) => {
+      const input = event.target
+      const matrix = '+375 (__) ___ __ __'
+      const def = matrix.replace(/\D/g, '')
+      let value = input.value.replace(/\D/g, '')
+      let i = 0
+
+      if (def.length >= value.length) {
+        value = def;
+      }
+
+      input.value = matrix.replace(/./g, (string) => {
+        return /[_\d]/.test(string) && i < value.length ? value.charAt(i++) : i >= value.length ? '' : string
+      })
+
+      if (event.type === 'blur') {
+        if (input.value.length === 2) input.value = ''
+      }
+      else {
+        setCursorPosition(input.value.length, input)
+      }
+    }
+
+    const setValidatableOnKey = (e) => e.target.classList.add('js-validate')
+
+    const validateEmail = (e) => {
+      const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (e.target.value.length === 0) {
+        clearInput(e.target)
+        return
+      }
+
+      if (regex.test(e.target.value.toLowerCase())) {
+        setValid(e.target)
+        setValidatableOnKey(e)
+        return
+      }
+
+      if (e.target.classList.contains('js-validate')) {
+        setInvalid(e.target)
+      }
+    }
+
+    const validateName = (e) => {
+      if (e.target.value.length > 0) {
+        setValid(e.target)
+        setValidatableOnKey(e)
+        return
+      }
+      if (e.target.classList.contains('js-validate')) {
+        setInvalid(e.target)
+      }
+    }
+
+    const validatePhone = (e) => {
+      if (e.target.value.length === 19) {
+        setValid(e.target)
+        setValidatableOnKey(e)
+        return
+      }
+      clearInput(e.target)
+      if (e.target.classList.contains('js-validate')) {
+        if (e.target.value.length === 0) {
+          setInvalid(e.target)
+          return
+        }
+        setInvalid(e.target)
+      }
+    }
+
+    const validateTerms = (e) => {
+      if (!e.target.checked) {
+        setInvalid(e.target)
+        return
+      }
+      setValid(e.target)
+      setValidatableOnKey(e)
+    }
+
+    phoneInputs.forEach(input => {
+      input.addEventListener('input', phoneMasking, false);
+      input.addEventListener('focus', phoneMasking, false);
+      input.addEventListener('blur', phoneMasking, false);
+      input.addEventListener('focusout', setValidatableOnKey)
+      input.addEventListener('keyup',validatePhone)
+      input.addEventListener('keydown',validatePhone)
+    })
+
+    emailInputs.forEach(input => {
+      input.addEventListener('focusout', setValidatableOnKey)
+      input.addEventListener('keydown', validateEmail)
+      input.addEventListener('keyup', validateEmail)
+    })
+
+    nameInputs.forEach(input => {
+      input.addEventListener('focusout', setValidatableOnKey)
+      input.addEventListener('keydown', validateName)
+      input.addEventListener('keyup', validateName)
+    })
+
+    termsInputs.forEach(input => input.addEventListener('change', validateTerms));
+  })();
+
+  (mainValidation = () => {
+    const inputBlocks = document.querySelectorAll('.cart-main-point')
+    const activeTab = document.querySelector('.cart-main__tab')
+
+    const checkAllInputs = () => {
+      // todo
+    }
+
+    const isBlockActive = (block) => block.classList.contains('point-accordion--active')
+
+    const isBlockValid = (block) => {
+      return false
+    }
+
+    const setInvalid = (block) => {
+      console.log('!')
+    }
+
+    inputBlocks.forEach((block, i) => {
+      block.addEventListener('mouseover', () => {
+        const prevBlock = inputBlocks[i - 1]
+        if (i > 0 && isBlockActive(prevBlock) && !isBlockValid(prevBlock)) {
+          setInvalid(prevBlock)
+        }
+      })
+    })
   })();
 })
