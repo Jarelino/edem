@@ -180,9 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
 
+    const pickupResult = pickupPopup.parentElement.querySelector(':scope > span')
+
+    pickupResult.nextElementSibling.value = pickupResult.innerHTML
     pickupPopup.addEventListener('click', (e) => {
       if (e.target.classList.contains('c-link')) {
-        pickupPopup.parentElement.querySelector(':scope > span').innerHTML = e.target.innerHTML
+        const result =
+          result.innerHTML = e.target.innerHTML
+        result.nextElementSibling.value = e.target.innerHTML
+
         const temp = pickupPopup.querySelector('p').innerHTML
         pickupPopup.querySelector('p').innerHTML = e.target.innerHTML
         e.target.innerHTML = temp
@@ -248,6 +254,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const jumpToStep = (stepNum) => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
       for (let i = 0; i < steps.length; i++) {
         steps[i].classList.remove('current')
         steps[i].classList.remove('back')
@@ -271,25 +281,20 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }
 
-    const controlNextStageButton = () => {
-      if (lastStep < 2) {
-        // buttonWrap.removeChild(nextStageButton)
-        return
-      }
-    }
-
     nextStageButton.addEventListener('click', () => {
-      if (lastStep < steps.length - 1) {
-        steps[lastStep].classList.add('done')
-        lastStep += 1
-        steps[lastStep].classList.add('visited')
-        jumpToStep(lastStep)
-        switchTab(lastStep)
-        steps[lastStep].classList.add('current')
+      if (!nextStageButton.classList.contains('validate') || nextStageButton.classList.contains('validate') && nextStageButton.classList.contains('allow')) {
+        nextStageButton.classList.remove('allow')
+        if (lastStep < steps.length - 1) {
+          steps[lastStep].classList.add('done')
+          lastStep += 1
+          steps[lastStep].classList.add('visited')
+          jumpToStep(lastStep)
+          switchTab(lastStep)
+          steps[lastStep].classList.add('current')
+        }
+        fastOrderButton.style.display = 'none'
+        clientCardButton.style.display = 'none'
       }
-      controlNextStageButton()
-      fastOrderButton.style.display = 'none'
-      clientCardButton.style.display = 'none'
     })
   })();
 
@@ -300,10 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const setDefaults = (accordion) => {
       const inputs = accordion.querySelectorAll('input')
       inputs.forEach(input => {
+        input.classList.remove('js-important', 'js-validate', 'js-valid', 'js-invalid')
         /** open default accordions and clear checkboxes */
         if (
           (input.type === 'radio' && input.getAttribute('checked') !== null) ||
-          (input.type === 'checkbox' && input.checked === true)
+          (input.type === 'checkbox' && input.checked)
         ) {
           input.click()
           return
@@ -311,7 +317,16 @@ document.addEventListener('DOMContentLoaded', () => {
         /** clear text fields */
         if (input.type === 'text') {
           input.value = ''
-          return
+          if (input.nextElementSibling) input.nextElementSibling.innerHTML = ''
+        }
+      })
+    }
+
+    const setImportant = (accordion) => {
+      const inputs = accordion.querySelectorAll('input')
+      inputs.forEach(input => {
+        if (input.classList.contains('js-important-hidden') && !input.parentElement.parentElement.classList.contains('cart-main-point__not_me')) {
+          input.classList.add('js-important')
         }
       })
     }
@@ -322,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (accordion.classList.contains(`${id}_active`)) {
             accordion.classList.add('point-accordion--active')
             accordion.style.maxHeight = accordion.scrollHeight + 'px'
+            setImportant(accordion)
             return
           }
           setDefaults(accordion)
@@ -330,6 +346,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
     }
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        if (mutation.target.classList.contains('cart-main-point-input__error')) {
+          const parentAccordion = mutation.target.closest('.point-accordion')
+          const notMeAccordion = mutation.target.closest('.cart-main-point__not_me')
+
+          if (notMeAccordion) {
+            notMeAccordion.style.maxHeight = notMeAccordion.scrollHeight + 'px'
+          }
+
+          if (parentAccordion.classList.contains('point-accordion--active')) {
+            parentAccordion.style.maxHeight = parentAccordion.scrollHeight + 'px'
+            return
+          }
+          parentAccordion.style.maxHeight = 0
+        }
+      })
+    })
+
+    accordions.forEach(accordion => {
+      observer.observe(accordion, { childList: true, subtree: true })
+    })
 
     triggers.forEach(trigger => {
       trigger.addEventListener('change', () => {
@@ -340,24 +379,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   (checkboxAccordionAction = () => {
     const checkbox = document.querySelector('#not_me')
+    const parentAccordion = checkbox.closest('.point-accordion')
     const checkboxAccordion = checkbox.parentElement.nextElementSibling
+    const importantInputs = Array.from(checkboxAccordion.querySelectorAll('input')).filter(input => input.classList.contains('js-important-hidden'))
     checkbox.addEventListener('change', () => {
-      if (checkbox.checked === true) {
+      const observingInterval = setInterval(() => {
+        if (parentAccordion.classList.contains('point-accordion--active')) {
+          parentAccordion.style.maxHeight = parentAccordion.scrollHeight + 'px'
+          return
+        }
+        parentAccordion.style.maxHeight = 0
+      }, 10)
+      setTimeout(() => clearInterval(observingInterval), 300)
+      if (checkbox.checked) {
         checkboxAccordion.classList.add('active')
         checkboxAccordion.style.maxHeight = checkboxAccordion.scrollHeight + 'px'
+        importantInputs.forEach(input => input.classList.add('js-important'))
         return
       }
       checkboxAccordion.querySelectorAll('input').forEach(input => input.value = '')
       checkboxAccordion.classList.remove('active')
       checkboxAccordion.style.maxHeight = null
+      importantInputs.forEach(input => input.classList.remove('js-important'))
     })
   })();
 
   (datepickerAction = () => {
     const displayChosenTime = (chosenInterval) => {
       const resultContainer = document.querySelector('.timepicker__result')
-      resultContainer.innerHTML = chosenInterval
-      console.log('time: ' + chosenInterval) //change to send data
+      const event = new Event('keydown')
+      resultContainer.value = chosenInterval
+      resultContainer.classList.remove('js-invalid')
+      resultContainer.classList.add('js-valid')
+      resultContainer.dispatchEvent(event)
     }
 
     const putIntervals = (intervals) => {
@@ -382,9 +436,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const getDatepickerResult = (receivedData) => {
+      const datepickerResultContainer = document.querySelector('.datepicker__result')
       const timepicker = document.querySelector('.cart-main-point-accordion__wrap.time')
       timepicker.classList.remove('disabled')
-      timepicker.querySelector(':scope > p').innerHTML = ''
+      datepickerResultContainer.classList.remove('js-invalid')
+      datepickerResultContainer.classList.add('js-valid')
+      timepicker.querySelector(':scope > input').classList.remove('js-valid', 'js-invalid')
+      timepicker.querySelector(':scope > input').value = ''
 
       console.log(receivedData) //change to send data and receive intervals
       const timeData = ['10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00'] // must be fetched
@@ -405,12 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fieldsWithOptions = fields.filter(field => field.classList.contains('with_options'))
     const optionsWraps = Array.from(mainWrap.querySelectorAll('.options__wrap'))
     const cityWrap = optionsWraps.find(wrap => wrap.classList.contains('options_city'))
-
-    /*
-    const streetOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_street'))
-    const houseOptionsWrap = optionsWraps.find(wrap => wrap.classList.contains('options_house'))
-    const cityOptionsWrap = cityWrap.querySelector('.options_city')
-    */
 
     const mainData = {
       'city': [
@@ -471,12 +523,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const usedAddressElem = document.createElement('a')
     usedAddressElem.classList.add('c-link', 'c-p4', 'used_address')
 
+    const setValid = (input) => {
+      input.classList.remove('js-invalid')
+      input.classList.add('js-valid')
+      if (input.nextElementSibling) input.nextElementSibling.innerHTML = ''
+    }
+
+    const setInvalid = (input, text) => {
+      input.classList.remove('js-valid')
+      input.classList.add('js-invalid')
+      if (input.nextElementSibling) input.nextElementSibling.innerHTML = text
+    }
+
+    const setClear = (input) => {
+      input.classList.remove('js-invalid')
+      input.classList.remove('js-valid')
+      if (input.nextElementSibling) input.nextElementSibling.innerHTML = ''
+    }
+
     const buildUsedAddressElem = (address) =>
       (address.city.short ? address.city.short : '') +
       (address.street.short ? ', ' + address.street.short : '') +
       (address.house ? ', д.' + address.house : '') +
       (address.house_building ? ', к.' + address.house_building : '') +
       (address.flat ? ', кв.' + address.flat : '')
+
+    const event = new Event('keydown')
 
     const writeUsedAddress = (address) => {
       fetchStreetData(address.city.full)
@@ -486,19 +558,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = field.querySelector('input')
         if (input.id === 'city') {
           input.value = address.city.full
+          input.dispatchEvent(event)
+          setValid(input)
           return
         }
         if (input.id === 'street') {
           input.value = address.street.full
+          input.dispatchEvent(event)
+          setValid(input)
           return
         }
         if (input.id === 'house') {
+          input.dispatchEvent(event)
           input.value = address.house + (address.house_building ? '/' + address.house_building : '')
         }
         if (input.id === 'flat') {
+          input.dispatchEvent(event)
           input.value = address.flat || ''
         }
       })
+    }
+
+    const forceValidate = (input) => {
+      if (input.classList.contains('js-validate') && !input.classList.contains('js-valid')) {
+        const errorText = input.value.length === 0 && input.id === 'city' ? 'Выберите населённый пункт' :
+          input.value.length === 0 && input.id === 'street' ? 'Выберите улицу' :
+            input.id === 'city' ? 'Сюда доставки нет. Выберите населённый пункт из выпадающего списка' :
+              input.id === 'street' ? 'Такой улицы в населённом пункте, который вы выбрали, нет.<br>Выберите улицу из выпадающего списка' : ''
+        setInvalid(input, errorText)
+      }
     }
 
     usedAdresses.forEach(address => {
@@ -514,30 +602,40 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = e.target
       const dataArr = mappedData.get(input.id)
       let popupVisible = false
+      let inputCorrect = false
 
       list.innerHTML = ''
+      setClear(e.target)
 
       if (input.value.length !== 0 && dataArr) {
         dataArr.forEach((elem) => {
-          if (elem.full.toLowerCase().includes(input.value)) {
+          if (elem.full.toLowerCase().includes(input.value.toLowerCase())) {
             const clonedAddress = addressElem.cloneNode()
             clonedAddress.innerHTML = elem.full
             clonedAddress.addEventListener('click', () => {
               input.value = elem.full
               if (input.id === 'city') fetchStreetData(elem.full)
               if (input.id === 'street') fetchHouseData(elem.full)
+              setValid(input)
               hideOptions()
             })
             list.appendChild(clonedAddress)
             popupVisible = true
           }
+          if (elem.full.toLowerCase() === input.value.toLowerCase()) {
+            inputCorrect = true
+          }
         })
+        if (inputCorrect) {
+          setValid(input)
+        }
       }
       if (popupVisible) {
         popup.classList.add('active')
         return
       }
       hideOptions()
+      forceValidate(input)
     }
 
     const hideOptions = () => {
@@ -565,6 +663,14 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           'short': 'пер. Строителей',
           'full': 'Строителей, переулок'
+        },
+        {
+          'short': 'пер. Школьный',
+          'full': 'Школьный, переулок',
+        },
+        {
+          'short': 'ул. Центральная',
+          'full': 'Центральная, улица',
         }
       ]
       mappedData.set('street', streetData)
@@ -601,6 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fieldsWithOptions.forEach(field => {
       field.addEventListener('keydown', updateList)
       field.addEventListener('keyup', updateList)
+      field.querySelector('input').addEventListener('validate', (e) => forceValidate(e.target))
     })
 
     document.addEventListener('click', (e) => {
@@ -716,11 +823,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneInputs = document.querySelectorAll('input[name="phone"]')
     const termsInputs = document.querySelectorAll('input[name="terms_of_use"]')
 
-    const setValid = (input) => input.classList.add('js-valid')
+    const setValid = (input) => {
+      input.classList.add('js-valid')
+      input.classList.remove('js-invalid')
+      input.nextElementSibling.innerHTML = ''
+    }
 
-    const setInvalid = (input) => input.classList.add('js-invalid')
+    const setInvalid = (input) => {
+      input.classList.add('js-invalid')
+      input.classList.remove('js-valid')
+    }
 
     const clearInput = (input) => input.classList.remove('js-valid', 'js-invalid')
+
+    const showError = (input, text) => {
+      if (input.nextElementSibling && input.nextElementSibling.classList.contains('cart-main-point-input__error')) {
+        input.nextElementSibling.innerHTML = text
+      }
+    }
 
     const setCursorPosition = (position, element) => {
       element.focus();
@@ -738,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phoneMasking = (event) => {
       const input = event.target
-      const matrix = '+375 (__) ___ __ __'
+      const matrix = '+375 (__) ___-__-__'
       const def = matrix.replace(/\D/g, '')
       let value = input.value.replace(/\D/g, '')
       let i = 0
@@ -759,51 +879,53 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const setValidatableOnKey = (e) => e.target.classList.add('js-validate')
-
     const validateEmail = (e) => {
+      e.target.classList.add('js-important')
+
       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       if (e.target.value.length === 0) {
         clearInput(e.target)
+        e.target.classList.remove('js-important')
         return
       }
 
       if (regex.test(e.target.value.toLowerCase())) {
         setValid(e.target)
-        setValidatableOnKey(e)
         return
       }
 
       if (e.target.classList.contains('js-validate')) {
         setInvalid(e.target)
+        showError(e.target, 'Неправильный формат электронной почты. Введите почту по примеру: example@mail.com')
       }
     }
 
     const validateName = (e) => {
       if (e.target.value.length > 0) {
         setValid(e.target)
-        setValidatableOnKey(e)
         return
       }
       if (e.target.classList.contains('js-validate')) {
         setInvalid(e.target)
+        showError(e.target, 'Введите ваше имя')
       }
     }
 
     const validatePhone = (e) => {
       if (e.target.value.length === 19) {
         setValid(e.target)
-        setValidatableOnKey(e)
         return
       }
       clearInput(e.target)
       if (e.target.classList.contains('js-validate')) {
-        if (e.target.value.length === 0) {
+        if (e.target.value.length === 4) {
           setInvalid(e.target)
+          showError(e.target, 'Без телефона мы не сможем с вами связаться, чтобы уточнить детали заказа')
           return
         }
         setInvalid(e.target)
+        showError(e.target, 'В номере не хватает одной или нескольких цифр.<br>Мы не сможем дозвониться получателю')
       }
     }
 
@@ -813,58 +935,132 @@ document.addEventListener('DOMContentLoaded', () => {
         return
       }
       setValid(e.target)
-      setValidatableOnKey(e)
     }
 
     phoneInputs.forEach(input => {
       input.addEventListener('input', phoneMasking, false);
       input.addEventListener('focus', phoneMasking, false);
       input.addEventListener('blur', phoneMasking, false);
-      input.addEventListener('focusout', setValidatableOnKey)
-      input.addEventListener('keyup',validatePhone)
-      input.addEventListener('keydown',validatePhone)
+      input.addEventListener('keyup', validatePhone)
+      input.addEventListener('keydown', validatePhone)
+      input.addEventListener('validate', validatePhone)
     })
 
     emailInputs.forEach(input => {
-      input.addEventListener('focusout', setValidatableOnKey)
       input.addEventListener('keydown', validateEmail)
       input.addEventListener('keyup', validateEmail)
     })
 
     nameInputs.forEach(input => {
-      input.addEventListener('focusout', setValidatableOnKey)
       input.addEventListener('keydown', validateName)
       input.addEventListener('keyup', validateName)
+      input.addEventListener('validate', validateName)
     })
 
     termsInputs.forEach(input => input.addEventListener('change', validateTerms));
   })();
 
   (mainValidation = () => {
-    const inputBlocks = document.querySelectorAll('.cart-main-point')
-    const activeTab = document.querySelector('.cart-main__tab')
+    const cartMainWrap = document.querySelector('.cart-main')
+    const orderButton = document.querySelector('.cart-side-result__order')
+    const orderButtonWrap = orderButton.parentElement
+    const addressBlock = cartMainWrap.querySelector('.cart-main-point__wrap.address').parentElement
+    const timepickerBlock = addressBlock.previousElementSibling
+    const allInputs = cartMainWrap.querySelectorAll('input[type="text"]')
 
-    const checkAllInputs = () => {
-      // todo
-    }
+    const getActiveTab = () => cartMainWrap.querySelector('.cart-main__tab.active')
 
-    const isBlockActive = (block) => block.classList.contains('point-accordion--active')
-
-    const isBlockValid = (block) => {
-      return false
-    }
-
-    const setInvalid = (block) => {
-      console.log('!')
-    }
-
-    inputBlocks.forEach((block, i) => {
-      block.addEventListener('mouseover', () => {
-        const prevBlock = inputBlocks[i - 1]
-        if (i > 0 && isBlockActive(prevBlock) && !isBlockValid(prevBlock)) {
-          setInvalid(prevBlock)
+    const checkAllInputs = (e) => {
+      const tab = getActiveTab()
+      const importantInputs = tab.querySelectorAll('.js-important')
+      let showButton = true
+      importantInputs.forEach(input => {
+        if (input.value.length === 0) {
+          showButton = false
         }
       })
+      if (showButton) orderButtonWrap.appendChild(orderButton)
+    }
+
+    const gatherInfo = () => {
+      let data = new Map()
+      const inputs = cartMainWrap.querySelectorAll('input')
+      inputs.forEach(input => {
+        if (input.type === 'radio') {
+          if (!input.checked) return
+          data.set(input.name, input.id)
+          return
+        }
+        if (input.type === 'checkbox') {
+          data.set(input.id, input.checked)
+          return
+        }
+        data.set(input.id, input.value)
+      })
+      data = Object.fromEntries(data)
+      console.log(data) // change to send
+    }
+
+    const completeOrder = () => {
+      const paymentWay = cartMainWrap.querySelector('input[name="payment"][checked]').id
+      // interaction depends on paymentWay
+
+      gatherInfo()
+    }
+
+    const validateAllInputs = () => {
+      const tab = getActiveTab()
+      const importantInputs = tab.querySelectorAll('.js-important')
+      const event = new Event('validate')
+      let unlockButton = true
+      importantInputs.forEach(input => {
+        input.classList.add('js-validate')
+        input.dispatchEvent(event)
+        if (!input.classList.contains('js-valid')) {
+          unlockButton = false
+          input.scrollIntoView({
+            alignToTop: false,
+            behavior: 'smooth'
+          })
+        }
+      })
+      if (unlockButton && orderButton.classList.contains('finish')) {
+        completeOrder()
+        return
+      }
+      if (unlockButton) {
+        orderButton.classList.add('allow')
+        orderButton.click()
+        orderButton.classList.remove('allow')
+        if (orderButton.parentElement) orderButtonWrap.removeChild(orderButton)
+        orderButton.classList.add('finish')
+      }
+    }
+
+    allInputs.forEach(input => {
+      input.addEventListener('keydown', checkAllInputs)
+      input.addEventListener('keyup', checkAllInputs)
+    })
+
+    addressBlock.addEventListener('click', () => {
+      const inputs = timepickerBlock.querySelectorAll('input')
+      inputs.forEach(input => {
+        if (input.value.length === 0) {
+          input.classList.add('js-invalid')
+          input.classList.remove('js-valid')
+        }
+      })
+    })
+
+    orderButton.addEventListener('click', () => {
+      if (!orderButton.classList.contains('validate') || orderButton.classList.contains('allow')) {
+        orderButton.classList.add('validate')
+        orderButtonWrap.removeChild(orderButton)
+        return
+      }
+      if (orderButton.classList.contains('validate')) {
+        validateAllInputs()
+      }
     })
   })();
 })

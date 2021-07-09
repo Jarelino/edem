@@ -337,6 +337,7 @@
             <p class="cart-main-point__undertext">Бесплатно доставим заказ в&nbsp;любой магазин &laquo;Эдем&raquo;</p>
             <div class="cart-main-point__popup_link open_popup_link delivery_way_slave point-accordion pickup_active">
               <span class="c-p4">ул. Строителей, 45а</span>
+              <input type="hidden" id="pickup_point">
               <svg width="24" height="25" viewBox="0 0 24 25" fill="none" stroke="#70768A"
                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.2002 12.5L12.0002 16.1L16.8002 12.5" stroke-linecap="round" />
@@ -397,8 +398,8 @@
                   </div>
                 </div>
 
-                <p class="c-p4 datepicker__result js-important"></p>
-
+                <input type="text" id="date" class="c-p4 datepicker__result js-important" disabled>
+                <span class="cart-main-point-input__error">Выберите дату</span>
               </div>
               <div class="cart-main-point-accordion__wrap time disabled">
                 <div class="open_popup_link">
@@ -411,7 +412,8 @@
 
                   </div>
                 </div>
-                <p class="c-p4 timepicker__result js-important"></p>
+                <input type="text" id="time" class="c-p4 timepicker__result js-important" disabled>
+                <span class="cart-main-point-input__error">Выберите время</span>
               </div>
             </div>
           </div>
@@ -423,26 +425,23 @@
             <p class="c-h2">Укажите адрес доставки</p>
             <label class="cart-main-point-input text with_options">
               <div class="c-p4 cart-main-point-input__title">Населённый пункт</div>
-              <input class="cart-main-point-input__text c-p5" placeholder="город, посёлок, деревня" type="text"
+              <input class="cart-main-point-input__text c-p5 js-important-hidden js-important" placeholder="город, посёлок, деревня" type="text"
                 id="city">
-              <span class="cart-main-point-input__error">Сюда доставки нет. Выберите населённый пункт из выпадающего
-                списка</span>
+              <span class="cart-main-point-input__error"></span>
               <div class="cart-main-point-input-options options__wrap options_city">
                 <div class="options_city options__list"></div>
               </div>
             </label>
             <label class="cart-main-point-input text with_options">
               <div class="c-p4 cart-main-point-input__title">Улица</div>
-              <input class="cart-main-point-input__text c-p5" type="text" id="street">
-              <span class="cart-main-point-input__error">Такой улицы в населённом пункте, который вы выбрали, нет.<br>
-                Выберите улицу из выпадающего списка</span>
+              <input class="cart-main-point-input__text c-p5 js-important-hidden js-important" type="text" id="street">
+              <span class="cart-main-point-input__error"></span>
               <div class="cart-main-point-input-options options_street options__list options__wrap"></div>
             </label>
             <div class="cart-main-point-input__multiple">
               <label class="cart-main-point-input text with_options">
                 <div class="c-p4 cart-main-point-input__title">Дом</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="house">
-                <span class="cart-main-point-input__error"></span>
                 <div
                   class="cart-main-point-input-options cart-main-point-input-options--thin options_house options__list options__wrap">
                 </div>
@@ -450,17 +449,14 @@
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Квартира</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="flat">
-                <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Подъезд</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="entrance">
-                <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Этаж</div>
                 <input class="cart-main-point-input__text c-p5" type="text" id="floor">
-                <span class="cart-main-point-input__error"></span>
               </label>
             </div>
             <label class="cart-main-point-input checkbox">
@@ -471,12 +467,12 @@
             <div class="cart-main-point__not_me">
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Имя получателя</div>
-                <input class="cart-main-point-input__text c-p5" type="text" id="rec_name" name="name">
+                <input class="cart-main-point-input__text c-p5 js-important-hidden" type="text" id="rec_name" name="name">
                 <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input text">
                 <div class="c-p4 cart-main-point-input__title">Телефон</div>
-                <input class="cart-main-point-input__text c-p5" type="text" id="rec_phone" name="phone">
+                <input class="cart-main-point-input__text c-p5 js-important-hidden" type="text" placeholder="+375 (__) ___-__-__" id="rec_phone" name="phone">
                 <span class="cart-main-point-input__error"></span>
               </label>
               <label class="cart-main-point-input checkbox">
@@ -534,7 +530,7 @@
 
             <label class="cart-main-point-input text">
               <div class="c-p4 cart-main-point-input__title">Имя</div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="name" id="name">
+              <input class="cart-main-point-input__text c-p5 js-important" type="text" name="name" id="name">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -552,7 +548,7 @@
                   Можем позвонить, чтобы уточнить детали заказа
                 </p>
               </div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="phone" id="phone">
+              <input class="cart-main-point-input__text c-p5 js-important" type="text" placeholder="+375 (__) ___-__-__" name="phone" id="phone">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -570,7 +566,7 @@
                   Пришлём письмо с&nbsp;подтверждением заказа
                 </p>
               </div>
-              <input class="cart-main-point-input__text c-p5" type="text" name="email" id="email">
+              <input class="cart-main-point-input__text c-p5 js-validate" type="text" name="email" id="email">
               <span class="cart-main-point-input__error"></span>
             </label>
 
@@ -580,7 +576,7 @@
             </label>
 
             <label class="cart-main-point-input checkbox">
-              <input class="cart-main-point-input__invisible" type="checkbox" name="terms_of_use" id="terms_of_use" checked>
+              <input class="cart-main-point-input__invisible js-important js-valid" type="checkbox" name="terms_of_use" id="terms_of_use" checked>
               <span class="cart-main-point-input__mock_checkbox"></span>
               <p class="c-p5">Принимаю условия <a class="c-p4 c-link" href="#">пользовательского соглашения</a></p>
             </label>
@@ -630,12 +626,12 @@
       <div class="fast_order__form">
         <label class="fast_order__label">
           <p class="c-p4">Имя</p>
-          <input class="fast_order__input c-p5" type="text" name="name" id="fast_name">
+          <input class="fast_order__input c-p5 js-important" type="text" name="name" id="fast_name">
           <span class="fast_order__error">*обязательное поле</span>
         </label>
         <label class="fast_order__label">
           <p class="c-p4">Телефон</p>
-          <input placeholder="+375 (__) ___-__-__" class="fast_order__input c-p5" type="text" name="phone"
+          <input placeholder="+375 (__) ___-__-__" class="fast_order__input c-p5 js-important" type="text" name="phone"
             id="fast_phone">
           <span class="fast_order__error">*обязательное поле</span>
         </label>

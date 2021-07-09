@@ -90,7 +90,9 @@ class DatePicker {
       'month': month,
       'day': day
     }
-    this.resultContainer.innerHTML = day + ' ' + this.resultMonthNames.get(month)
+    const event = new Event('keydown')
+    this.resultContainer.value = day + ' ' + this.resultMonthNames.get(month)
+    this.resultContainer.dispatchEvent(event)
     this.getResult(this.chosenDate)
   }
 

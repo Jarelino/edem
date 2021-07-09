@@ -851,6 +851,7 @@ a.cart-main-point__undertext {
   stroke: #6D86CF;
 }
 
+.open_popup_link:hover > input,
 .open_popup_link:hover > span {
   color: #6D86CF;
 }
@@ -916,6 +917,10 @@ a.cart-main-point__undertext {
   border-radius: 2px;
   border: 1px solid #70768A;
   align-self: start;
+}
+
+.js-invalid + .cart-main-point-input__mock_checkbox {
+  border-color: #EB5757;
 }
 
 .cart-main-point-input__mock_checkbox::after {
@@ -1019,8 +1024,18 @@ textarea {
   display: flex;
 }
 
+.cart-main-point__datetime input {
+  background: none;
+}
+
 .cart-main-point-accordion__wrap {
   position: relative;
+}
+
+.cart-main-point-accordion__wrap .cart-main-point-input__error {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .cart-main-point-accordion__wrap > p {
@@ -1194,11 +1209,11 @@ a.used_address:last-of-type::after {
   margin-top: 5px;
 }
 
-.js-invalid .cart-main-point-input__error {
+.js-invalid + .cart-main-point-input__error {
   display: block;
 }
 
-.js-invalid > input {
+input.js-invalid {
   border-color: #EB5757;
   color: #EB5757;
 }
