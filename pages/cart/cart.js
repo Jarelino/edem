@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editPostcard = () => {
       textarea.style.height = textarea.scrollHeight > maxTextareaHeight ? maxTextareaHeight + 'px' : textarea.scrollHeight + 'px'
       if (textarea.scrollHeight > maxTextareaHeight || textarea.value.length > 100) {
-        textarea.value = textarea.value.slice(0, 100)
+        textarea.value = textarea.value.slice(0, textarea.value.length - 1)
       }
       symbolsLeft.innerHTML = 100 - textarea.value.length
     }
@@ -185,9 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pickupResult.nextElementSibling.value = pickupResult.innerHTML
     pickupPopup.addEventListener('click', (e) => {
       if (e.target.classList.contains('c-link')) {
-        const result =
-          result.innerHTML = e.target.innerHTML
-        result.nextElementSibling.value = e.target.innerHTML
+        pickupResult.innerHTML = e.target.innerHTML
+        pickupResult.nextElementSibling.value = e.target.innerHTML
 
         const temp = pickupPopup.querySelector('p').innerHTML
         pickupPopup.querySelector('p').innerHTML = e.target.innerHTML
@@ -526,19 +525,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const setValid = (input) => {
       input.classList.remove('js-invalid')
       input.classList.add('js-valid')
-      if (input.nextElementSibling) input.nextElementSibling.innerHTML = ''
+      if (input.nextElementSibling && input.nextElementSibling.classList.contains('cart-main-point-input__error')) input.nextElementSibling.innerHTML = ''
     }
 
     const setInvalid = (input, text) => {
       input.classList.remove('js-valid')
       input.classList.add('js-invalid')
-      if (input.nextElementSibling) input.nextElementSibling.innerHTML = text
+      if (input.nextElementSibling && input.nextElementSibling.classList.contains('cart-main-point-input__error')) input.nextElementSibling.innerHTML = text
     }
 
     const setClear = (input) => {
       input.classList.remove('js-invalid')
       input.classList.remove('js-valid')
-      if (input.nextElementSibling) input.nextElementSibling.innerHTML = ''
+      if (input.nextElementSibling && input.nextElementSibling.classList.contains('cart-main-point-input__error')) input.nextElementSibling.innerHTML = ''
     }
 
     const buildUsedAddressElem = (address) =>
@@ -1003,7 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const completeOrder = () => {
       const paymentWay = cartMainWrap.querySelector('input[name="payment"][checked]').id
-      // interaction depends on paymentWay
+      // interaction should be dependent on paymentWay
 
       gatherInfo()
     }

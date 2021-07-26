@@ -71,7 +71,7 @@ class DatePicker {
         }
         clonedTable.addEventListener('click', (e) => {
           if(e.target.tagName === 'A') {
-            clonedTable.childNodes.forEach(elem => elem.classList.remove('active'))
+            this.datepicker.querySelectorAll('.datepicker__day').forEach(elem => elem.classList.remove('active'))
             e.target.classList.add('active')
           }
         })
