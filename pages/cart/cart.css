@@ -446,6 +446,7 @@ body.cart--empty::before {
 }
 
 .cart-main-goods-item-price__button {
+  height: fit-content;
   cursor: pointer;
   color: #869BD8;
 }
@@ -1341,6 +1342,9 @@ input.js-invalid {
 }
 
 @media (max-width: 1439px) {
+  .container-sm {
+    width: 992px;
+  }
   .cart--empty {
     background-image: url(./img/empty/cart-empty-bg-md.jpg);
   }
@@ -1693,6 +1697,7 @@ input.js-invalid {
 }
 
 @media screen and (max-width: 1279px) {
+  .container-sm,
   .breadContainer > .container {
     width: 700px;
   }
@@ -1728,6 +1733,7 @@ input.js-invalid {
 }
 
 @media screen and (max-width: 767px) {
+  .container-sm,
   .breadContainer > .container {
     width: 330px;
   }
