@@ -4,7 +4,7 @@
   left: -40px;
   padding: 50px 33px 40px;
   background: #F6EEEC;
-  box-shadow: 0px 4px 32px rgba(170, 170, 170, 0.03);
+  box-shadow: 0px 8px 10px rgb(0 0 0 / 14%), 0px 3px 14px rgb(0 0 0 / 12%), 0px 4px 5px rgb(0 0 0 / 20%);
   border-radius: 15px;
 }
 
@@ -151,5 +151,47 @@ a.datepicker__day:hover {
   .datepicker__arrow {
     width: 8px;
     height: 13px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .datepicker {
+    left: 0;
+    top: 20px;
+    padding: 30px 15px 15px;
+  }
+
+  .datepicker-table {
+    width: 300px;
+  }
+
+  .datepicker__day,
+  .datepicker-table .c-p2 {
+    width: 36px;
+    margin-right: 3.3px;
+    margin-left: 3.3px;
+  }
+
+  .datepicker__day {
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .datepicker__month {
+    margin-left: 11px;
+    font-size: 18px;
+  }
+
+  .datepicker-table__days {
+    margin-top: 10px;
+  }
+
+  .datepicker__arrows {
+    margin-right: 13px;
+  }
+
+  .datepicker__arrow {
+    width: 6px;
+    height: 11px;
   }
 }

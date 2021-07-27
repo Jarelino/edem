@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accordion = postcard.querySelector('.cart-main-postcard__accordion')
     const textarea = postcard.querySelector('.cart-main-postcard-own-editor__textarea')
     const symbolsLeft = postcard.querySelector('.cart-main-postcard-own__left span')
-    const maxTextareaHeight = 108
+    const maxTextareaHeight = document.documentElement.clientWidth >= 1280 ? 108 : 72
     const saveText = postcard.querySelector('#save_wish')
     const editText = postcard.querySelector('.cart-main-postcard-own-editor__change')
     const addOwnToOrder = postcard.querySelector('#add_own_to_order')
@@ -46,17 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       postcard.style.maxHeight = postcard.scrollHeight + 'px'
       postcard.classList.add('active')
-
-      const int = setInterval(() => {
-        postcard.scrollIntoView({
-          block: 'end',
-          behavior: 'smooth'
-        })
-      }, 10)
-
-      setTimeout(() => {
-        clearInterval(int)
-      }, 300)
     })
 
     const editPostcard = () => {
