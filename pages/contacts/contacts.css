@@ -1,90 +1,8 @@
+
 .container-sm {
   width: 1158px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.services__single {
-  margin-top: 30px;
-  margin-bottom: 130px;
-}
-
-.services__big_img {
-  max-width: 100%;
-  margin-top: 75px;
-  margin-bottom: 100px;
-}
-
-.services__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 100px;
-  margin-bottom: 150px;
-}
-
-.services-form {
-  padding: 80px 70px;
-  position: relative;
-  border-radius: 10px;
-  background: #f6eeec;
-  margin-bottom: 150px;
-}
-
-.services-form-main {
-  width: 524px;
-}
-
-.services-form-photo {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  right: 71px;
-}
-
-.services-form-photo__text {
-  width: 121px;
-  margin-left: -111px;
-  font-size: 14px;
-  line-height: 150%;
-  opacity: 0.68;
-}
-
-.services-form-main > .c-h3 {
-  margin-bottom: 30px;
-}
-
-.services-form-main__inputs {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.services-share {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 39px 121px;
-  margin-bottom: 150px;
-  border-radius: 15px;
-  background: #70768A;
-}
-
-.services-share__links {
-  display: flex;
-}
-
-.services-share__links a {
-  display: block;
-}
-
-.services-share__links a:not(:last-child) {
-  margin-right: 15px;
-}
-
-.services-share .c-p3 {
-  width: 521px;
-  color: #F6EEEC;
 }
 
 .form_input {
@@ -143,6 +61,44 @@
   opacity: 1;
 }
 
+.services-form {
+  width: 1158px;
+  padding: 80px 70px;
+  position: relative;
+  border-radius: 10px;
+  background: #f6eeec;
+  margin-bottom: 150px;
+}
+
+.services-form-main {
+  width: 524px;
+}
+
+.services-form-photo {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 71px;
+}
+
+.services-form-photo__text {
+  width: 121px;
+  margin-left: -111px;
+  font-size: 14px;
+  line-height: 150%;
+  opacity: 0.68;
+}
+
+.services-form-main > .c-h3 {
+  margin-bottom: 30px;
+}
+
+.services-form-main__inputs {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .services-form-main__inputs .form_input {
   width: 240px;
 }
@@ -158,6 +114,11 @@
 .services-form-main__inputs .send_button {
   margin-top: 40px;
 }
+
+.services-form-photo img {
+  width: 100%;
+}
+
 
 .send_success__wrap {
   position: fixed;
@@ -209,21 +170,7 @@
   margin-bottom: 30px;
 }
 
-.services-form-photo img {
-  width: 100%;
-}
-
-
 @media (max-width: 1439.98px) {
-  .container-sm {
-    width: 992px;
-  }
-
-  .services__big_img {
-    margin-top: 50px;
-    margin-bottom: 75px;
-  }
-
   .services-form-photo__text {
     width: 104px;
     margin-right: -117px;
@@ -242,43 +189,9 @@
     padding: 70px 50px;
     margin-bottom: 120px;
   }
-
-  .services__single {
-    margin-top: 20px;
-    margin-bottom: 120px;
-  }
-
-  .services-share {
-    margin-bottom: 120px;
-    padding: 45px 104px;
-  }
-
-  .services-share__links img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .services__container {
-    margin-top: 75px;
-    margin-bottom: 120px;
-  }
 }
 
 @media screen and (max-width: 1279.98px) {
-  .container-sm {
-    width: 700px;
-  }
-
-  .services__single {
-    margin-top: 15px;
-    margin-bottom: 80px;
-  }
-
-  .services__big_img  {
-    margin-top: 40px;
-    margin-bottom: 60px;
-  }
-
   .services-form-photo {
     width: 370px;
     right: 10px;
@@ -317,70 +230,9 @@
     padding: 50px 40px;
     margin-bottom: 80px;
   }
-
-  .services-share {
-    padding: 40px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 80px;
-  }
-
-  .services-share .c-p3 {
-    width: 330px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .services-share__links a:not(:last-child) {
-    margin-right: 20px;
-  }
-
-  .services-share__links img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .services__container {
-    margin-top: 40px;
-    margin-bottom: 80px;
-  }
 }
 
 @media screen and (max-width: 767.98px) {
-  .services__container {
-    margin-bottom: 60px;
-  }
-
-  .services__container .services-item:last-child {
-    display: none;
-  }
-
-  .container-sm {
-    width: 330px;
-  }
-
-  .services-share {
-    width: 100%;
-    border-radius: 0;
-    padding: 25px 0 10px;
-    margin-bottom: 60px;
-  }
-
-  .services-share .c-p3 {
-    width: 100%;
-    padding: 0 15px;
-  }
-
-  .services-share__links {
-    width: 100%;
-    padding: 0 15px 15px;
-    overflow-x: auto;
-  }
-
-  .services__single {
-    margin-bottom: 60px;
-  }
-
   .services-form {
     padding: 40px 30px 270px;
     overflow: hidden;
