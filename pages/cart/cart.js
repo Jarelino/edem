@@ -926,7 +926,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     phoneInputs.forEach(input => {
-      input.addEventListener('input', phoneMasking, false);
+      input.addEventListener('keyup', phoneMasking, false);
+      input.addEventListener('keydown', phoneMasking, false);
       input.addEventListener('focus', phoneMasking, false);
       input.addEventListener('blur', phoneMasking, false);
       input.addEventListener('keyup', validatePhone)

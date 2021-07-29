@@ -1259,13 +1259,9 @@ input.js-invalid {
   z-index: 1;
 }
 
-.fast_order {
-  padding: 40px 111px 50px 60px;
-}
-
 .fast_order__close {
   position: absolute;
-  top: 60px;
+  top: 40px;
   right: 60px;
   cursor: pointer;
   transition: 0.3s;
@@ -1284,11 +1280,12 @@ input.js-invalid {
 }
 
 .fast_order__label {
-  width: 200px;
+  width: 240px;
 }
 
 .fast_order__input {
   width: 100%;
+  background: transparent;
   padding-bottom: 5px;
   border-bottom: 1px solid #70768A
 }
@@ -1313,26 +1310,30 @@ input.js-invalid {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .fast_order__send {
-  margin-bottom: 19px;
+  margin-top: 30px;
+}
+
+.fast_order__checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .fast_order__main {
   z-index: 2;
   position: relative;
-  width: 808px;
+  width: 644px;
   display: none;
   opacity: 0;
   background: #FBF9F7;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   transition: 0.3s;
-}
-
-.fast_order__success {
-  padding: 40px 208px 50px 60px;
+  padding: 40px 60px;
 }
 
 .fast_order__main.active {  
