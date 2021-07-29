@@ -256,7 +256,7 @@ body {
 .modalContent {
     display: none;
     position: relative;
-    max-width: 808px;
+    max-width: 644px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -586,6 +586,7 @@ body {
 
 .modal__requestCall-contentWrap {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     justify-content: space-between;
@@ -597,6 +598,7 @@ body {
 }
 
 .modal__requestCall-inputWrap input {
+    width: 240px;
     background: none;
     border-bottom: 1px solid #70768A;
 }
@@ -607,7 +609,50 @@ body {
 }
 
 .modalContent {
-    min-width: 808px;
+    min-width: 644px;
+}
+
+.form_checkbox__wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.form_checkbox {
+    width: 0;
+    height: 0;
+}
+
+.form_mock_checkbox {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    margin-right: 10px;
+    border: 1px solid #70768A;
+    border-radius: 2px;
+    position: relative;
+}
+
+.form_checkbox:checked+.form_mock_checkbox+p {
+    color: #869BD8;
+}
+
+.form_mock_checkbox::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(./img/checked.svg);
+    background-size: contain;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.form_checkbox:checked+.form_mock_checkbox::after {
+    opacity: 1;
 }
 
 @media (max-width: 1439px) {
@@ -896,9 +941,6 @@ body {
         row-gap: 30px;
         align-items: flex-start;
     }
-    .modal__requestCall-contentWrap>* {
-        width: 200px;
-    }
 }
 
 .header__cart {
@@ -1037,9 +1079,7 @@ body {
     text-decoration: line-through;
 }
 
-.header__cart-popup-goods-item.disabled .header__cart-popup-goods-item-desc *:not(.header__cart-popup-goods-item-desc__remove),
-.header__cart-popup-goods-item.disabled .header__cart-popup-goods-item__image,
-.header__cart-popup-goods-item.disabled .header__cart-popup-goods-item-price {
+.header__cart-popup-goods-item.disabled .header__cart-popup-goods-item-desc *:not(.header__cart-popup-goods-item-desc__remove), .header__cart-popup-goods-item.disabled .header__cart-popup-goods-item__image, .header__cart-popup-goods-item.disabled .header__cart-popup-goods-item-price {
     opacity: 0.5;
     pointer-events: none;
 }
@@ -1051,5 +1091,5 @@ body {
 @media screen and (max-width: 1279px) {
     .header__cart {
         display: none;
-    }   
+    }
 }
