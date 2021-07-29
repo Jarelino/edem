@@ -4,6 +4,7 @@
 }
 
 .delivery__tab {
+    color: var(--main-text-color);
     position: relative;
     cursor: pointer;
 }

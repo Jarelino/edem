@@ -160,6 +160,7 @@ input {
 }
 
 .c-link {
+    color: var(--main-blue-color);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -340,6 +341,10 @@ span:hover .icon:active {
 
     font-family: 'Comfortaa';
     color: #70768A;
+}
+
+.breadItem.c-link {
+    color: var(--main-text-color);
 }
 
 .breadContainer > .container .breadItem:last-child {

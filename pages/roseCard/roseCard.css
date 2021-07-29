@@ -237,6 +237,10 @@ body {
     display: block;
 }
 
+.shopTips__item-title.c-link {
+    color: var(--main-text-color);
+}
+
 .shopTips__item-description {
     margin-top: 10px;
 }

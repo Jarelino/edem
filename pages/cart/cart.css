@@ -551,6 +551,7 @@ body.cart--empty::before {
 }
 
 .cart-main-goods-item__title {
+  color: var(--main-text-color);
   display: block;
   width: fit-content;
   margin-bottom: 15px;
@@ -891,6 +892,7 @@ a.cart-main-point__undertext {
 .cart-main-point__popup a {
   white-space: nowrap;
   display: block;
+  color: var(--main-text-color);
 }
 
 .cart-main-point__popup p {
@@ -1193,6 +1195,10 @@ a.used_address:last-of-type::after {
   border-radius: 15px;
   z-index: 10;
   display: none;
+}
+
+.cart-main-point-input-options .c-link {
+  color: var(--main-text-color);
 }
 
 .cart-main-point-input-options.active {

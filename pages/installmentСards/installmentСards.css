@@ -10,17 +10,19 @@
     margin-top: 75px;
 }
 
+.installment__btn {
+    width: fit-content;
+    padding: 25px 40px;
+    background: #F6EEEC;
+    border-radius: 15px;
+}
+
 .installment__btn,
 .installment__cardContainer,
 .installment__cardsBlock-description,
 .installment__tips,
 .installment__description {
     margin-top: 30px;
-}
-
-.installment__card .c-link,
-.installment__tips .c-link {
-    color: var(--main-hover-color);
 }
 
 .installment__cardContainer {

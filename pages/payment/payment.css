@@ -60,11 +60,6 @@
     transform: translate(-50%, -50%); 
 }
 
-.payment__waysBlock-item a.payment__waysBlock-itemTitle,
-.payment__waysBlock-itemDescription .c-link {
-    color: #869BD8; 
-}
-
 .payment__cardsDescription {
     margin-top: 30px;
 }

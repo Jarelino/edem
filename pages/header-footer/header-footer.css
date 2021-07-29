@@ -988,6 +988,7 @@ body {
 }
 
 .header__cart-popup-goods-item-desc .c-p4 {
+    color: var(--main-text-color);
     display: block;
     width: fit-content;
     margin-bottom: 5px;
