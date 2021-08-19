@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openPopupLinks = document.querySelectorAll('.open_popup_link')
     const popups = document.querySelectorAll('.point__small_popup')
     const pickupPopup = document.querySelector('.point__small_popup.pickup')
-    const datepickerPopup = document.querySelector('.point__small_popup.datepicker_popup')
+    //const datepickerPopup = document.querySelector('.point__small_popup.datepicker_popup')
 
     const closePopup = (link) => {
       link.classList.remove('fade')
@@ -958,6 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addressBlock = cartMainWrap.querySelector('.cart-main-point__wrap.address').parentElement
     const timepickerBlock = addressBlock.previousElementSibling
     const allInputs = cartMainWrap.querySelectorAll('input[type="text"]')
+    const validateEvent = new Event('validate')
 
     const getActiveTab = () => cartMainWrap.querySelector('.cart-main__tab.active')
 
@@ -996,17 +997,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const paymentWay = cartMainWrap.querySelector('input[name="payment"][checked]').id
       // interaction should be dependent on paymentWay
 
+      //TEMP FOR TESTING
+      window.location.href = '/pages/thanksForOrder/thanksWithEmail.html'
+
       gatherInfo()
     }
 
     const validateAllInputs = () => {
       const tab = getActiveTab()
       const importantInputs = tab.querySelectorAll('.js-important')
-      const event = new Event('validate')
       let unlockButton = true
       importantInputs.forEach(input => {
         input.classList.add('js-validate')
-        input.dispatchEvent(event)
+        input.dispatchEvent(validateEvent)
         if (!input.classList.contains('js-valid')) {
           unlockButton = false
           input.scrollIntoView({
@@ -1033,14 +1036,19 @@ document.addEventListener('DOMContentLoaded', () => {
       input.addEventListener('keyup', checkAllInputs)
     })
 
-    addressBlock.addEventListener('click', () => {
-      const inputs = timepickerBlock.querySelectorAll('input')
-      inputs.forEach(input => {
+    const timePickerInputs = timepickerBlock.querySelectorAll('input')
+
+    timePickerInputs.forEach(input => {
+      input.addEventListener('validate', () => {
         if (input.value.length === 0) {
           input.classList.add('js-invalid')
           input.classList.remove('js-valid')
         }
       })
+    })
+
+    addressBlock.addEventListener('click', () => {
+      timePickerInputs.forEach(input => input.dispatchEvent(validateEvent))
     })
 
     orderButton.addEventListener('click', () => {
