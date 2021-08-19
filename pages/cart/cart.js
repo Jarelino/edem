@@ -159,16 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => link.classList.remove('active'), 300)
     }
 
+    const popupLinkClicked = (elem) => {
+      if (elem.classList.contains('active')) {
+        closePopup(elem)
+        return
+      }
+      elem.classList.add('active')
+      setTimeout(() => elem.classList.add('fade'), 0)
+    }
+
     openPopupLinks.forEach(elem => {
       const link = elem.querySelector(':scope > span')
-      link.addEventListener('click', (e) => {
-        if (elem.classList.contains('active')) {
-          closePopup(elem)
-          return
-        }
-        elem.classList.add('active')
-        setTimeout(() => elem.classList.add('fade'), 0)
-      })
+      const arrow = elem.querySelector(':scope > svg')
+      link.addEventListener('click', (e) => popupLinkClicked(elem))
+      arrow.addEventListener('click', (e) => popupLinkClicked(elem))
     })
 
     const pickupResult = pickupPopup.parentElement.querySelector(':scope > span')
