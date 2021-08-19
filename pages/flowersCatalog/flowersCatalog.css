@@ -111,8 +111,11 @@ body {
 
 .catalog__card:hover {
     z-index: 4;
-    padding-bottom: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 4px 5px rgba(0, 0, 0, 0.03), 0px 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.catalog__card:hover:not(.catalog__bigCard) {
+    padding-bottom: 20px;
 }
 
 .catalog__bigCard {
