@@ -18,11 +18,6 @@
     background-size: 100% 100%;
 }
 
-.catalog__card:hover {
-    margin: 0;
-    padding: 20px 10px;
-}
-
 .composition__bigCard-left {
     float: left;
 }
@@ -67,8 +62,7 @@
 }
 
 .compositions__container .catalog__cardWrapper:not(.composition__bigCard):not(.composition__mediumCard):hover img {
-    width: 362px!important;
-    height: 362px!important;
+    transform: scale(1.05)
 }
 .composition__bigCard:hover img {
     width: 793px!important;
