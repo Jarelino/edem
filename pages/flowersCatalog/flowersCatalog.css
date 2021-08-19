@@ -111,6 +111,7 @@ body {
 
 .catalog__card:hover {
     z-index: 4;
+    padding-bottom: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 4px 5px rgba(0, 0, 0, 0.03), 0px 1px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -337,8 +338,8 @@ body {
 .catalog__card-discount {
     position: absolute;
     z-index: 2;
-    top: -10px;
-    left: -10px;
+    top: 0;
+    left: 0;
     background: #869BD8;
     border-radius: 15px;
     padding: 28px 10px 27px 10px;
@@ -351,8 +352,6 @@ body {
 
 .catalog__card:hover .catalog__card-discount {
     color: #F6EEEC;
-    top: 0;
-    left: 0;
 }
 
 .catalog__card .btnWrap {
@@ -487,11 +486,6 @@ body {
     .catalog__bigCard:hover > img {
         width: 421px!important;
         height: 488px!important;
-    }
-
-    .catalog__card:hover:not(.catalog__bigCard) > img {
-        height: 367px!important;
-        width: 367px!important;
     }
 
     .catalog__cardWrapper {
