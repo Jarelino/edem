@@ -953,6 +953,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     termsInputs.forEach(input => input.addEventListener('change', validateTerms));
+    termsInputs.forEach(input => input.addEventListener('validate', validateTerms));
   })();
 
   (mainValidation = () => {
@@ -961,7 +962,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderButtonWrap = orderButton.parentElement
     const addressBlock = cartMainWrap.querySelector('.cart-main-point__wrap.address').parentElement
     const timepickerBlock = addressBlock.previousElementSibling
-    const allInputs = cartMainWrap.querySelectorAll('input[type="text"]')
+    const allInputs = cartMainWrap.querySelectorAll('input[type="text"], input[type="checkbox"]')
+    const personalDataBlock = cartMainWrap.querySelector('.personal_data')
+    const personalDataInputs = personalDataBlock.querySelectorAll('input')
+    const termsOfUseInput = personalDataBlock.querySelector('input[name="terms_of_use"]')
     const validateEvent = new Event('validate')
 
     const getActiveTab = () => cartMainWrap.querySelector('.cart-main__tab.active')
@@ -971,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const importantInputs = tab.querySelectorAll('.js-important')
       let showButton = true
       importantInputs.forEach(input => {
-        if (input.value.length === 0) {
+        if(input.type === 'checkbox' && !input.checked || input.value.length === 0) {
           showButton = false
         }
       })
@@ -1038,6 +1042,7 @@ document.addEventListener('DOMContentLoaded', () => {
     allInputs.forEach(input => {
       input.addEventListener('keydown', checkAllInputs)
       input.addEventListener('keyup', checkAllInputs)
+      input.addEventListener('change', checkAllInputs)
     })
 
     const timePickerInputs = timepickerBlock.querySelectorAll('input')
@@ -1053,6 +1058,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addressBlock.addEventListener('click', () => {
       timePickerInputs.forEach(input => input.dispatchEvent(validateEvent))
+    })
+
+    termsOfUseInput.addEventListener('click', () => {
+      personalDataInputs.forEach(input => {
+        if(input.classList.contains('js-important')) {
+          input.classList.add('js-validate')
+          input.dispatchEvent(validateEvent)
+        }
+      })
     })
 
     orderButton.addEventListener('click', () => {
@@ -1072,7 +1086,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const cart = document.querySelector('.cart')
       const resultBlock = document.querySelector('.cart-side-result')
       const clientCard = document.querySelector('.cart-side-client_card')
-
+      resultBlock.style.top = '0px'
+      
       document.addEventListener('scroll', () => {
         const customOffset = 50
         const isTouchingTop = window.pageYOffset - cart.offsetTop + customOffset >= 0
