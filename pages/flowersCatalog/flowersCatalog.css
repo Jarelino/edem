@@ -116,6 +116,7 @@ body {
 
 .catalog__card:hover:not(.catalog__bigCard) {
     padding-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .catalog__bigCard {
