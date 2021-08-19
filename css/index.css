@@ -344,6 +344,10 @@ span:hover .icon:active {
     color: #70768A;
 }
 
+.breadItem:last-child {
+    cursor: initial;
+}
+
 .breadItem.c-link {
     color: var(--main-text-color);
 }
