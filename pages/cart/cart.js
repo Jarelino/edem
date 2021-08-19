@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  const isDesktop = document.documentElement.clientWidth >= 1280
+
   const data = {  // must be fetched; days count from 1, months count from 0
     'years': [
       {
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accordion = postcard.querySelector('.cart-main-postcard__accordion')
     const textarea = postcard.querySelector('.cart-main-postcard-own-editor__textarea')
     const symbolsLeft = postcard.querySelector('.cart-main-postcard-own__left span')
-    const maxTextareaHeight = document.documentElement.clientWidth >= 1280 ? 108 : 72
+    const maxTextareaHeight = isDesktop ? 108 : 72
     const saveText = postcard.querySelector('#save_wish')
     const editText = postcard.querySelector('.cart-main-postcard-own-editor__change')
     const addOwnToOrder = postcard.querySelector('#add_own_to_order')
@@ -1052,4 +1054,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })();
+
+  if (isDesktop) {
+    (resultBlockPositionFixing = () => {
+      const cart = document.querySelector('.cart')
+      const resultBlock = document.querySelector('.cart-side-result')
+      const clientCard = document.querySelector('.cart-side-client_card')
+
+      document.addEventListener('scroll', () => {
+        const customOffset = 50
+        const isTouchingTop = window.pageYOffset - cart.offsetTop + customOffset >= 0
+        const maxOffset = cart.scrollHeight - customOffset - resultBlock.scrollHeight - clientCard.scrollHeight
+        let resultBlockOffset = 0
+        if(isTouchingTop) {
+          resultBlockOffset = window.pageYOffset - cart.offsetTop + customOffset
+          if(resultBlockOffset >= maxOffset) {
+            resultBlockOffset = maxOffset
+          }
+        }
+        resultBlock.style.top = resultBlockOffset + 'px'
+      })
+    })();
+  }
 })
