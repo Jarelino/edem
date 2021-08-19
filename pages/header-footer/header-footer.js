@@ -109,7 +109,6 @@ window.onload = () => {
     }
 
     const closeBottomTab = () => {
-         ('hi mark')
         const activeTab = document.querySelector('.bottomMenu-activeTab')
         activeTab.classList.remove('bottomMenu-activeTab');
         bottomMenuWrapper.classList.remove('bottomMenuWrapper-active')
@@ -126,7 +125,6 @@ window.onload = () => {
     }
     
     const openModal = (modalClass) => (e) => {
-         (e.currentTarget);
         const activeTab = document.querySelector('.modal-active')
         const targetItem = document.querySelector(`.${modalClass}`);
         const body = document.getElementsByTagName('body')[0];
@@ -238,7 +236,14 @@ window.onload = () => {
         let modal = document.querySelector('.modal-placement__wrap');
         modal.style.display = modal.style.display == 'block' ? 'none' : 'block';
     })
-    clearPageInput.addEventListener('click', clearInput)
+    clearPageInput.addEventListener('click', () => {
+        const menuList = document.querySelector('.navMenu__list');
+        const navContainer = document.querySelector('.navMenu');
+        modalWrap.click();
+        searchInput.value = "";
+        menuList.style.display = 'flex';
+        navContainer.classList.remove('navMenu-activeInput');
+    })
     searchInput.addEventListener('focus', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 20)
     searchInput.addEventListener('focusout', (e) => document.querySelector('.navMenu__inputBlock').style.zIndex = 6)
     searchInput.addEventListener('input', searchHandler);
