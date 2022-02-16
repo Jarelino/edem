@@ -10,6 +10,29 @@
     <link rel="stylesheet" href="../../css/multirange.css">
 </head>
 <body>
+    <div class="catalog__headerWrap">
+        <div class="container catalog__header">
+            <div class="catalog__headerContent">
+                <p class="c-h1 catalog__headerTitle">Цветы и букеты</p>
+                <p class="c-p7 catalog__headerDescription">Цветы поштучно, букеты разных размеров&nbsp;&mdash; маленькие, средние, большие или огромные. Если в&nbsp;каталоге не&nbsp;найдётся подходящего, сделаем уникальный по&nbsp;вашим пожеланиям.</p>
+    
+                <div class="catalog__headerFeatures">
+                    <div class="catalog__headerFeature">
+                        <p class="c-factoid catalog__headerFeature-number">>50</p>
+                        <p class="catalog__headerFeature-text">букетов на&nbsp;выбор</p>
+                    </div>
+                    <div class="catalog__headerFeature">
+                        <p class="c-factoid catalog__headerFeature-number">>40</p>
+                        <p class="catalog__headerFeature-text">сортов цветов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog__headerPhotos">
+                <img class="catalog__headerPhoto-square" src="./img/catalogHeaderSquare.png" alt="">
+                <img class="catalog__headerPhoto-round" src="./img/catalogHeaderRound.png" alt="">
+            </div>
+        </div>
+    </div>
     <div class="catalog__navBlock conainer">
         <div class="breadContainer">
             <div class="container">
@@ -23,7 +46,7 @@
             <span><i class="icon icon-db-arrow filterButton"></i></span>
         </div>
     </div>
-    <div class="filterMenu">
+    <div class="filterMenu container">
         <div class="filterMenu__modalOutside"> </div>
         <div class="filterItem">
             <div class="filterItem-menuBlock">
@@ -523,7 +546,7 @@
                         <label class="customInputWrap">
                             <input class="checkbox" type="checkbox">
                             <span class="checkmark"></span>
-                            <a class="c-p6">мужчине</a>
+                            <a class="c-p6">мужчине</a>3
                         </label>
                     </li>
                     <li class="filterModal__item">
@@ -543,7 +566,10 @@
                 </ul>
             </div>
         </div>
-        <div class="filterItem">
+        <div class="filterItem filterItem-clean">
+            <p class="c-p5">Сбросить фильтры</p>
+        </div>
+        <div class="filterItem filterItem-sort">
             <div class="filterItem-menuBlock">
                 <p class="c-p5">Сортировка</p>
                 <img src="../../icons/smallArrow.svg" alt="">
@@ -576,9 +602,6 @@
                 </form>
             </div>
         </div>
-        <div class="filterItem">
-            <p class="c-p5">Сбросить фильтры</p>
-        </div>
     </div>
 
     <div class="noItemsBlock">
@@ -606,28 +629,21 @@
                 <img src="./img/card-img.png" alt="">
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
-                    <p class="c-p5 catalog__card-existance">под заказ до 5 дней</p>
-                    <div class="catalog__card-modBlock">
-                        <p class="c-p5 catalog__card-modBlockTitle catalog__card-hover">Длина, см</p>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover catalog__card-modBlockItem-active">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
+                    <p class="c-p5 catalog__card-existance">в наличии</p>
+                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
+                    <div class="btnWrap catalog__card-hover">
+                        <button class="btn btn-blue">В корзину</button>
+                        <button class="btn btn-gray">Заказ в 1 клик</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="catalog__cardWrapper">
+            <div class="catalog__card">
+                <img src="./img/card-img.png" alt="">
+                <div class="catalog__card-content">
+                    <p class="c-p2 catalog__card-title">Роза Кахала</p>
+                    <p class="c-p5 catalog__card-existance">под заказ до 5 дней</p>
                     <p class="c-h3 catalog__card-newPrice"><span class="catalog__card-oldPrice">от 4,50 руб.</span> от 4,50 руб.</p>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-blue">В корзину</button>
@@ -645,27 +661,6 @@
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
                     <p class="c-p5 catalog__card-existance">нет в наличии</p>
-                    <div class="catalog__card-modBlock">
-                        <p class="c-p5 catalog__card-modBlockTitle catalog__card-hover">Длина, см</p>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover catalog__card-modBlockItem-active">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                        <span class="c-p5 catalog__card-modBlockItem catalog__card-hover">
-                            40
-                        </span>
-                    </div>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-gray">Подробнее</button>
                     </div>
@@ -677,28 +672,6 @@
             <div class="catalog__card-content">
                 <p class="c-p1 catalog__card-title">Роза Кахала</p>
                 <p class="c-p3 catalog__card-existance">в наличии</p>
-                <p class="c-p3 catalog__card-composition">Состав: роза, гвоздика, эустома, эвкалипт</p>
-                <div class="catalog__card-modBlock">
-                    <p class="c-p5 catalog__card-modBlockTitle">Длина, см</p>
-                    <span class="c-p5 catalog__card-modBlockItem catalog__card-modBlockItem-active">
-                        40
-                    </span>
-                    <span class="c-p5 catalog__card-modBlockItem">
-                        40
-                    </span>
-                    <span class="c-p5 catalog__card-modBlockItem">
-                        40
-                    </span>
-                    <span class="c-p5 catalog__card-modBlockItem">
-                        40
-                    </span>
-                    <span class="c-p5 catalog__card-modBlockItem">
-                        40
-                    </span>
-                    <span class="c-p5 catalog__card-modBlockItem">
-                        40
-                    </span>
-                </div>
                 <p class="c-h2 catalog__card-price">от 4,50 руб.</p>
                 <div class="btnWrap catalog__card-hover">
                     <button class="btn btn-blue">В корзину</button>
@@ -712,22 +685,6 @@
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
                     <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
-                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
-                    <div class="btnWrap catalog__card-hover">
-                        <button class="btn btn-blue">В корзину</button>
-                        <button class="btn btn-gray">Заказ в 1 клик</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="catalog__cardWrapper">
-            <div class="catalog__card">
-                <img src="./img/card-img.png" alt="">
-                <div class="catalog__card-content">
-                    <p class="c-p2 catalog__card-title">Роза Кахала</p>
-                    <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
                     <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-blue">В корзину</button>
@@ -737,10 +694,12 @@
             </div>
         </div>
         <div class="factoid">
-            <img src="./img/factoid-black.svg" alt="">
-            <h2 class="c-h2">Цветы без повода радуют особенно</h2>
-            <p class="factoid__description">Чтобы подарить радость, не&nbsp;нужно ждать праздника. Пусть&nbsp;свежие цветы станут привычным проявлением любви&nbsp;в&nbsp;вашем доме.</p>
-            <div class="dot"></div>
+            <div class="factoid-content">
+                <img class="factoid-img" src="./img/factoid-black.svg" alt="">
+                <h2 class="c-h3 factoid-title">Цветы без повода радуют особенно</h2>
+                <p class="c-p5 factoid__description">Чтобы подарить радость, не&nbsp;нужно ждать праздника. Пусть&nbsp;свежие цветы станут привычным проявлением любви&nbsp;в&nbsp;вашем доме.</p>
+                <div class="dot"></div>
+            </div>
         </div>
         <div class="catalog__cardWrapper">
             <div class="catalog__card">
@@ -748,7 +707,6 @@
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
                     <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
                     <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-blue">В корзину</button>
@@ -763,7 +721,6 @@
                 <div class="catalog__card-content">
                     <p class="c-p2 catalog__card-title">Роза Кахала</p>
                     <p class="c-p5 catalog__card-existance">в наличии</p>
-                    <p class="c-p5 catalog__card-hover">Длина, см</p>
                     <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
                     <div class="btnWrap catalog__card-hover">
                         <button class="btn btn-blue">В корзину</button>
@@ -772,16 +729,31 @@
                 </div>
             </div>
         </div>
-        <div class="catalog__card catalog__bigCard">
-            <img src="./img/bigCardImg.png" alt="">
-            <div class="catalog__card-content">
-                <p class="c-p1 catalog__card-title">Роза Кахала</p>
-                <p class="c-p3 catalog__card-existance">в наличии</p>
-                <p class="c-p3 catalog__card-composition">Состав: роза, гвоздика, эустома, эвкалипт</p>
-                <p class="c-h2 catalog__card-price">4,50 руб.</p>
-                <div class="btnWrap catalog__card-hover">
-                    <button class="btn btn-blue">В корзину</button>
-                    <button class="btn btn-gray">Заказ в 1 клик</button>
+        <div class="catalog__cardWrapper">
+            <div class="catalog__card">
+                <img src="./img/card-img.png" alt="">
+                <div class="catalog__card-content">
+                    <p class="c-p2 catalog__card-title">Роза Кахала</p>
+                    <p class="c-p5 catalog__card-existance">в наличии</p>
+                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
+                    <div class="btnWrap catalog__card-hover">
+                        <button class="btn btn-blue">В корзину</button>
+                        <button class="btn btn-gray">Заказ в 1 клик</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="catalog__cardWrapper">
+            <div class="catalog__card">
+                <img src="./img/card-img.png" alt="">
+                <div class="catalog__card-content">
+                    <p class="c-p2 catalog__card-title">Роза Кахала</p>
+                    <p class="c-p5 catalog__card-existance">в наличии</p>
+                    <p class="c-h3 catalog__card-price">от 4,50 руб.</p>
+                    <div class="btnWrap catalog__card-hover">
+                        <button class="btn btn-blue">В корзину</button>
+                        <button class="btn btn-gray">Заказ в 1 клик</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -805,11 +777,13 @@
 
     <div class="catalog__container promotionContainer">
         <img src="./img/promotion.png" alt="">
-        <div class="promotion__contentBlock">
-            <img src="./img/promotionIcon.svg" alt="">
-            <h2 class="c-h2">Дарите себе сюрпризы чаще</h2>
-            <p class="c-p3 promotion__description">Свежие цветы создают дома приятную обстановку и дарят упоительный аромат.</p>
-            <div class="dot"></div>
+        <div class="promotion__contentBlock-wrap">
+            <div class="promotion__contentBlock">
+                <img src="./img/factoid-black.svg" alt="">
+                <h2 class="c-h2">Дарите себе сюрпризы чаще</h2>
+                <p class="c-p3 promotion__description">Свежие цветы создают дома приятную обстановку и дарят упоительный аромат.</p>
+                <div class="dot"></div>
+            </div>
         </div>
     </div>
 

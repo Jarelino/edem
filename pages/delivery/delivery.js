@@ -26,12 +26,12 @@ window.onload = () => {
             
             if (e.currentTarget.classList.contains('delivery__placeTabs-borisov')) {
                 e.currentTarget.classList.replace('delivery__placeTabs-borisov', 'delivery__placeTabs-minsk')
-                minskPage.style.display = 'block'
-                borisovPage.style.display = 'none'
+                minskPage.style.display = 'block';
+                borisovPage.style.display = 'none';
             } else {
                 e.currentTarget.classList.replace('delivery__placeTabs-minsk', 'delivery__placeTabs-borisov')
-                minskPage.style.display = 'none'
-                borisovPage.style.display = 'block'
+                minskPage.style.display = 'none';
+                borisovPage.style.display = 'block';
             }
         }
     }

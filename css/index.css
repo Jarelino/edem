@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 
-
+/* 
 body::before {
     content: "";
     position: absolute;
@@ -23,7 +23,7 @@ body::before {
     height: 500px;
     z-index: -1;
     width: 100%;
-}
+} */
 
 body {
     z-index: 2;
@@ -80,58 +80,58 @@ input {
 }
 
 .c-h1 {
-    font-size: 50px;
+    font-size: 40px;
     line-height: 130%;
 }
 
 .c-h2 {
-    font-size: 35px;
-    line-height: 130%;
-}
-
-.c-h3 {
     font-size: 30px;
     line-height: 130%;
 }
 
-.c-h4 {
+.c-h3 {
     font-size: 25px;
+    line-height: 130%;
+}
+
+.c-h4 {
+    font-size: 20px;
     line-height: 130%;
 }
 
 .c-p1 {
     font-weight: 500;
-    font-size: 35px;
+    font-size: 30px;
     line-height: 150%;
 }
 
 .c-p2 {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 150%;
 }
 
 .c-p3 {
     font-weight: normal;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 150%;
 }
 
 .c-p4 {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 150%;
 }
 
 .c-p5 {
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 150%;
 }
 
 .c-p6 {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 150%;
 }
 
@@ -142,20 +142,20 @@ input {
 
 .c-btn {
     font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 17px;
     letter-spacing: 0.05em;
 }
 
 .c-bread {
     font-weight: normal;
-    font-size: 12px;
-    line-height: 120%;
+    font-size: 14px;
+    line-height: 150%;
 }
 
 .c-tags {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 120%;
     letter-spacing: 0.1em;
 }
@@ -175,7 +175,7 @@ input {
 }
 
 .c-factoid {
-    font-size: 64px;
+    font-size: 48px;
     line-height: 110%;
     font-weight: bold;
     font-family: 'Comfortaa';
@@ -187,11 +187,11 @@ input {
     cursor: pointer;
     outline: none;
     border: none;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 17px;
     letter-spacing: 0.05em;
     padding: 15px 30px;
-    border-radius: 10px;
+    border-radius: 1px;
     transition: all 0.3s ease;
 }
 
@@ -202,23 +202,23 @@ input {
 
 .btn-blue:hover {
     background: #6D86CF;
-    border-radius: 7px;
+    border-radius: 1px;
 }
 
 .btn-blue:active {
     background: #6179BE;
-    border-radius: 7px;
+    border-radius: 1px;
 }
 
 .btn-blue.disabled {
     cursor: default;
     background: rgba(134, 155, 216, 0.5);
-    border-radius: 10px;
+    border-radius: 1px;
 }
 
 .btn-gray {
     background: #EFE5E3;
-    border-radius: 7px;
+    border-radius: 1px;
     color: #869BD8;
 }
 
@@ -272,7 +272,8 @@ span:hover .icon:active {
 
 .checkmark {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translate(0, -50%);
     left: 0;
     height: 15px;
     width: 15px;
@@ -328,8 +329,6 @@ span:hover .icon:active {
 
 .breadContainer > .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .breadContainer > .container img {
@@ -353,13 +352,15 @@ span:hover .icon:active {
 }
 
 .breadContainer > .container .breadItem:last-child {
-    font-size: 40px;
-    line-height: 130%;
-    font-weight: bold;
+    color: #70768A;
+}
+
+.breadContainer > .container .breadItem:not(:last-child) {
+    opacity: 0.68;
 }
 
 .breadContainer {
-    padding-top: 60px;
+    padding-top: 20px;
     padding-bottom: 50px;
 }
 
@@ -377,8 +378,13 @@ span:hover .icon:active {
         font-size: 30px;
         line-height: 130%;
     }
+    .c-h3 {
+        font-size: 25px;
+        line-height: 130%;
+    }
     .c-h4 {
         font-size: 20px;
+        line-height: 130%;
     }
     .c-p1 {
         font-size: 30px;
@@ -415,6 +421,21 @@ span:hover .icon:active {
     body::before {
         height: 420px;
     }
+
+    .c-factoid {
+        font-size: 44px;
+        line-height: 110%;
+    }
+
+    .c-tags {
+        font-size: 12px;
+        line-height: 120%;
+    }
+
+    .c-bread {
+        font-size: 12px;
+        line-height: 120%;
+    }
 }
 
 @media (max-width: 1279px) {
@@ -448,7 +469,8 @@ span:hover .icon:active {
         width: 700px;
     }
     .c-h1 {
-        font-size: 20px;
+        font-size: 25px;
+        line-height: 130%;
     }
     .c-h2 {
         font-size: 18px;
@@ -506,12 +528,9 @@ span:hover .icon:active {
     }
 
     
-    .breadContainer > .container .breadItem:last-child {
-        font-size: 20px;
-    }
-
-    .breadContainer > .container {
-        flex-wrap: wrap;
+    .breadContainer > .container .breadItem {
+        font-size: 10px;
+        line-height: 150%;
     }
 
     .container {

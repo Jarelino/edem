@@ -7,10 +7,15 @@ body {
 }
 
 .card__mainContent-image {
-    width: 675px;
-    height: 675px;
-    margin-right: 50px;
+    width: 604px;
+    height: 827px;
+    margin-right: 121px;
     float: left;
+    object-fit: cover;
+}
+
+.card__mainContent {
+    height: 827px;
 }
 
 .promotionContainer {
@@ -94,7 +99,7 @@ body {
 }
 
 .card__mainInfoBlock-modBlockItem {
-    border-radius: 10px;
+    border-radius: 1px;
     cursor: pointer;
     text-align: center;
     padding: 8px 9px 8px 10px
@@ -200,7 +205,11 @@ body {
 }
 
 .examples__block-img {
-    border-radius: 15px;
+    border-radius: 1px;
+}
+
+.examples__block:last-child .examples__block-img {
+    border-radius: 300px 300px 1px 1px;
 }
 
 .examples__block {

@@ -2,6 +2,11 @@ img {
   max-width: 100%;
 }
 
+.semiRoundImg {
+  border-radius: 500px 500px 1px 1px;
+  background: #fff;
+}
+
 .t-p1 {
   font-family: 'Montserrat';
   font-weight: 500;
@@ -185,7 +190,6 @@ img {
 }
 
 .t-img-block .t-p5 {
-  margin-left: 30px;
   margin-top: 15px;
 }
 
@@ -231,6 +235,10 @@ img {
     font-size: 30px;
     margin-bottom: 20px;
   }
+
+  .semiRoundImg {
+    border-radius: 400px 400px 1px 1px;
+  }
   
   .t-p3 {
     font-size: 20px;
@@ -266,7 +274,6 @@ img {
 
   .t-img-block .t-p5 {
     margin-top: 10px;
-    margin-left: 20px;
   }
 
   .t-aside-block p:not(:last-child),
@@ -387,7 +394,6 @@ img {
 
   .t-img-block .t-p5 {
     margin-top: 5px;
-    margin-left: 15px;
   }
 
   .double-big {

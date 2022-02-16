@@ -93,9 +93,8 @@ body {
     right: 75px;
     background: #F6EEEC;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
     padding: 30px 20px;
-    width: 415px;
+    width: 454px;
 }
 
 .modal-placement__wrap, .modal-placement>* {
@@ -104,6 +103,10 @@ body {
 
 .modal-placement__btn-wrap {
     margin: 20px 0;
+}
+
+.modal-placement__btn-wrap > .btn:not(:first-child) {
+    margin-left: 10px;
 }
 
 .modal-placement__title {
@@ -174,7 +177,6 @@ body {
 
 .menu-active {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14), 0px 5px 5px rgba(0, 0, 0, 0.12), 0px 10px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 0px 0px 15px 15px;
     z-index: 15;
     display: flex;
 }
@@ -185,7 +187,11 @@ body {
 
 .navMenu .navMenu__inputBlock {
     display: none;
-    background: #fff;
+    background: #FBF9F7;
+}
+
+.pageInput {
+    background: #FBF9F7;
 }
 
 .navMenu-activeInput>.container {
@@ -260,10 +266,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fbf9f7;
+    background: #FBF9F7;
     padding: 40px 60px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
+    box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.1);
 }
 
 .modalContent * {
@@ -421,7 +426,7 @@ body {
 }
 
 .footer__socialBlock {
-    width: 180px;
+    width: 191px;
     display: flex;
     justify-content: space-between;
 }
@@ -447,6 +452,14 @@ body {
     font-size: 14px;
     line-height: 150%;
     width: fit-content;
+}
+
+#requisites {
+    color: #70768A;
+}
+
+#requisites:hover {
+    color: #6D86CF;
 }
 
 .cheshireTitle a {
@@ -514,9 +527,8 @@ body {
 }
 
 .modal-search {
-    width: 1200px;
-    max-width: 1200px;
-    top: 164px;
+    max-width: 100%;
+    top: 149px;
     transform: translate(-50%, 0);
     z-index: 3;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
@@ -525,6 +537,8 @@ body {
 .searchCard__container {
     display: flex;
     flex-wrap: wrap;
+    max-width: 1400px;
+    margin: auto;
     justify-content: space-between;
     row-gap: 30px;
 }
@@ -533,18 +547,20 @@ body {
     display: flex;
     align-items: center;
     height: fit-content;
-    width: 350px;
+    width: 368px;
     position: relative;
 }
 
 .searchCard img {
-    width: 100px;
-    height: 100px;
+    width: 88px;
+    height: 120px;
+    object-fit: cover;
 }
 
 .searchCard__textBlock {
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
     justify-content: space-around;
 }
 
@@ -558,6 +574,7 @@ body {
     font-size: 16px;
     line-height: 150%;
     color: #869BD8;
+    margin-top: 10px;
 }
 
 .searchCard-oldPrice {
@@ -570,14 +587,18 @@ body {
 
 .searchCard-discount {
     position: absolute;
-    top: 5px;
+    top: -10px;
     left: 5px;
     font-family: 'Comfortaa';
-    font-size: 10px;
-    color: #FBF9F7;
-    background: #869BD8;
-    border-radius: 7px;
-    padding: 9px 3px 8px 4px;
+    font-size: 12px;
+    color: #70768A;
+    background: #EFE5E3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchResult__container {
@@ -679,11 +700,20 @@ body {
     .navMenu__list .icon {
         font-size: 20px;
     }
-    .modal-search {
-        width: 1080px;
-    }
     .searchCard {
-        width: 350px;
+        width: 343px;
+    }
+
+    .searchCard__textBlock {
+        margin-left: 20px;
+    }
+
+    .searchCard__container {
+        max-width: 1200px;
+    }
+
+    .modal-search {
+        top: 143px;  
     }
 }
 
@@ -692,6 +722,10 @@ body {
         display: flex;
         margin-top: 20px;
         flex-direction: column;
+    }
+    .footer__termsOfUseBlock>a:nth-child(2) {
+        display: block;
+        margin-top: 20px;
     }
     .copyright>.container>a:first-child, .footer .menu__list {
         display: none;
@@ -784,11 +818,8 @@ body {
         align-items: center;
     }
     .searchResult__card-img {
-        width: 80px;
+        width: 58px;
         height: 80px;
-    }
-    .searchResult__card-content {
-        margin-left: 10px;
     }
     .searchResult__container .btn {
         margin-top: 20px;
@@ -796,6 +827,14 @@ body {
     }
     .modal__requestCall-contentWrap {
         margin-top: 30px;
+    }
+
+    .searchResult__card-content {
+        margin-left: 15px;
+    }
+
+    .searchResult__card-title {
+        color: #70768A;
     }
 }
 
@@ -940,6 +979,10 @@ body {
         flex-direction: column;
         row-gap: 30px;
         align-items: flex-start;
+    }
+
+    .header__phoneBlock {
+        margin-right: 30px;
     }
 }
 

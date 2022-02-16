@@ -792,4 +792,8 @@
         position: relative;
         bottom: 390px;
     }
+    
+    .features {
+        width: 205px;
+    }
 }

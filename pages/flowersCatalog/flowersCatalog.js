@@ -8,10 +8,11 @@ window.onload = () => {
         const count = container.querySelectorAll('input:checked').length;
         if (count > 0) {
             container.querySelector('.selectedFiltersCount').innerHTML = count;
-            container.querySelector('.selectedFiltersCount').style.opacity = 1;   
+            container.querySelector('.selectedFiltersCount').style.opacity = 1;
         } else {
             container.querySelector('.selectedFiltersCount').style.opacity = 0;   
         }
+        container.querySelector('.selectedFiltersCount').style.display = Number(container.querySelector('.selectedFiltersCount').innerHTML) > 0 ? 'flex' : 'none';
     }
 
     const filterToggleDesktop = (e) => {
@@ -73,7 +74,7 @@ window.onload = () => {
             if (e.target.tagName == 'INPUT') {
                 const filterCount = e.currentTarget.parentNode.parentNode.querySelector('.selectedFiltersCount');
                 filterCount.innerHTML = e.target.checked ? Number(filterCount.innerHTML) + 1 :  Number(filterCount.innerHTML) - 1;
-                filterCount.style.display = filterCount.innerHTML > 0 ? 'flex' : 'none';
+                filterCount.style.display = Number(filterCount.innerHTML) > 0 ? 'flex' : 'none';
             }
         }
 
